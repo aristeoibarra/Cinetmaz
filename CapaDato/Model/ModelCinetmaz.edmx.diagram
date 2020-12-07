@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70a61a9f54714843aef550b321b48b59" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="CinetmazModel.ca_clasificacion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_asiento" Width="1.5" PointX="9.875" PointY="1.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_pelicula" Width="1.5" PointX="4.5" PointY="4.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_sala" Width="1.5" PointX="1.75" PointY="3.75" IsExpanded="false" />
+        <AssociationConnector Association="CinetmazModel.FK_ca_sala_ca_clasificacion" />
+        <AssociationConnector Association="CinetmazModel.FK_ca_pelicula_ca_sala" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_cliente" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinetmazModel.ma_cinetmaz" Width="1.5" PointX="7.625" PointY="1.625" IsExpanded="false" />
+        <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_asiento" />
+        <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_cliente" />
+        <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
