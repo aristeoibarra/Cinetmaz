@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82BF7ADC-50F9-4054-BC72-9F18BCA7343B}</ProjectGuid>
+    <ProjectGuid>{240042D4-E34D-4747-B90E-D5E492FD9CD6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CapaDato</RootNamespace>
@@ -54,13 +54,13 @@
     <Compile Include="Model\ca_clasificacion.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ca_cliente.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ca_pelicula.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ca_sala.cs">
-      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\ca_usuario.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ma_cinetmaz.cs">

@@ -15,12 +15,12 @@ namespace CapaDato.Model
     public partial class ma_cinetmaz
     {
         public int cve_cinetmaz { get; set; }
-        public int cveusuario_cinetmaz { get; set; }
+        public int cvecliente_cinetmaz { get; set; }
         public int cvepelicula_cinetmaz { get; set; }
         public int cveasiento_cinetmaz { get; set; }
     
         public virtual ca_asiento ca_asiento { get; set; }
+        public virtual ca_cliente ca_cliente { get; set; }
         public virtual ca_pelicula ca_pelicula { get; set; }
-        public virtual ca_usuario ca_usuario { get; set; }
     }
 }

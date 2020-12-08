@@ -12,23 +12,23 @@ namespace CapaDato.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ca_usuario
+    public partial class ca_cliente
     {
-        public ca_usuario()
+        public ca_cliente()
         {
             this.ma_cinetmaz = new HashSet<ma_cinetmaz>();
         }
     
-        public int cve_usuario { get; set; }
-        public string nombre_usuario { get; set; }
-        public string apepaterno_usuario { get; set; }
-        public string apematerno_usuario { get; set; }
-        public int edad_usuario { get; set; }
-        public int estatus_usuario { get; set; }
-        public int cveusuarioalta_usuario { get; set; }
-        public System.DateTime fechaalta_usuario { get; set; }
-        public Nullable<int> cveusuariomod_usuario { get; set; }
-        public Nullable<System.DateTime> fechamod_usuario { get; set; }
+        public int cve_cliente { get; set; }
+        public string nombre_cliente { get; set; }
+        public string apepaterno_cliente { get; set; }
+        public string apematerno_cliente { get; set; }
+        public int edad_cliente { get; set; }
+        public int estatus_cliente { get; set; }
+        public int cveusuarioalta_cliente { get; set; }
+        public System.DateTime fechaalta_cliente { get; set; }
+        public Nullable<int> cveusuariomod_cliente { get; set; }
+        public Nullable<System.DateTime> fechamod_cliente { get; set; }
     
         public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }
     }

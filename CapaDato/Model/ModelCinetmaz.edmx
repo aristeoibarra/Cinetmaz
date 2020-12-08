@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CinetmazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CinetmazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ca_asiento">
           <Key>
             <PropertyRef Name="cve_asiento" />
@@ -21,6 +21,21 @@
           <Property Name="tipo_clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="edadminima_clasificacion" Type="int" Nullable="false" />
           <Property Name="descripcion_clasificacion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ca_cliente">
+          <Key>
+            <PropertyRef Name="cve_cliente" />
+          </Key>
+          <Property Name="cve_cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apepaterno_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apematerno_cliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="edad_cliente" Type="int" Nullable="false" />
+          <Property Name="estatus_cliente" Type="int" Nullable="false" />
+          <Property Name="cveusuarioalta_cliente" Type="int" Nullable="false" />
+          <Property Name="fechaalta_cliente" Type="datetime" Nullable="false" />
+          <Property Name="cveusuariomod_cliente" Type="int" />
+          <Property Name="fechamod_cliente" Type="datetime" />
         </EntityType>
         <EntityType Name="ca_pelicula">
           <Key>
@@ -39,27 +54,12 @@
           <Property Name="capacidad_sala" Type="int" Nullable="false" />
           <Property Name="cveclasificacion_sala" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="ca_usuario">
-          <Key>
-            <PropertyRef Name="cve_usuario" />
-          </Key>
-          <Property Name="cve_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apepaterno_usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="apematerno_usuario" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="edad_usuario" Type="int" Nullable="false" />
-          <Property Name="estatus_usuario" Type="int" Nullable="false" />
-          <Property Name="cveusuarioalta_usuario" Type="int" Nullable="false" />
-          <Property Name="fechaalta_usuario" Type="datetime" Nullable="false" />
-          <Property Name="cveusuariomod_usuario" Type="int" />
-          <Property Name="fechamod_usuario" Type="datetime" />
-        </EntityType>
         <EntityType Name="ma_cinetmaz">
           <Key>
             <PropertyRef Name="cve_cinetmaz" />
           </Key>
           <Property Name="cve_cinetmaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="cveusuario_cinetmaz" Type="int" Nullable="false" />
+          <Property Name="cvecliente_cinetmaz" Type="int" Nullable="false" />
           <Property Name="cvepelicula_cinetmaz" Type="int" Nullable="false" />
           <Property Name="cveasiento_cinetmaz" Type="int" Nullable="false" />
         </EntityType>
@@ -99,6 +99,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ma_cinetmaz_ca_cliente">
+          <End Role="ca_cliente" Type="Self.ca_cliente" Multiplicity="1" />
+          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_cliente">
+              <PropertyRef Name="cve_cliente" />
+            </Principal>
+            <Dependent Role="ma_cinetmaz">
+              <PropertyRef Name="cvecliente_cinetmaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ma_cinetmaz_ca_pelicula">
           <End Role="ca_pelicula" Type="Self.ca_pelicula" Multiplicity="1" />
           <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
@@ -111,29 +123,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ma_cinetmaz_ca_usuario">
-          <End Role="ca_usuario" Type="Self.ca_usuario" Multiplicity="1" />
-          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_usuario">
-              <PropertyRef Name="cve_usuario" />
-            </Principal>
-            <Dependent Role="ma_cinetmaz">
-              <PropertyRef Name="cveusuario_cinetmaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="spAgregarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="tipo" Type="varchar" Mode="In" />
-          <Parameter Name="edadMinima" Type="int" Mode="In" />
-          <Parameter Name="descripcion" Type="varchar" Mode="In" />
-        </Function>
         <EntityContainer Name="CinetmazModelStoreContainer">
           <EntitySet Name="ca_asiento" EntityType="Self.ca_asiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ca_clasificacion" EntityType="Self.ca_clasificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ca_cliente" EntityType="Self.ca_cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ca_sala" EntityType="Self.ca_sala" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ca_usuario" EntityType="Self.ca_usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ca_pelicula_ca_sala" Association="Self.FK_ca_pelicula_ca_sala">
             <End Role="ca_sala" EntitySet="ca_sala" />
@@ -147,19 +142,29 @@
             <End Role="ca_asiento" EntitySet="ca_asiento" />
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
           </AssociationSet>
+          <AssociationSet Name="FK_ma_cinetmaz_ca_cliente" Association="Self.FK_ma_cinetmaz_ca_cliente">
+            <End Role="ca_cliente" EntitySet="ca_cliente" />
+            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
+          </AssociationSet>
           <AssociationSet Name="FK_ma_cinetmaz_ca_pelicula" Association="Self.FK_ma_cinetmaz_ca_pelicula">
             <End Role="ca_pelicula" EntitySet="ca_pelicula" />
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
           </AssociationSet>
-          <AssociationSet Name="FK_ma_cinetmaz_ca_usuario" Association="Self.FK_ma_cinetmaz_ca_usuario">
-            <End Role="ca_usuario" EntitySet="ca_usuario" />
-            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinetmazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ca_asiento">
+          <Key>
+            <PropertyRef Name="cve_asiento" />
+          </Key>
+          <Property Name="cve_asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_asiento" Type="Int32" />
+          <Property Name="estatus_asiento" Type="Int32" />
+          <NavigationProperty Name="ma_cinetmaz" Relationship="Self.FK_ma_cinetmaz_ca_asiento" FromRole="ca_asiento" ToRole="ma_cinetmaz" />
+        </EntityType>
         <EntityType Name="ca_clasificacion">
           <Key>
             <PropertyRef Name="cve_clasificacion" />
@@ -168,102 +173,60 @@
           <Property Name="tipo_clasificacion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="edadminima_clasificacion" Type="Int32" Nullable="false" />
           <Property Name="descripcion_clasificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ca_sala" Relationship="CinetmazModel.FK_ca_sala_ca_clasificacion" FromRole="ca_clasificacion" ToRole="ca_sala" />
+          <NavigationProperty Name="ca_sala" Relationship="Self.FK_ca_sala_ca_clasificacion" FromRole="ca_clasificacion" ToRole="ca_sala" />
         </EntityType>
-        <EntityContainer Name="CinetmazEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ca_clasificacion" EntityType="Self.ca_clasificacion" />
-          <FunctionImport Name="spAgregarClasificacion">
-            <Parameter Name="tipo" Mode="In" Type="String" />
-            <Parameter Name="edadMinima" Mode="In" Type="Int32" />
-            <Parameter Name="descripcion" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="ca_asiento" EntityType="CinetmazModel.ca_asiento" />
-          <EntitySet Name="ca_pelicula" EntityType="CinetmazModel.ca_pelicula" />
-          <EntitySet Name="ca_sala" EntityType="CinetmazModel.ca_sala" />
-          <EntitySet Name="ca_usuario" EntityType="CinetmazModel.ca_usuario" />
-          <EntitySet Name="ma_cinetmaz" EntityType="CinetmazModel.ma_cinetmaz" />
-          <AssociationSet Name="FK_ma_cinetmaz_ca_asiento" Association="CinetmazModel.FK_ma_cinetmaz_ca_asiento">
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_sala_ca_clasificacion" Association="CinetmazModel.FK_ca_sala_ca_clasificacion">
-            <End Role="ca_clasificacion" EntitySet="ca_clasificacion" />
-            <End Role="ca_sala" EntitySet="ca_sala" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_pelicula_ca_sala" Association="CinetmazModel.FK_ca_pelicula_ca_sala">
-            <End Role="ca_sala" EntitySet="ca_sala" />
-            <End Role="ca_pelicula" EntitySet="ca_pelicula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ma_cinetmaz_ca_pelicula" Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula">
-            <End Role="ca_pelicula" EntitySet="ca_pelicula" />
-            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ma_cinetmaz_ca_usuario" Association="CinetmazModel.FK_ma_cinetmaz_ca_usuario">
-            <End Role="ca_usuario" EntitySet="ca_usuario" />
-            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="ca_asiento">
+        <EntityType Name="ca_cliente">
           <Key>
-            <PropertyRef Name="cve_asiento" />
+            <PropertyRef Name="cve_cliente" />
           </Key>
-          <Property Name="cve_asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="numero_asiento" Type="Int32" />
-          <Property Name="estatus_asiento" Type="Int32" />
-          <NavigationProperty Name="ma_cinetmaz" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_asiento" FromRole="ca_asiento" ToRole="ma_cinetmaz" />
+          <Property Name="cve_cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apepaterno_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apematerno_cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad_cliente" Type="Int32" Nullable="false" />
+          <Property Name="estatus_cliente" Type="Int32" Nullable="false" />
+          <Property Name="cveusuarioalta_cliente" Type="Int32" Nullable="false" />
+          <Property Name="fechaalta_cliente" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cveusuariomod_cliente" Type="Int32" />
+          <Property Name="fechamod_cliente" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ma_cinetmaz" Relationship="Self.FK_ma_cinetmaz_ca_cliente" FromRole="ca_cliente" ToRole="ma_cinetmaz" />
         </EntityType>
         <EntityType Name="ca_pelicula">
           <Key>
             <PropertyRef Name="cve_pelicula" />
           </Key>
           <Property Name="cve_pelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre_pelicula" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_pelicula" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cvesala_pelicula" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_sala" Relationship="CinetmazModel.FK_ca_pelicula_ca_sala" FromRole="ca_pelicula" ToRole="ca_sala" />
-          <NavigationProperty Name="ma_cinetmaz" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" FromRole="ca_pelicula" ToRole="ma_cinetmaz" />
+          <NavigationProperty Name="ca_sala" Relationship="Self.FK_ca_pelicula_ca_sala" FromRole="ca_pelicula" ToRole="ca_sala" />
+          <NavigationProperty Name="ma_cinetmaz" Relationship="Self.FK_ma_cinetmaz_ca_pelicula" FromRole="ca_pelicula" ToRole="ma_cinetmaz" />
         </EntityType>
         <EntityType Name="ca_sala">
           <Key>
             <PropertyRef Name="cve_sala" />
           </Key>
           <Property Name="cve_sala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre_sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="nombre_sala" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="capacidad_sala" Type="Int32" Nullable="false" />
           <Property Name="cveclasificacion_sala" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_clasificacion" Relationship="CinetmazModel.FK_ca_sala_ca_clasificacion" FromRole="ca_sala" ToRole="ca_clasificacion" />
-          <NavigationProperty Name="ca_pelicula" Relationship="CinetmazModel.FK_ca_pelicula_ca_sala" FromRole="ca_sala" ToRole="ca_pelicula" />
-        </EntityType>
-        <EntityType Name="ca_usuario">
-          <Key>
-            <PropertyRef Name="cve_usuario" />
-          </Key>
-          <Property Name="cve_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apepaterno_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="apematerno_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="edad_usuario" Type="Int32" Nullable="false" />
-          <Property Name="estatus_usuario" Type="Int32" Nullable="false" />
-          <Property Name="cveusuarioalta_usuario" Type="Int32" Nullable="false" />
-          <Property Name="fechaalta_usuario" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cveusuariomod_usuario" Type="Int32" />
-          <Property Name="fechamod_usuario" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ma_cinetmaz" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_usuario" FromRole="ca_usuario" ToRole="ma_cinetmaz" />
+          <NavigationProperty Name="ca_clasificacion" Relationship="Self.FK_ca_sala_ca_clasificacion" FromRole="ca_sala" ToRole="ca_clasificacion" />
+          <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ca_pelicula_ca_sala" FromRole="ca_sala" ToRole="ca_pelicula" />
         </EntityType>
         <EntityType Name="ma_cinetmaz">
           <Key>
             <PropertyRef Name="cve_cinetmaz" />
           </Key>
           <Property Name="cve_cinetmaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cveusuario_cinetmaz" Type="Int32" Nullable="false" />
+          <Property Name="cvecliente_cinetmaz" Type="Int32" Nullable="false" />
           <Property Name="cvepelicula_cinetmaz" Type="Int32" Nullable="false" />
           <Property Name="cveasiento_cinetmaz" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_asiento" FromRole="ma_cinetmaz" ToRole="ca_asiento" />
-          <NavigationProperty Name="ca_pelicula" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" FromRole="ma_cinetmaz" ToRole="ca_pelicula" />
-          <NavigationProperty Name="ca_usuario" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_usuario" FromRole="ma_cinetmaz" ToRole="ca_usuario" />
+          <NavigationProperty Name="ca_asiento" Relationship="Self.FK_ma_cinetmaz_ca_asiento" FromRole="ma_cinetmaz" ToRole="ca_asiento" />
+          <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ma_cinetmaz_ca_cliente" FromRole="ma_cinetmaz" ToRole="ca_cliente" />
+          <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ma_cinetmaz_ca_pelicula" FromRole="ma_cinetmaz" ToRole="ca_pelicula" />
         </EntityType>
         <Association Name="FK_ma_cinetmaz_ca_asiento">
-          <End Type="CinetmazModel.ca_asiento" Role="ca_asiento" Multiplicity="1" />
-          <End Type="CinetmazModel.ma_cinetmaz" Role="ma_cinetmaz" Multiplicity="*" />
+          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="1" />
+          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ca_asiento">
               <PropertyRef Name="cve_asiento" />
@@ -274,8 +237,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ca_sala_ca_clasificacion">
-          <End Type="CinetmazModel.ca_clasificacion" Role="ca_clasificacion" Multiplicity="1" />
-          <End Type="CinetmazModel.ca_sala" Role="ca_sala" Multiplicity="*" />
+          <End Role="ca_clasificacion" Type="Self.ca_clasificacion" Multiplicity="1" />
+          <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ca_clasificacion">
               <PropertyRef Name="cve_clasificacion" />
@@ -285,9 +248,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ma_cinetmaz_ca_cliente">
+          <End Role="ca_cliente" Type="Self.ca_cliente" Multiplicity="1" />
+          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_cliente">
+              <PropertyRef Name="cve_cliente" />
+            </Principal>
+            <Dependent Role="ma_cinetmaz">
+              <PropertyRef Name="cvecliente_cinetmaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ca_pelicula_ca_sala">
-          <End Type="CinetmazModel.ca_sala" Role="ca_sala" Multiplicity="1" />
-          <End Type="CinetmazModel.ca_pelicula" Role="ca_pelicula" Multiplicity="*" />
+          <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="1" />
+          <End Role="ca_pelicula" Type="Self.ca_pelicula" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ca_sala">
               <PropertyRef Name="cve_sala" />
@@ -298,8 +273,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ma_cinetmaz_ca_pelicula">
-          <End Type="CinetmazModel.ca_pelicula" Role="ca_pelicula" Multiplicity="1" />
-          <End Type="CinetmazModel.ma_cinetmaz" Role="ma_cinetmaz" Multiplicity="*" />
+          <End Role="ca_pelicula" Type="Self.ca_pelicula" Multiplicity="1" />
+          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ca_pelicula">
               <PropertyRef Name="cve_pelicula" />
@@ -309,24 +284,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ma_cinetmaz_ca_usuario">
-          <End Type="CinetmazModel.ca_usuario" Role="ca_usuario" Multiplicity="1" />
-          <End Type="CinetmazModel.ma_cinetmaz" Role="ma_cinetmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_usuario">
-              <PropertyRef Name="cve_usuario" />
-            </Principal>
-            <Dependent Role="ma_cinetmaz">
-              <PropertyRef Name="cveusuario_cinetmaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityContainer Name="CinetmazEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ca_asiento" EntityType="Self.ca_asiento" />
+          <EntitySet Name="ca_clasificacion" EntityType="Self.ca_clasificacion" />
+          <EntitySet Name="ca_cliente" EntityType="Self.ca_cliente" />
+          <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" />
+          <EntitySet Name="ca_sala" EntityType="Self.ca_sala" />
+          <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" />
+          <AssociationSet Name="FK_ma_cinetmaz_ca_asiento" Association="Self.FK_ma_cinetmaz_ca_asiento">
+            <End Role="ca_asiento" EntitySet="ca_asiento" />
+            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ca_sala_ca_clasificacion" Association="Self.FK_ca_sala_ca_clasificacion">
+            <End Role="ca_clasificacion" EntitySet="ca_clasificacion" />
+            <End Role="ca_sala" EntitySet="ca_sala" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ma_cinetmaz_ca_cliente" Association="Self.FK_ma_cinetmaz_ca_cliente">
+            <End Role="ca_cliente" EntitySet="ca_cliente" />
+            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ca_pelicula_ca_sala" Association="Self.FK_ca_pelicula_ca_sala">
+            <End Role="ca_sala" EntitySet="ca_sala" />
+            <End Role="ca_pelicula" EntitySet="ca_pelicula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ma_cinetmaz_ca_pelicula" Association="Self.FK_ma_cinetmaz_ca_pelicula">
+            <End Role="ca_pelicula" EntitySet="ca_pelicula" />
+            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CinetmazModelStoreContainer" CdmEntityContainer="CinetmazEntities">
+          <EntitySetMapping Name="ca_asiento">
+            <EntityTypeMapping TypeName="CinetmazModel.ca_asiento">
+              <MappingFragment StoreEntitySet="ca_asiento">
+                <ScalarProperty Name="cve_asiento" ColumnName="cve_asiento" />
+                <ScalarProperty Name="numero_asiento" ColumnName="numero_asiento" />
+                <ScalarProperty Name="estatus_asiento" ColumnName="estatus_asiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ca_clasificacion">
             <EntityTypeMapping TypeName="CinetmazModel.ca_clasificacion">
               <MappingFragment StoreEntitySet="ca_clasificacion">
@@ -337,58 +337,48 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spAgregarClasificacion" FunctionName="CinetmazModel.Store.spAgregarClasificacion" />
-          <EntitySetMapping Name="ca_asiento">
-            <EntityTypeMapping TypeName="CinetmazModel.ca_asiento">
-              <MappingFragment StoreEntitySet="ca_asiento">
-                <ScalarProperty Name="estatus_asiento" ColumnName="estatus_asiento" />
-                <ScalarProperty Name="numero_asiento" ColumnName="numero_asiento" />
-                <ScalarProperty Name="cve_asiento" ColumnName="cve_asiento" />
+          <EntitySetMapping Name="ca_cliente">
+            <EntityTypeMapping TypeName="CinetmazModel.ca_cliente">
+              <MappingFragment StoreEntitySet="ca_cliente">
+                <ScalarProperty Name="cve_cliente" ColumnName="cve_cliente" />
+                <ScalarProperty Name="nombre_cliente" ColumnName="nombre_cliente" />
+                <ScalarProperty Name="apepaterno_cliente" ColumnName="apepaterno_cliente" />
+                <ScalarProperty Name="apematerno_cliente" ColumnName="apematerno_cliente" />
+                <ScalarProperty Name="edad_cliente" ColumnName="edad_cliente" />
+                <ScalarProperty Name="estatus_cliente" ColumnName="estatus_cliente" />
+                <ScalarProperty Name="cveusuarioalta_cliente" ColumnName="cveusuarioalta_cliente" />
+                <ScalarProperty Name="fechaalta_cliente" ColumnName="fechaalta_cliente" />
+                <ScalarProperty Name="cveusuariomod_cliente" ColumnName="cveusuariomod_cliente" />
+                <ScalarProperty Name="fechamod_cliente" ColumnName="fechamod_cliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ca_pelicula">
             <EntityTypeMapping TypeName="CinetmazModel.ca_pelicula">
               <MappingFragment StoreEntitySet="ca_pelicula">
-                <ScalarProperty Name="cvesala_pelicula" ColumnName="cvesala_pelicula" />
-                <ScalarProperty Name="nombre_pelicula" ColumnName="nombre_pelicula" />
                 <ScalarProperty Name="cve_pelicula" ColumnName="cve_pelicula" />
+                <ScalarProperty Name="nombre_pelicula" ColumnName="nombre_pelicula" />
+                <ScalarProperty Name="cvesala_pelicula" ColumnName="cvesala_pelicula" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ca_sala">
             <EntityTypeMapping TypeName="CinetmazModel.ca_sala">
               <MappingFragment StoreEntitySet="ca_sala">
-                <ScalarProperty Name="cveclasificacion_sala" ColumnName="cveclasificacion_sala" />
-                <ScalarProperty Name="capacidad_sala" ColumnName="capacidad_sala" />
-                <ScalarProperty Name="nombre_sala" ColumnName="nombre_sala" />
                 <ScalarProperty Name="cve_sala" ColumnName="cve_sala" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ca_usuario">
-            <EntityTypeMapping TypeName="CinetmazModel.ca_usuario">
-              <MappingFragment StoreEntitySet="ca_usuario">
-                <ScalarProperty Name="fechamod_usuario" ColumnName="fechamod_usuario" />
-                <ScalarProperty Name="cveusuariomod_usuario" ColumnName="cveusuariomod_usuario" />
-                <ScalarProperty Name="fechaalta_usuario" ColumnName="fechaalta_usuario" />
-                <ScalarProperty Name="cveusuarioalta_usuario" ColumnName="cveusuarioalta_usuario" />
-                <ScalarProperty Name="estatus_usuario" ColumnName="estatus_usuario" />
-                <ScalarProperty Name="edad_usuario" ColumnName="edad_usuario" />
-                <ScalarProperty Name="apematerno_usuario" ColumnName="apematerno_usuario" />
-                <ScalarProperty Name="apepaterno_usuario" ColumnName="apepaterno_usuario" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-                <ScalarProperty Name="cve_usuario" ColumnName="cve_usuario" />
+                <ScalarProperty Name="nombre_sala" ColumnName="nombre_sala" />
+                <ScalarProperty Name="capacidad_sala" ColumnName="capacidad_sala" />
+                <ScalarProperty Name="cveclasificacion_sala" ColumnName="cveclasificacion_sala" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ma_cinetmaz">
             <EntityTypeMapping TypeName="CinetmazModel.ma_cinetmaz">
               <MappingFragment StoreEntitySet="ma_cinetmaz">
-                <ScalarProperty Name="cveasiento_cinetmaz" ColumnName="cveasiento_cinetmaz" />
-                <ScalarProperty Name="cvepelicula_cinetmaz" ColumnName="cvepelicula_cinetmaz" />
-                <ScalarProperty Name="cveusuario_cinetmaz" ColumnName="cveusuario_cinetmaz" />
                 <ScalarProperty Name="cve_cinetmaz" ColumnName="cve_cinetmaz" />
+                <ScalarProperty Name="cvecliente_cinetmaz" ColumnName="cvecliente_cinetmaz" />
+                <ScalarProperty Name="cvepelicula_cinetmaz" ColumnName="cvepelicula_cinetmaz" />
+                <ScalarProperty Name="cveasiento_cinetmaz" ColumnName="cveasiento_cinetmaz" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
