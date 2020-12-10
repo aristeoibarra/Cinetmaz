@@ -48,6 +48,7 @@ namespace CapaPresentacion.Salas
             this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cmbClasificacion
             // 
@@ -154,11 +155,11 @@ namespace CapaPresentacion.Salas
         #endregion
 
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.ComboBox cmbClasificacion;
-        private System.Windows.Forms.NumericUpDown nudCapacidad;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNombre;
+        public System.Windows.Forms.ComboBox cmbClasificacion;
+        public System.Windows.Forms.NumericUpDown nudCapacidad;
+        public System.Windows.Forms.TextBox txtNombre;
     }
 }

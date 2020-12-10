@@ -86,6 +86,9 @@
     <Compile Include="Model\vwMostrarTodosClasificacion.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\vwMostrarTodosSala.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

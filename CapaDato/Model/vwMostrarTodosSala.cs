@@ -14,9 +14,10 @@ namespace CapaDato.Model
     
     public partial class vwMostrarTodosSala
     {
-        public int cve_sala { get; set; }
-        public string nombre_sala { get; set; }
-        public int capacidad_sala { get; set; }
-        public string tipo_clasificacion { get; set; }
+        public int Clave { get; set; }
+        public string Nombre { get; set; }
+        public int Capacidad { get; set; }
+        public int cve_clasificacion { get; set; }
+        public string Clasificacion { get; set; }
     }
 }

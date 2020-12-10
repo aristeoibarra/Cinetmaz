@@ -81,15 +81,17 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosClasificacion' no
 advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vwMostrarTodosSala">
           <Key>
-            <PropertyRef Name="cve_sala" />
-            <PropertyRef Name="nombre_sala" />
-            <PropertyRef Name="capacidad_sala" />
-            <PropertyRef Name="tipo_clasificacion" />
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Capacidad" />
+            <PropertyRef Name="cve_clasificacion" />
+            <PropertyRef Name="Clasificacion" />
           </Key>
-          <Property Name="cve_sala" Type="int" Nullable="false" />
-          <Property Name="nombre_sala" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="capacidad_sala" Type="int" Nullable="false" />
-          <Property Name="tipo_clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Clave" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Capacidad" Type="int" Nullable="false" />
+          <Property Name="cve_clasificacion" Type="int" Nullable="false" />
+          <Property Name="Clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_ca_pelicula_ca_sala">
           <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="1" />
@@ -196,10 +198,11 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </EntitySet>
           <EntitySet Name="vwMostrarTodosSala" EntityType="Self.vwMostrarTodosSala" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vwMostrarTodosSala].[cve_sala] AS [cve_sala], 
-    [vwMostrarTodosSala].[nombre_sala] AS [nombre_sala], 
-    [vwMostrarTodosSala].[capacidad_sala] AS [capacidad_sala], 
-    [vwMostrarTodosSala].[tipo_clasificacion] AS [tipo_clasificacion]
+    [vwMostrarTodosSala].[Clave] AS [Clave], 
+    [vwMostrarTodosSala].[Nombre] AS [Nombre], 
+    [vwMostrarTodosSala].[Capacidad] AS [Capacidad], 
+    [vwMostrarTodosSala].[cve_clasificacion] AS [cve_clasificacion], 
+    [vwMostrarTodosSala].[Clasificacion] AS [Clasificacion]
     FROM [dbo].[vwMostrarTodosSala] AS [vwMostrarTodosSala]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_ca_pelicula_ca_sala" Association="Self.FK_ca_pelicula_ca_sala">
@@ -409,14 +412,13 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <Parameter Name="edadMinima" Mode="In" Type="Int32" />
             <Parameter Name="descripcion" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
           <FunctionImport Name="spAgregarSala">
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="capacidad" Mode="In" Type="Int32" />
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spEliminarSala">
-            <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          <Parameter Name="cveSala" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spModificarSala">
             <Parameter Name="cveSala" Mode="In" Type="Int32" />
@@ -424,18 +426,21 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <Parameter Name="capacidad" Mode="In" Type="Int32" />
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
         </EntityContainer>
         <EntityType Name="vwMostrarTodosSala">
           <Key>
-            <PropertyRef Name="cve_sala" />
-            <PropertyRef Name="nombre_sala" />
-            <PropertyRef Name="capacidad_sala" />
-            <PropertyRef Name="tipo_clasificacion" />
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Capacidad" />
+            <PropertyRef Name="cve_clasificacion" />
+            <PropertyRef Name="Clasificacion" />
           </Key>
-          <Property Name="cve_sala" Type="Int32" Nullable="false" />
-          <Property Name="nombre_sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="capacidad_sala" Type="Int32" Nullable="false" />
-          <Property Name="tipo_clasificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Clave" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Capacidad" Type="Int32" Nullable="false" />
+          <Property Name="cve_clasificacion" Type="Int32" Nullable="false" />
+          <Property Name="Clasificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -520,19 +525,20 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <FunctionImportMapping FunctionImportName="spAgregarClasificacion" FunctionName="CinetmazModel.Store.spAgregarClasificacion" />
           <FunctionImportMapping FunctionImportName="spEliminarClasificacion" FunctionName="CinetmazModel.Store.spEliminarClasificacion" />
           <FunctionImportMapping FunctionImportName="spModificarClasificacion" FunctionName="CinetmazModel.Store.spModificarClasificacion" />
-          <EntitySetMapping Name="vwMostrarTodosSala">
-            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosSala">
-              <MappingFragment StoreEntitySet="vwMostrarTodosSala">
-                <ScalarProperty Name="tipo_clasificacion" ColumnName="tipo_clasificacion" />
-                <ScalarProperty Name="capacidad_sala" ColumnName="capacidad_sala" />
-                <ScalarProperty Name="nombre_sala" ColumnName="nombre_sala" />
-                <ScalarProperty Name="cve_sala" ColumnName="cve_sala" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="spAgregarSala" FunctionName="CinetmazModel.Store.spAgregarSala" />
           <FunctionImportMapping FunctionImportName="spEliminarSala" FunctionName="CinetmazModel.Store.spEliminarSala" />
           <FunctionImportMapping FunctionImportName="spModificarSala" FunctionName="CinetmazModel.Store.spModificarSala" />
+          <EntitySetMapping Name="vwMostrarTodosSala">
+            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosSala">
+              <MappingFragment StoreEntitySet="vwMostrarTodosSala">
+                <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+                <ScalarProperty Name="cve_clasificacion" ColumnName="cve_clasificacion" />
+                <ScalarProperty Name="Capacidad" ColumnName="Capacidad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
