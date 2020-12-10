@@ -29,11 +29,30 @@ namespace CapaPresentacion.Peliculas
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
+            this.spContenedor.Panel1.SuspendLayout();
+            this.spContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblTitle
+            // lblTitulo
             // 
             this.lblTitulo.Location = new System.Drawing.Point(5, 4);
+            // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Location = new System.Drawing.Point(266, 6);
+            // 
+            // cmdHabilitar
+            // 
+            this.cmdHabilitar.Location = new System.Drawing.Point(556, 6);
+            // 
+            // cmdDeshabilitar
+            // 
+            this.cmdDeshabilitar.Location = new System.Drawing.Point(392, 6);
+            // 
+            // spContenedor
+            // 
+            this.spContenedor.Size = new System.Drawing.Size(800, 560);
             // 
             // frmPeliculas
             // 
@@ -43,6 +62,10 @@ namespace CapaPresentacion.Peliculas
             this.Name = "frmPeliculas";
             this.Text = "frmPeliculas";
             this.Load += new System.EventHandler(this.frmPeliculas_Load);
+            this.spContenedor.Panel1.ResumeLayout(false);
+            this.spContenedor.Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
+            this.spContenedor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

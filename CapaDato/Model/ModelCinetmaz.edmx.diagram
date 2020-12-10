@@ -18,6 +18,7 @@
         <AssociationConnector Association="CinetmazModel.FK_ca_pelicula_ca_sala" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosSala" Width="1.5" PointX="5.75" PointY="4.375" />
+        <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosPelicula" Width="1.5" PointX="7.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

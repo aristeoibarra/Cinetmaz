@@ -45,6 +45,7 @@ namespace CapaPresentacion.Peliculas
             this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // cmbSala
             // 
@@ -112,9 +113,9 @@ namespace CapaPresentacion.Peliculas
         #endregion
 
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.ComboBox cmbSala;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtNombre;
+        public System.Windows.Forms.ComboBox cmbSala;
+        public System.Windows.Forms.TextBox txtNombre;
     }
 }

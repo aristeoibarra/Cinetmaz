@@ -35,6 +35,7 @@ namespace CapaDato.Model
         public virtual DbSet<ma_cinetmaz> ma_cinetmaz { get; set; }
         public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
         public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
+        public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
     
         public virtual int spAgregarClasificacion(string tipo, Nullable<int> edadMinima, string descripcion)
         {
@@ -128,6 +129,45 @@ namespace CapaDato.Model
                 new ObjectParameter("cveClasificacion", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarSala", cveSalaParameter, nombreParameter, capacidadParameter, cveClasificacionParameter);
+        }
+    
+        public virtual int spAgregarPelicula(string nombre, Nullable<int> cveSala)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarPelicula", nombreParameter, cveSalaParameter);
+        }
+    
+        public virtual int spEliminarPelicula(Nullable<int> cvePelicula)
+        {
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarPelicula", cvePeliculaParameter);
+        }
+    
+        public virtual int spModificarPelicula(Nullable<int> cvePelicula, string nombre, Nullable<int> cveSala)
+        {
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarPelicula", cvePeliculaParameter, nombreParameter, cveSalaParameter);
         }
     }
 }

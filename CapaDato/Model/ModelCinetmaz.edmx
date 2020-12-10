@@ -78,6 +78,20 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosClasificacion' no
           <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosPelicula' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vwMostrarTodosPelicula">
+          <Key>
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="cvesala_pelicula" />
+            <PropertyRef Name="Sala" />
+          </Key>
+          <Property Name="Clave" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="cvesala_pelicula" Type="int" Nullable="false" />
+          <Property Name="Sala" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vwMostrarTodosSala">
           <Key>
@@ -158,6 +172,10 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="edadMinima" Type="int" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spAgregarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="cveSala" Type="int" Mode="In" />
+        </Function>
         <Function Name="spAgregarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="capacidad" Type="int" Mode="In" />
@@ -165,6 +183,9 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
         </Function>
         <Function Name="spEliminarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEliminarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cvePelicula" Type="int" Mode="In" />
         </Function>
         <Function Name="spEliminarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveSala" Type="int" Mode="In" />
@@ -174,6 +195,11 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="tipo" Type="varchar" Mode="In" />
           <Parameter Name="edadMinima" Type="int" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spModificarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cvePelicula" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="cveSala" Type="int" Mode="In" />
         </Function>
         <Function Name="spModificarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveSala" Type="int" Mode="In" />
@@ -195,6 +221,14 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
     [vwMostrarTodosClasificacion].[Edad_Minima] AS [Edad_Minima], 
     [vwMostrarTodosClasificacion].[Descripcion] AS [Descripcion]
     FROM [dbo].[vwMostrarTodosClasificacion] AS [vwMostrarTodosClasificacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwMostrarTodosPelicula" EntityType="Self.vwMostrarTodosPelicula" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwMostrarTodosPelicula].[Clave] AS [Clave], 
+    [vwMostrarTodosPelicula].[Nombre] AS [Nombre], 
+    [vwMostrarTodosPelicula].[cvesala_pelicula] AS [cvesala_pelicula], 
+    [vwMostrarTodosPelicula].[Sala] AS [Sala]
+    FROM [dbo].[vwMostrarTodosPelicula] AS [vwMostrarTodosPelicula]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwMostrarTodosSala" EntityType="Self.vwMostrarTodosSala" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -427,6 +461,19 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
+          <EntitySet Name="vwMostrarTodosPelicula" EntityType="CinetmazModel.vwMostrarTodosPelicula" />
+          <FunctionImport Name="spAgregarPelicula">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarPelicula">
+            <Parameter Name="cvePelicula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spModificarPelicula">
+            <Parameter Name="cvePelicula" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="vwMostrarTodosSala">
           <Key>
@@ -441,6 +488,18 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="Capacidad" Type="Int32" Nullable="false" />
           <Property Name="cve_clasificacion" Type="Int32" Nullable="false" />
           <Property Name="Clasificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vwMostrarTodosPelicula">
+          <Key>
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="cvesala_pelicula" />
+            <PropertyRef Name="Sala" />
+          </Key>
+          <Property Name="Clave" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cvesala_pelicula" Type="Int32" Nullable="false" />
+          <Property Name="Sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -539,6 +598,19 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vwMostrarTodosPelicula">
+            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosPelicula">
+              <MappingFragment StoreEntitySet="vwMostrarTodosPelicula">
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="cvesala_pelicula" ColumnName="cvesala_pelicula" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarPelicula" FunctionName="CinetmazModel.Store.spAgregarPelicula" />
+          <FunctionImportMapping FunctionImportName="spEliminarPelicula" FunctionName="CinetmazModel.Store.spEliminarPelicula" />
+          <FunctionImportMapping FunctionImportName="spModificarPelicula" FunctionName="CinetmazModel.Store.spModificarPelicula" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

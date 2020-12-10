@@ -16,7 +16,7 @@ namespace CapaPresentacion.Salas
         public frmSala()
         {
             InitializeComponent();
-            LlenarCoomboClasificacion();
+            LlenarComboClasificacion();
         }
 
         private void frmSala_Load(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace CapaPresentacion.Salas
             }
         }
 
-        void LlenarCoomboClasificacion()
+        void LlenarComboClasificacion()
         {
             cmbClasificacion.DataSource = nclasificacion.MostrarTodos();
             cmbClasificacion.DisplayMember = "Tipo";
