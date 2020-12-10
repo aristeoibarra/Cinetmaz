@@ -34,6 +34,18 @@ namespace CapaPresentacion.Clasificaciones
             this.spContenedor.SuspendLayout();
             this.SuspendLayout();
             // 
+            // cmdEliminar
+            // 
+            this.cmdEliminar.Location = new System.Drawing.Point(266, 6);
+            // 
+            // cmdHabilitar
+            // 
+            this.cmdHabilitar.Location = new System.Drawing.Point(564, 6);
+            // 
+            // cmdDeshabilitar
+            // 
+            this.cmdDeshabilitar.Location = new System.Drawing.Point(400, 6);
+            // 
             // spContenedor
             // 
             this.spContenedor.Size = new System.Drawing.Size(800, 560);

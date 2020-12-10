@@ -48,6 +48,7 @@ namespace CapaPresentacion.Clasificaciones
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label4
             // 
@@ -150,9 +151,9 @@ namespace CapaPresentacion.Clasificaciones
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chkPublicoGeneral;
-        private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.TextBox txtEdad;
-        private System.Windows.Forms.TextBox txtTipo;
+        public System.Windows.Forms.CheckBox chkPublicoGeneral;
+        public System.Windows.Forms.TextBox txtDescripcion;
+        public System.Windows.Forms.TextBox txtEdad;
+        public System.Windows.Forms.TextBox txtTipo;
     }
 }

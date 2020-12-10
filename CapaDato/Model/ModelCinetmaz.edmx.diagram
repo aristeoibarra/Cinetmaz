@@ -4,18 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e43c3ae52b3344a39b48c4b205c14cbc" Name="Diagram1">
-        <EntityTypeShape EntityType="CinetmazModel.ca_asiento" Width="1.5" PointX="1.875" PointY="3.5" IsExpanded="true" />
+      <Diagram DiagramId="e05b87d73ed247b0a0356ca35f8e1a23" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="CinetmazModel.ca_asiento" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ca_clasificacion" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinetmazModel.ca_cliente" Width="1.5" PointX="10" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_cliente" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ca_pelicula" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ca_sala" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ma_cinetmaz" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosClasificacion" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_asiento" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ca_sala_ca_clasificacion" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_cliente" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ca_pelicula_ca_sala" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosSala" Width="1.5" PointX="7.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CinetmazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CinetmazModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ca_asiento">
           <Key>
             <PropertyRef Name="cve_asiento" />
@@ -62,6 +62,34 @@
           <Property Name="cvecliente_cinetmaz" Type="int" Nullable="false" />
           <Property Name="cvepelicula_cinetmaz" Type="int" Nullable="false" />
           <Property Name="cveasiento_cinetmaz" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosClasificacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vwMostrarTodosClasificacion">
+          <Key>
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Edad_Minima" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="Clave" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Edad_Minima" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vwMostrarTodosSala">
+          <Key>
+            <PropertyRef Name="cve_sala" />
+            <PropertyRef Name="nombre_sala" />
+            <PropertyRef Name="capacidad_sala" />
+            <PropertyRef Name="tipo_clasificacion" />
+          </Key>
+          <Property Name="cve_sala" Type="int" Nullable="false" />
+          <Property Name="nombre_sala" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="capacidad_sala" Type="int" Nullable="false" />
+          <Property Name="tipo_clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <Association Name="FK_ca_pelicula_ca_sala">
           <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="1" />
@@ -123,6 +151,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spAgregarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="edadMinima" Type="int" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spAgregarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="capacidad" Type="int" Mode="In" />
+          <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEliminarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEliminarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveSala" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spModificarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+          <Parameter Name="tipo" Type="varchar" Mode="In" />
+          <Parameter Name="edadMinima" Type="int" Mode="In" />
+          <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spModificarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveSala" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="capacidad" Type="int" Mode="In" />
+          <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="CinetmazModelStoreContainer">
           <EntitySet Name="ca_asiento" EntityType="Self.ca_asiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ca_clasificacion" EntityType="Self.ca_clasificacion" Schema="dbo" store:Type="Tables" />
@@ -130,6 +186,22 @@
           <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ca_sala" EntityType="Self.ca_sala" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwMostrarTodosClasificacion" EntityType="Self.vwMostrarTodosClasificacion" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwMostrarTodosClasificacion].[Clave] AS [Clave], 
+    [vwMostrarTodosClasificacion].[Tipo] AS [Tipo], 
+    [vwMostrarTodosClasificacion].[Edad_Minima] AS [Edad_Minima], 
+    [vwMostrarTodosClasificacion].[Descripcion] AS [Descripcion]
+    FROM [dbo].[vwMostrarTodosClasificacion] AS [vwMostrarTodosClasificacion]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwMostrarTodosSala" EntityType="Self.vwMostrarTodosSala" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwMostrarTodosSala].[cve_sala] AS [cve_sala], 
+    [vwMostrarTodosSala].[nombre_sala] AS [nombre_sala], 
+    [vwMostrarTodosSala].[capacidad_sala] AS [capacidad_sala], 
+    [vwMostrarTodosSala].[tipo_clasificacion] AS [tipo_clasificacion]
+    FROM [dbo].[vwMostrarTodosSala] AS [vwMostrarTodosSala]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_ca_pelicula_ca_sala" Association="Self.FK_ca_pelicula_ca_sala">
             <End Role="ca_sala" EntitySet="ca_sala" />
             <End Role="ca_pelicula" EntitySet="ca_pelicula" />
@@ -151,8 +223,7 @@
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinetmazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -224,6 +295,18 @@
           <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ma_cinetmaz_ca_cliente" FromRole="ma_cinetmaz" ToRole="ca_cliente" />
           <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ma_cinetmaz_ca_pelicula" FromRole="ma_cinetmaz" ToRole="ca_pelicula" />
         </EntityType>
+        <EntityType Name="vwMostrarTodosClasificacion">
+          <Key>
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Tipo" />
+            <PropertyRef Name="Edad_Minima" />
+            <PropertyRef Name="Descripcion" />
+          </Key>
+          <Property Name="Clave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Edad_Minima" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <Association Name="FK_ma_cinetmaz_ca_asiento">
           <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="1" />
           <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
@@ -291,6 +374,7 @@
           <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" />
           <EntitySet Name="ca_sala" EntityType="Self.ca_sala" />
           <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" />
+          <EntitySet Name="vwMostrarTodosClasificacion" EntityType="Self.vwMostrarTodosClasificacion" />
           <AssociationSet Name="FK_ma_cinetmaz_ca_asiento" Association="Self.FK_ma_cinetmaz_ca_asiento">
             <End Role="ca_asiento" EntitySet="ca_asiento" />
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
@@ -311,7 +395,48 @@
             <End Role="ca_pelicula" EntitySet="ca_pelicula" />
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
           </AssociationSet>
+          <FunctionImport Name="spAgregarClasificacion">
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="edadMinima" Mode="In" Type="Int32" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarClasificacion">
+          <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spModificarClasificacion">
+            <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="edadMinima" Mode="In" Type="Int32" />
+            <Parameter Name="descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
+          <FunctionImport Name="spAgregarSala">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="capacidad" Mode="In" Type="Int32" />
+            <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarSala">
+            <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spModificarSala">
+            <Parameter Name="cveSala" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="capacidad" Mode="In" Type="Int32" />
+            <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="vwMostrarTodosSala">
+          <Key>
+            <PropertyRef Name="cve_sala" />
+            <PropertyRef Name="nombre_sala" />
+            <PropertyRef Name="capacidad_sala" />
+            <PropertyRef Name="tipo_clasificacion" />
+          </Key>
+          <Property Name="cve_sala" Type="Int32" Nullable="false" />
+          <Property Name="nombre_sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="capacidad_sala" Type="Int32" Nullable="false" />
+          <Property Name="tipo_clasificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -382,6 +507,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="vwMostrarTodosClasificacion">
+            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosClasificacion">
+              <MappingFragment StoreEntitySet="vwMostrarTodosClasificacion">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Edad_Minima" ColumnName="Edad_Minima" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarClasificacion" FunctionName="CinetmazModel.Store.spAgregarClasificacion" />
+          <FunctionImportMapping FunctionImportName="spEliminarClasificacion" FunctionName="CinetmazModel.Store.spEliminarClasificacion" />
+          <FunctionImportMapping FunctionImportName="spModificarClasificacion" FunctionName="CinetmazModel.Store.spModificarClasificacion" />
+          <EntitySetMapping Name="vwMostrarTodosSala">
+            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosSala">
+              <MappingFragment StoreEntitySet="vwMostrarTodosSala">
+                <ScalarProperty Name="tipo_clasificacion" ColumnName="tipo_clasificacion" />
+                <ScalarProperty Name="capacidad_sala" ColumnName="capacidad_sala" />
+                <ScalarProperty Name="nombre_sala" ColumnName="nombre_sala" />
+                <ScalarProperty Name="cve_sala" ColumnName="cve_sala" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarSala" FunctionName="CinetmazModel.Store.spAgregarSala" />
+          <FunctionImportMapping FunctionImportName="spEliminarSala" FunctionName="CinetmazModel.Store.spEliminarSala" />
+          <FunctionImportMapping FunctionImportName="spModificarSala" FunctionName="CinetmazModel.Store.spModificarSala" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -398,7 +549,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

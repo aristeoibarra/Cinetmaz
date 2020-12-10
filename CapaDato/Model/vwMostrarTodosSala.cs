@@ -12,15 +12,11 @@ namespace CapaDato.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ma_cinetmaz
+    public partial class vwMostrarTodosSala
     {
-        public int cve_cinetmaz { get; set; }
-        public int cvecliente_cinetmaz { get; set; }
-        public int cvepelicula_cinetmaz { get; set; }
-        public int cveasiento_cinetmaz { get; set; }
-    
-        public virtual ca_asiento ca_asiento { get; set; }
-        public virtual ca_cliente ca_cliente { get; set; }
-        public virtual ca_pelicula ca_pelicula { get; set; }
+        public int cve_sala { get; set; }
+        public string nombre_sala { get; set; }
+        public int capacidad_sala { get; set; }
+        public string tipo_clasificacion { get; set; }
     }
 }

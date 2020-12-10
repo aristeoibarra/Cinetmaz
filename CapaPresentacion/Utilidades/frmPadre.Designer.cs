@@ -32,7 +32,7 @@ namespace CapaPresentacion.Utilidades
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.spContenedor = new System.Windows.Forms.SplitContainer();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelBotones = new System.Windows.Forms.Panel();
@@ -41,55 +41,14 @@ namespace CapaPresentacion.Utilidades
             this.cmdDeshabilitar = new System.Windows.Forms.Button();
             this.cmdModificar = new System.Windows.Forms.Button();
             this.cmdNuevo = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
             this.spContenedor.Panel1.SuspendLayout();
             this.spContenedor.Panel2.SuspendLayout();
             this.spContenedor.SuspendLayout();
             this.panelBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvLista
-            // 
-            this.dgvLista.AllowUserToAddRows = false;
-            this.dgvLista.AllowUserToDeleteRows = false;
-            this.dgvLista.AllowUserToResizeRows = false;
-            this.dgvLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLista.Location = new System.Drawing.Point(0, 0);
-            this.dgvLista.MultiSelect = false;
-            this.dgvLista.Name = "dgvLista";
-            this.dgvLista.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvLista.RowHeadersVisible = false;
-            this.dgvLista.RowHeadersWidth = 43;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLista.Size = new System.Drawing.Size(784, 519);
-            this.dgvLista.TabIndex = 0;
             // 
             // spContenedor
             // 
@@ -104,14 +63,16 @@ namespace CapaPresentacion.Utilidades
             // 
             this.spContenedor.Panel1.Controls.Add(this.lblTitulo);
             this.spContenedor.Panel1.Controls.Add(this.panelBotones);
+            this.spContenedor.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.spContenedor.Panel1MinSize = 0;
             // 
             // spContenedor.Panel2
             // 
             this.spContenedor.Panel2.Controls.Add(this.dgvLista);
+            this.spContenedor.Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.spContenedor.Panel2MinSize = 0;
             this.spContenedor.Size = new System.Drawing.Size(784, 600);
-            this.spContenedor.SplitterDistance = 78;
+            this.spContenedor.SplitterDistance = 83;
             this.spContenedor.SplitterWidth = 3;
             this.spContenedor.TabIndex = 0;
             // 
@@ -164,6 +125,7 @@ namespace CapaPresentacion.Utilidades
             this.cmdHabilitar.Text = "Habilitar";
             this.cmdHabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdHabilitar.UseVisualStyleBackColor = true;
+            this.cmdHabilitar.Visible = false;
             // 
             // cmdDeshabilitar
             // 
@@ -178,6 +140,7 @@ namespace CapaPresentacion.Utilidades
             this.cmdDeshabilitar.Text = "Deshabilitar";
             this.cmdDeshabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdDeshabilitar.UseVisualStyleBackColor = true;
+            this.cmdDeshabilitar.Visible = false;
             // 
             // cmdModificar
             // 
@@ -207,6 +170,56 @@ namespace CapaPresentacion.Utilidades
             this.cmdNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdNuevo.UseVisualStyleBackColor = true;
             // 
+            // dgvLista
+            // 
+            this.dgvLista.AllowUserToAddRows = false;
+            this.dgvLista.AllowUserToDeleteRows = false;
+            this.dgvLista.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvLista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.dgvLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLista.Location = new System.Drawing.Point(0, 0);
+            this.dgvLista.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvLista.MultiSelect = false;
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvLista.RowHeadersVisible = false;
+            this.dgvLista.RowHeadersWidth = 43;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLista.Size = new System.Drawing.Size(784, 514);
+            this.dgvLista.TabIndex = 1;
+            // 
             // frmPadre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,19 +233,18 @@ namespace CapaPresentacion.Utilidades
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmPadre";
             this.Load += new System.EventHandler(this.frmPadre_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.spContenedor.Panel1.ResumeLayout(false);
             this.spContenedor.Panel1.PerformLayout();
             this.spContenedor.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
             this.spContenedor.ResumeLayout(false);
             this.panelBotones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        public System.Windows.Forms.DataGridView dgvLista;
         public System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panelBotones;
         public System.Windows.Forms.Button cmdEliminar;
@@ -241,5 +253,6 @@ namespace CapaPresentacion.Utilidades
         public System.Windows.Forms.Button cmdModificar;
         public System.Windows.Forms.Button cmdNuevo;
         public System.Windows.Forms.SplitContainer spContenedor;
+        public System.Windows.Forms.DataGridView dgvLista;
     }
 }
