@@ -76,7 +76,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clasificaciones\ClsClasificacion.cs" />
     <Compile Include="Clasificaciones\frmClasificacion.cs">
       <SubType>Form</SubType>
     </Compile>

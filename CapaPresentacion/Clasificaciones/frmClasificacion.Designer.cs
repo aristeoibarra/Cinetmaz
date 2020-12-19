@@ -90,6 +90,7 @@ namespace CapaPresentacion.Clasificaciones
             this.chkPublicoGeneral.TabIndex = 3;
             this.chkPublicoGeneral.Text = "Público en general";
             this.chkPublicoGeneral.UseVisualStyleBackColor = true;
+            this.chkPublicoGeneral.CheckedChanged += new System.EventHandler(this.chkPublicoGeneral_CheckedChanged);
             // 
             // txtDescripcion
             // 
@@ -104,9 +105,12 @@ namespace CapaPresentacion.Clasificaciones
             // 
             this.txtEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtEdad.Location = new System.Drawing.Point(141, 58);
+            this.txtEdad.MaxLength = 2;
             this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(52, 27);
+            this.txtEdad.Size = new System.Drawing.Size(41, 27);
             this.txtEdad.TabIndex = 2;
+            this.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
             // 
             // txtTipo
             // 
@@ -151,9 +155,9 @@ namespace CapaPresentacion.Clasificaciones
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.CheckBox chkPublicoGeneral;
-        public System.Windows.Forms.TextBox txtDescripcion;
-        public System.Windows.Forms.TextBox txtEdad;
-        public System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.CheckBox chkPublicoGeneral;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtEdad;
+        private System.Windows.Forms.TextBox txtTipo;
     }
 }

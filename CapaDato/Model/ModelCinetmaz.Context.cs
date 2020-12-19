@@ -27,15 +27,16 @@ namespace CapaDato.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
         public virtual DbSet<ca_clasificacion> ca_clasificacion { get; set; }
-        public virtual DbSet<ca_cliente> ca_cliente { get; set; }
         public virtual DbSet<ca_pelicula> ca_pelicula { get; set; }
         public virtual DbSet<ca_sala> ca_sala { get; set; }
         public virtual DbSet<ma_cinetmaz> ma_cinetmaz { get; set; }
-        public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
-        public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
         public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
+        public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
+        public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
+        public virtual DbSet<ca_cliente> ca_cliente { get; set; }
+        public virtual DbSet<ca_estado> ca_estado { get; set; }
+        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
     
         public virtual int spAgregarClasificacion(string tipo, Nullable<int> edadMinima, string descripcion)
         {

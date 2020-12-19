@@ -19,8 +19,8 @@ namespace CapaDato.Model
         public int cvepelicula_cinetmaz { get; set; }
         public int cveasiento_cinetmaz { get; set; }
     
-        public virtual ca_asiento ca_asiento { get; set; }
-        public virtual ca_cliente ca_cliente { get; set; }
         public virtual ca_pelicula ca_pelicula { get; set; }
+        public virtual ca_cliente ca_cliente { get; set; }
+        public virtual ca_asiento ca_asiento { get; set; }
     }
 }

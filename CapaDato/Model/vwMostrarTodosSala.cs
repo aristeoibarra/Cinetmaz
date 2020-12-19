@@ -17,7 +17,7 @@ namespace CapaDato.Model
         public int Clave { get; set; }
         public string Nombre { get; set; }
         public int Capacidad { get; set; }
-        public int cve_clasificacion { get; set; }
+        public int cveclasificacion_sala { get; set; }
         public string Clasificacion { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace CapaEntidades
 {
-    class Cliente
+    public class Cliente
     {
         public int CveCliente { get; set; }
         public string NombreCliente { get; set; }

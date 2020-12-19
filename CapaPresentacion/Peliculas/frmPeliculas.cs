@@ -1,13 +1,14 @@
-﻿using System;
-using System.Windows.Forms;
-using CapaNegocio.Negocio;
+﻿using CapaNegocio.Negocio;
 using CapaPresentacion.Utilidades;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentacion.Peliculas
 {
-    public partial class frmPeliculas : Utilidades.frmPadre
+    public partial class frmPeliculas : frmPadre
     {
         readonly Npelicula npelicula = new Npelicula();
+
         public frmPeliculas()
         {
             InitializeComponent();
@@ -17,7 +18,6 @@ namespace CapaPresentacion.Peliculas
         {
             Eventos();
             RefrescarLista();
-            Interfaz();
         }
 
         private void Eventos()
@@ -26,14 +26,13 @@ namespace CapaPresentacion.Peliculas
             cmdModificar.Click += new EventHandler(BtnModificar);
             cmdEliminar.Click += new EventHandler(BtnEliminar);
         }
+
+        #region Eventos Botones
         private void BtnNuevo(object sender, EventArgs e)
         {
             frmPelicula frmP = new frmPelicula();
-            frmP.cmbSala.Text = null;
             frmP.ShowDialog();
-
             RefrescarLista();
-            Interfaz();
         }
 
         private void BtnModificar(object sender, EventArgs e)
@@ -43,12 +42,9 @@ namespace CapaPresentacion.Peliculas
             {
                 frmPelicula frmS = new frmPelicula();
                 frmS.idPelicula = id;
-                frmS.txtNombre.Text = OperacionesFormulario.ObtenerValorCelda(dgvLista, 1);
-                frmS.cmbSala.SelectedValue = int.Parse(OperacionesFormulario.ObtenerValorCelda(dgvLista, 2));
 
                 frmS.ShowDialog();
                 RefrescarLista();
-                Interfaz();
             }
             else
             {
@@ -58,7 +54,7 @@ namespace CapaPresentacion.Peliculas
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cvePelicula = Utilidades.OperacionesFormulario.ObtenertId(dgvLista);
+            int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
             if (cvePelicula > 0)
             {
                 if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -66,7 +62,6 @@ namespace CapaPresentacion.Peliculas
                     if (npelicula.Eliminar(cvePelicula))
                     {
                         RefrescarLista();
-                        Interfaz();
                     }
                     else
                     {
@@ -79,24 +74,27 @@ namespace CapaPresentacion.Peliculas
                 MessageBox.Show("Debe existir una fila seleccionada");
             }
         }
+        #endregion
+
+        private void RefrescarLista()
+        {
+            dgvLista.DataSource = null;
+            dgvLista.DataSource = npelicula.MostrarTodos();
+            Interfaz();
+        }
 
         private void Interfaz()
         {
             try
             {
                 lblTitulo.Text = "Películas";
+                dgvLista.Columns[2].Visible = false;
                 dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error de sistema " + ex.Message);
             }
-        }
-
-        private void RefrescarLista()
-        {
-            dgvLista.DataSource = null;
-            dgvLista.DataSource = npelicula.MostrarTodos();
         }
     }
 }

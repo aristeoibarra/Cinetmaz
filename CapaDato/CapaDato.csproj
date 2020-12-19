@@ -59,6 +59,9 @@
     <Compile Include="Model\ca_cliente.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ca_estado.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ca_pelicula.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>

@@ -49,6 +49,7 @@ namespace CapaPresentacion.Clientes
             this.btnGuardar.TabIndex = 5;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // label3
             // 
@@ -74,9 +75,11 @@ namespace CapaPresentacion.Clientes
             // 
             this.txtEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtEdad.Location = new System.Drawing.Point(159, 147);
+            this.txtEdad.MaxLength = 2;
             this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(62, 27);
+            this.txtEdad.Size = new System.Drawing.Size(57, 27);
             this.txtEdad.TabIndex = 4;
+            this.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAmaterno
             // 

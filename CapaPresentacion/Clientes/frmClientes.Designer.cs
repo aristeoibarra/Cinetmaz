@@ -29,6 +29,7 @@ namespace CapaPresentacion.Clientes
         /// </summary>
         private void InitializeComponent()
         {
+            this.cmbActivo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
             this.spContenedor.Panel1.SuspendLayout();
             this.spContenedor.SuspendLayout();
@@ -36,7 +37,7 @@ namespace CapaPresentacion.Clientes
             // 
             // cmdEliminar
             // 
-            this.cmdEliminar.Location = new System.Drawing.Point(572, 6);
+            this.cmdEliminar.Location = new System.Drawing.Point(575, 6);
             // 
             // cmdHabilitar
             // 
@@ -56,13 +57,29 @@ namespace CapaPresentacion.Clientes
             // 
             // spContenedor
             // 
-            this.spContenedor.Size = new System.Drawing.Size(800, 560);
+            // 
+            // spContenedor.Panel1
+            // 
+            this.spContenedor.Panel1.Controls.Add(this.cmbActivo);
+            this.spContenedor.Size = new System.Drawing.Size(969, 560);
+            // 
+            // cmbActivo
+            // 
+            this.cmbActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbActivo.FormattingEnabled = true;
+            this.cmbActivo.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cmbActivo.Location = new System.Drawing.Point(748, 44);
+            this.cmbActivo.Name = "cmbActivo";
+            this.cmbActivo.Size = new System.Drawing.Size(193, 28);
+            this.cmbActivo.TabIndex = 9;
             // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 560);
+            this.ClientSize = new System.Drawing.Size(969, 560);
             this.Name = "frmClientes";
             this.Text = "frmClientes";
             this.Load += new System.EventHandler(this.frmClientes_Load);
@@ -75,5 +92,7 @@ namespace CapaPresentacion.Clientes
         }
 
         #endregion
+
+        public System.Windows.Forms.ComboBox cmbActivo;
     }
 }

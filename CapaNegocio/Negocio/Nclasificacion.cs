@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CapaDato.Model;
 using CapaEntidades;
-using CapaDato.Model;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace CapaNegocio.Negocio
 {
@@ -12,9 +10,9 @@ namespace CapaNegocio.Negocio
     {
         public bool Agregar(Clasificacion dat)
         {
-            using(CinetmazEntities modeldb = new CinetmazEntities())
+            using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spAgregarClasificacion(  dat.TipoClasificacion,
+                modeldb.spAgregarClasificacion(dat.TipoClasificacion,
                                                  dat.EdadMinimaClasificacion,
                                                  dat.DescripcionClasificacion);
                 return true;
@@ -45,10 +43,46 @@ namespace CapaNegocio.Negocio
         public List<vwMostrarTodosClasificacion> MostrarTodos()
         {
             using (var modeldb = new CinetmazEntities())
-            {
+            {   
                 return modeldb.vwMostrarTodosClasificacion.ToList();
             }
         }
 
+        public List<Clasificacion> MostrarByID(int id)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from c in modeldb.vwMostrarTodosClasificacion
+                            where c.Clave == id
+                            select new Clasificacion
+                            {
+                                TipoClasificacion = c.Tipo,
+                                EdadMinima = c.Edad_Minima,
+                                DescripcionClasificacion = c.Descripcion
+                            };
+                return query.ToList();
+            }
+        }
+
+        #region Prueba DataTable
+        /*
+        public DataTable LlenarByID(int id)
+        {          
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Tipo");
+            dt.Columns.Add("EdadMinima");
+            dt.Columns.Add("Descripcion");
+
+            foreach (var item in ListaByID(id))
+            {
+                DataRow row = dt.NewRow();
+                row["Tipo"] = item.TipoClasificacion;
+                row["EdadMinima"] = item.EdadMinimaClasificacion;
+                row["Descripcion"] = item.DescripcionClasificacion;
+                dt.Rows.Add(row);
+            }
+            return dt;
+        }  */
+        #endregion
     }
 }

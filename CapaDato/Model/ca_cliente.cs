@@ -25,7 +25,7 @@ namespace CapaDato.Model
         public string apepaterno_cliente { get; set; }
         public string apematerno_cliente { get; set; }
         public int edad_cliente { get; set; }
-        public int estatus_cliente { get; set; }
+        public int cveestado_cliente { get; set; }
         public int cveusuarioalta_cliente { get; set; }
         public System.DateTime fechaalta_cliente { get; set; }
         public Nullable<int> cveusuariomod_cliente { get; set; }
@@ -33,5 +33,6 @@ namespace CapaDato.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }
+        public virtual ca_estado ca_estado { get; set; }
     }
 }

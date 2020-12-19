@@ -21,9 +21,12 @@ namespace CapaDato.Model
         }
     
         public int cve_asiento { get; set; }
-        public Nullable<int> numero_asiento { get; set; }
-        public Nullable<int> estatus_asiento { get; set; }
+        public int numero_asiento { get; set; }
+        public int cveestado_asiento { get; set; }
+        public int cvesala_asiento { get; set; }
     
+        public virtual ca_estado ca_estado { get; set; }
+        public virtual ca_sala ca_sala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }
     }

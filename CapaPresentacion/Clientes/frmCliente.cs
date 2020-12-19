@@ -15,5 +15,10 @@ namespace CapaPresentacion.Clientes
         {
 
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

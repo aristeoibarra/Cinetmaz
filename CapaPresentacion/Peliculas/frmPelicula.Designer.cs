@@ -49,6 +49,7 @@ namespace CapaPresentacion.Peliculas
             // 
             // cmbSala
             // 
+            this.cmbSala.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbSala.FormattingEnabled = true;
             this.cmbSala.Location = new System.Drawing.Point(108, 65);
@@ -115,7 +116,7 @@ namespace CapaPresentacion.Peliculas
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.ComboBox cmbSala;
-        public System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.ComboBox cmbSala;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }

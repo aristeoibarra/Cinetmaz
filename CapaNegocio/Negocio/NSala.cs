@@ -1,10 +1,7 @@
-﻿using System;
+﻿using CapaDato.Model;
+using CapaEntidades;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidades;
-using CapaDato.Model;
 
 namespace CapaNegocio.Negocio
 {
@@ -47,6 +44,22 @@ namespace CapaNegocio.Negocio
             using (var modeldb = new CinetmazEntities())
             {
                 return modeldb.vwMostrarTodosSala.ToList();
+            }
+        }
+
+        public List<Sala> MostrarByID(int id)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from s in modeldb.vwMostrarTodosSala
+                            where s.Clave == id
+                            select new Sala
+                            {
+                                NombreSala = s.Nombre,
+                                CapacidadSala = s.Capacidad,
+                                CveclasificacionSala = s.cveclasificacion_sala
+                            };
+                return query.ToList();
             }
         }
     }

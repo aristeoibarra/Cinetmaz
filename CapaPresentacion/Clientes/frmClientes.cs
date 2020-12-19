@@ -11,6 +11,9 @@ namespace CapaPresentacion.Clientes
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
+            cmbActivo.SelectedIndex = 0;
+            cmdDeshabilitar.Visible = true;
+            cmdHabilitar.Visible = true;
             lblTitulo.Text = "Clientes";
             AddEventos();
         }

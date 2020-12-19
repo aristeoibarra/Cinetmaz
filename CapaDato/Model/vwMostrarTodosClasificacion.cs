@@ -16,7 +16,7 @@ namespace CapaDato.Model
     {
         public int Clave { get; set; }
         public string Tipo { get; set; }
-        public int Edad_Minima { get; set; }
+        public string Edad_Minima { get; set; }
         public string Descripcion { get; set; }
     }
 }

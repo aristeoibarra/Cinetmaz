@@ -1,10 +1,7 @@
-﻿using System;
+﻿using CapaDato.Model;
+using CapaEntidades;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidades;
-using CapaDato.Model;
 
 namespace CapaNegocio.Negocio
 {
@@ -14,7 +11,7 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spAgregarPelicula(dat.NombrePelicula,dat.CvesalaPelicula);
+                modeldb.spAgregarPelicula(dat.NombrePelicula, dat.CvesalaPelicula);
                 return true;
             }
         }
@@ -23,7 +20,7 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spModificarPelicula(dat.CvePelicula,dat.NombrePelicula, dat.CvesalaPelicula);
+                modeldb.spModificarPelicula(dat.CvePelicula, dat.NombrePelicula, dat.CvesalaPelicula);
                 return true;
             }
         }
@@ -42,6 +39,21 @@ namespace CapaNegocio.Negocio
             using (var modeldb = new CinetmazEntities())
             {
                 return modeldb.vwMostrarTodosPelicula.ToList();
+            }
+        }
+
+        public List<Pelicula> MostrarByID(int id)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from p in modeldb.vwMostrarTodosPelicula
+                            where p.Clave == id
+                            select new Pelicula
+                            {
+                                NombrePelicula = p.Nombre,
+                                CvesalaPelicula = p.cvesala_pelicula
+                            };
+                return query.ToList();
             }
         }
     }

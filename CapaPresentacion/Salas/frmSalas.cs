@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using CapaNegocio.Negocio;
+﻿using CapaNegocio.Negocio;
 using CapaPresentacion.Utilidades;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentacion.Salas
 {
@@ -18,7 +18,6 @@ namespace CapaPresentacion.Salas
         {
             Eventos();
             RefrescarLista();
-            Interfaz();
         }
 
         private void Eventos()
@@ -28,14 +27,12 @@ namespace CapaPresentacion.Salas
             cmdEliminar.Click += new EventHandler(BtnEliminar);
         }
 
+        #region Eventos Botones
         private void BtnNuevo(object sender, EventArgs e)
         {
             frmSala frmS = new frmSala();
-            frmS.cmbClasificacion.Text = null;
             frmS.ShowDialog();
-            
             RefrescarLista();
-            Interfaz();
         }
 
         private void BtnModificar(object sender, EventArgs e)
@@ -45,13 +42,9 @@ namespace CapaPresentacion.Salas
             {
                 frmSala frmS = new frmSala();
                 frmS.idSala = id;
-                frmS.txtNombre.Text = OperacionesFormulario.ObtenerValorCelda(dgvLista, 1);
-                frmS.nudCapacidad.Value = int.Parse(OperacionesFormulario.ObtenerValorCelda(dgvLista, 2));
-                frmS.cmbClasificacion.SelectedValue = int.Parse(OperacionesFormulario.ObtenerValorCelda(dgvLista, 3));
 
                 frmS.ShowDialog();
                 RefrescarLista();
-                Interfaz();
             }
             else
             {
@@ -61,7 +54,7 @@ namespace CapaPresentacion.Salas
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cveClasificacion = Utilidades.OperacionesFormulario.ObtenertId(dgvLista);
+            int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
             if (cveClasificacion > 0)
             {
                 if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -69,7 +62,6 @@ namespace CapaPresentacion.Salas
                     if (nSala.Eliminar(cveClasificacion))
                     {
                         RefrescarLista();
-                        Interfaz();
                     }
                     else
                     {
@@ -81,6 +73,14 @@ namespace CapaPresentacion.Salas
             {
                 MessageBox.Show("Debe existir una fila seleccionada");
             }
+        }
+        #endregion
+
+        private void RefrescarLista()
+        {
+            dgvLista.DataSource = null;
+            dgvLista.DataSource = nSala.MostrarTodos();
+            Interfaz();
         }
 
         private void Interfaz()
@@ -95,12 +95,6 @@ namespace CapaPresentacion.Salas
             {
                 MessageBox.Show("Error de sistema " + ex.Message);
             }
-        }
-
-        private void RefrescarLista()
-        {
-            dgvLista.DataSource = null;
-            dgvLista.DataSource = nSala.MostrarTodos();
         }
     }
 }

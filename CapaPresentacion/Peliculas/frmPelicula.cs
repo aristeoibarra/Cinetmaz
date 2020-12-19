@@ -1,58 +1,86 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using CapaEntidades;
 using CapaNegocio.Negocio;
-using CapaEntidades;
+using System;
+using System.Windows.Forms;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Peliculas
 {
     public partial class frmPelicula : Form
     {
-        Npelicula npelicula = new Npelicula();
-        NSala nSala = new NSala();
-        Pelicula pelicula = new Pelicula();
+        readonly Npelicula npelicula = new Npelicula();
+        readonly NSala nSala = new NSala();
+
+        readonly Pelicula pelicula = new Pelicula();
 
         public int idPelicula = 0;
 
         public frmPelicula()
         {
             InitializeComponent();
-            LlenarComboSala();
         }
 
         private void frmPelicula_Load(object sender, EventArgs e)
         {
             txtNombre.Focus();
+            LlenarComboSala();
+            cmbSala.Text = null;           
+
+            if (idPelicula > 0)
+            {
+                CargaDatos();
+            }
+        }
+
+        private void CargaDatos()
+        {
+            foreach (var item in npelicula.MostrarByID(idPelicula))
+            {
+                txtNombre.Text = item.NombrePelicula;
+                cmbSala.SelectedValue = item.CvesalaPelicula;
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (idPelicula <= 0)
-                Agregar();
+            if (OperacionesFormulario.ValidarTextBox(this))
+            {
+                MessageBox.Show("Campos vacios");
+            }
             else
-                Modificar();
+            {
+                if (idPelicula <= 0)
+                    Agregar();
+                else
+                    Modificar();
+            }          
         }
 
-        private void Modificar()
+        private void ObtenerDatos()
         {
             pelicula.CvePelicula = idPelicula;
             pelicula.NombrePelicula = txtNombre.Text.Trim();
             pelicula.CvesalaPelicula = Convert.ToInt32(cmbSala.SelectedValue);
-
-            if (npelicula.Modificar(pelicula))
-            {
-                MessageBox.Show("Registro modificado con exito");
-                this.Close();
-            }
         }
 
         private void Agregar()
         {
-            pelicula.NombrePelicula = txtNombre.Text.Trim();
-            pelicula.CvesalaPelicula = Convert.ToInt32(cmbSala.SelectedValue);
+            ObtenerDatos();
 
             if (npelicula.Agregar(pelicula))
             {
                 MessageBox.Show("Registro agregado con exito");
+                this.Close();
+            }
+        }
+
+        private void Modificar()
+        {
+            ObtenerDatos();
+
+            if (npelicula.Modificar(pelicula))
+            {
+                MessageBox.Show("Registro modificado con exito");
                 this.Close();
             }
         }
@@ -63,7 +91,5 @@ namespace CapaPresentacion.Peliculas
             cmbSala.DisplayMember = "Nombre";
             cmbSala.ValueMember = "Clave";
         }
-
-       
     }
 }

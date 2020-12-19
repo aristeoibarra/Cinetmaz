@@ -12,23 +12,20 @@ namespace CapaDato.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ca_sala
+    public partial class ca_estado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ca_sala()
+        public ca_estado()
         {
-            this.ca_pelicula = new HashSet<ca_pelicula>();
+            this.ca_cliente = new HashSet<ca_cliente>();
             this.ca_asiento = new HashSet<ca_asiento>();
         }
     
-        public int cve_sala { get; set; }
-        public string nombre_sala { get; set; }
-        public int capacidad_sala { get; set; }
-        public int cveclasificacion_sala { get; set; }
+        public int cve_estado { get; set; }
+        public string estado { get; set; }
     
-        public virtual ca_clasificacion ca_clasificacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ca_pelicula> ca_pelicula { get; set; }
+        public virtual ICollection<ca_cliente> ca_cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_asiento> ca_asiento { get; set; }
     }

@@ -52,6 +52,7 @@ namespace CapaPresentacion.Salas
             // 
             // cmbClasificacion
             // 
+            this.cmbClasificacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.cmbClasificacion.FormattingEnabled = true;
             this.cmbClasificacion.Location = new System.Drawing.Point(159, 120);
@@ -80,7 +81,7 @@ namespace CapaPresentacion.Salas
             this.nudCapacidad.TabIndex = 2;
             this.nudCapacidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudCapacidad.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -158,8 +159,8 @@ namespace CapaPresentacion.Salas
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.ComboBox cmbClasificacion;
-        public System.Windows.Forms.NumericUpDown nudCapacidad;
-        public System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.ComboBox cmbClasificacion;
+        private System.Windows.Forms.NumericUpDown nudCapacidad;
+        private System.Windows.Forms.TextBox txtNombre;
     }
 }

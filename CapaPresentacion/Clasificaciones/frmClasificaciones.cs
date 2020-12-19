@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using CapaNegocio.Negocio;
+﻿using CapaNegocio.Negocio;
 using CapaPresentacion.Utilidades;
+using System;
+using System.Windows.Forms;
 
 namespace CapaPresentacion.Clasificaciones
 {
@@ -15,43 +15,11 @@ namespace CapaPresentacion.Clasificaciones
         }
 
         private void frmClasificaciones_Load(object sender, EventArgs e)
-        {          
+        {
             Eventos();
             RefrescarLista();
-            Interfaz();
+          
         }
-
-
-        #region Eventos Botones
-        private void BtnNuevo(object sender, EventArgs e)
-        {
-            frmClasificacion frmC = new frmClasificacion();
-            frmC.ShowDialog();
-            RefrescarLista();
-            Interfaz();
-        }
-
-        private void BtnModificar(object sender, EventArgs e)
-        {
-            int id = OperacionesFormulario.ObtenertId(dgvLista);
-            if (id > 0)
-            {
-                frmClasificacion frmC = new frmClasificacion();
-                frmC.idClasificacion = id;
-                frmC.txtTipo.Text = OperacionesFormulario.ObtenerValorCelda(dgvLista, 1);
-                frmC.txtEdad.Text = OperacionesFormulario.ObtenerValorCelda(dgvLista, 2);
-                frmC.txtDescripcion.Text = OperacionesFormulario.ObtenerValorCelda(dgvLista, 3);
-
-                frmC.ShowDialog();
-                RefrescarLista();
-                Interfaz();
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
-            }
-        } 
-        #endregion
 
         private void Eventos()
         {
@@ -60,9 +28,41 @@ namespace CapaPresentacion.Clasificaciones
             cmdEliminar.Click += new EventHandler(BtnEliminar);
         }
 
+        #region Eventos Botones
+        private void BtnNuevo(object sender, EventArgs e)
+        {
+            frmClasificacion frmC = new frmClasificacion();
+            frmC.ShowDialog();
+            RefrescarLista();
+        }
+
+        private void BtnModificar(object sender, EventArgs e)
+        {
+            int id = OperacionesFormulario.ObtenertId(dgvLista);
+            if (id > 0)
+            {
+                //DataTable dt = nClasificacion.LlenarByID(id);
+
+                frmClasificacion frmC = new frmClasificacion();
+                frmC.idClasificacion = id;
+
+                //DataRow row = dt.Rows[0];
+                //frmC.txtTipo.Text = row[0].ToString();
+                //frmC.txtEdad.Text = row[1].ToString();
+                //frmC.txtDescripcion.Text = row[2].ToString();
+
+                frmC.ShowDialog();
+                RefrescarLista();
+            }
+            else
+            {
+                MessageBox.Show("Debe existir una fila seleccionada");
+            }
+        }
+
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cveClasificacion = Utilidades.OperacionesFormulario.ObtenertId(dgvLista);
+            int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
             if (cveClasificacion > 0)
             {
                 if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -70,11 +70,10 @@ namespace CapaPresentacion.Clasificaciones
                     if (nClasificacion.Eliminar(cveClasificacion))
                     {
                         RefrescarLista();
-                        Interfaz();
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrio un error ");
+                        MessageBox.Show("Ocurrio un error");
                     }
                 }
             }
@@ -83,13 +82,22 @@ namespace CapaPresentacion.Clasificaciones
                 MessageBox.Show("Debe existir una fila seleccionada");
             }
         }
+        #endregion
+
+        private void RefrescarLista()
+        {
+            dgvLista.DataSource = null;
+            dgvLista.DataSource = nClasificacion.MostrarTodos();
+            Interfaz();
+            ChageRowText();
+        }
 
         private void Interfaz()
         {
             try
             {
                 lblTitulo.Text = "Clasificaciones";
-                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;              
             }
             catch (Exception ex)
             {
@@ -97,10 +105,17 @@ namespace CapaPresentacion.Clasificaciones
             }
         }
 
-        private void RefrescarLista()
+        private void ChageRowText()
         {
-            dgvLista.DataSource = null;
-            dgvLista.DataSource = nClasificacion.MostrarTodos();
+            foreach (DataGridViewRow row in dgvLista.Rows)
+            {         
+               string edadMin = dgvLista.Rows[row.Index].Cells["Edad_Minima"].Value.ToString();
+
+                if (edadMin == "0")
+                {
+                    dgvLista.Rows[row.Index].Cells["Edad_Minima"].Value = "[ALL AGE]";
+                }
+            }
         }
     }
 }
