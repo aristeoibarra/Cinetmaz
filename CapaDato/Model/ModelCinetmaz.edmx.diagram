@@ -14,7 +14,7 @@
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" ManuallyRouted="false" />
         <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosPelicula" Width="1.875" PointX="2.5" PointY="4" />
         <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosSala" Width="2.125" PointX="0.5" PointY="7" />
-        <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosClasificacion" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="CinetmazModel.vwMostrarTodosClasificacion" Width="2.125" PointX="0.625" PointY="4.5" />
         <EntityTypeShape EntityType="CinetmazModel.ca_cliente" Width="1.5" PointX="10" PointY="1.25" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_cliente" />
         <EntityTypeShape EntityType="CinetmazModel.ca_estado" Width="1.5" PointX="10.25" PointY="5.75" />
