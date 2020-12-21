@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Salas
 {
-    public partial class frmSalas : Utilidades.frmPadre
+    public partial class frmSalas : frmPadre
     {
         readonly NSala nSala = new NSala();
 
@@ -37,41 +37,47 @@ namespace CapaPresentacion.Salas
 
         private void BtnModificar(object sender, EventArgs e)
         {
-            int id = OperacionesFormulario.ObtenertId(dgvLista);
-            if (id > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                frmSala frmS = new frmSala();
-                frmS.idSala = id;
+                int id = OperacionesFormulario.ObtenertId(dgvLista);
+                if (id > 0)
+                {
+                    frmSala frmS = new frmSala();
+                    frmS.idSala = id;
 
-                frmS.ShowDialog();
-                RefrescarLista();
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                    frmS.ShowDialog();
+                    RefrescarLista();
+                }
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-            if (cveClasificacion > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveClasificacion > 0)
                 {
-                    if (nSala.Eliminar(cveClasificacion))
+                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        RefrescarLista();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ocurrio un error ");
+                        if (nSala.Eliminar(cveClasificacion))
+                        {
+                            RefrescarLista();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un error ");
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
         #endregion

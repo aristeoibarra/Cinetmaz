@@ -126,6 +126,18 @@
     <Compile Include="Salas\frmSalas.Designer.cs">
       <DependentUpon>frmSalas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuario.Designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilidades\frmPadre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Salas\frmSalas.resx">
       <DependentUpon>frmSalas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utilidades\frmPadre.resx">
       <DependentUpon>frmPadre.cs</DependentUpon>

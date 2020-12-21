@@ -8,9 +8,9 @@ namespace CapaPresentacion.Salas
 {
     public partial class frmSala : Form
     {
-        NSala nSala = new NSala();
-        Nclasificacion nclasificacion = new Nclasificacion();
-        Sala sala = new Sala();
+        readonly NSala nSala = new NSala();
+        readonly Nclasificacion nclasificacion = new Nclasificacion();
+        readonly Sala sala = new Sala();
 
         public int idSala = 0;
 

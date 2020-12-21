@@ -37,6 +37,7 @@ namespace CapaDato.Model
         public virtual DbSet<ca_cliente> ca_cliente { get; set; }
         public virtual DbSet<ca_estado> ca_estado { get; set; }
         public virtual DbSet<ca_asiento> ca_asiento { get; set; }
+        public virtual DbSet<ca_usuario> ca_usuario { get; set; }
     
         public virtual int spAgregarClasificacion(string tipo, Nullable<int> edadMinima, string descripcion)
         {
@@ -169,6 +170,76 @@ namespace CapaDato.Model
                 new ObjectParameter("cveSala", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarPelicula", cvePeliculaParameter, nombreParameter, cveSalaParameter);
+        }
+    
+        public virtual int spAgregarUsuario(string nombreUsuario, string userUsuario, string passwordUsuario)
+        {
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("nombreUsuario", nombreUsuario) :
+                new ObjectParameter("nombreUsuario", typeof(string));
+    
+            var userUsuarioParameter = userUsuario != null ?
+                new ObjectParameter("userUsuario", userUsuario) :
+                new ObjectParameter("userUsuario", typeof(string));
+    
+            var passwordUsuarioParameter = passwordUsuario != null ?
+                new ObjectParameter("passwordUsuario", passwordUsuario) :
+                new ObjectParameter("passwordUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarUsuario", nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
+        }
+    
+        public virtual int spEliminarUsuario(Nullable<int> cveUsuario)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarUsuario", cveUsuarioParameter);
+        }
+    
+        public virtual int spModificarUsuario(Nullable<int> cveUsuario, string nombreUsuario, string userUsuario, string passwordUsuario)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("nombreUsuario", nombreUsuario) :
+                new ObjectParameter("nombreUsuario", typeof(string));
+    
+            var userUsuarioParameter = userUsuario != null ?
+                new ObjectParameter("userUsuario", userUsuario) :
+                new ObjectParameter("userUsuario", typeof(string));
+    
+            var passwordUsuarioParameter = passwordUsuario != null ?
+                new ObjectParameter("passwordUsuario", passwordUsuario) :
+                new ObjectParameter("passwordUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarUsuario", cveUsuarioParameter, nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
+        }
+    
+        public virtual int SpCambiarEstadoUsuario(Nullable<int> cveUsuario, Nullable<int> cveEstado)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            var cveEstadoParameter = cveEstado.HasValue ?
+                new ObjectParameter("cveEstado", cveEstado) :
+                new ObjectParameter("cveEstado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCambiarEstadoUsuario", cveUsuarioParameter, cveEstadoParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnMostrarTodosUsuarioByEstado")]
+        public virtual IQueryable<fnMostrarTodosUsuarioByEstado_Result> fnMostrarTodosUsuarioByEstado(Nullable<int> cveEstado)
+        {
+            var cveEstadoParameter = cveEstado.HasValue ?
+                new ObjectParameter("cveEstado", cveEstado) :
+                new ObjectParameter("cveEstado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosUsuarioByEstado_Result>("[CinetmazEntities].[fnMostrarTodosUsuarioByEstado](@cveEstado)", cveEstadoParameter);
         }
     }
 }

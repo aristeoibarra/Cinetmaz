@@ -42,7 +42,7 @@ namespace CapaNegocio.Negocio
 
         public List<vwMostrarTodosClasificacion> MostrarTodos()
         {
-            using (var modeldb = new CinetmazEntities())
+            using (CinetmazEntities modeldb = new CinetmazEntities())
             {   
                 return modeldb.vwMostrarTodosClasificacion.ToList();
             }
@@ -50,7 +50,7 @@ namespace CapaNegocio.Negocio
 
         public List<Clasificacion> MostrarByID(int id)
         {
-            using (var modeldb = new CinetmazEntities())
+            using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 var query = from c in modeldb.vwMostrarTodosClasificacion
                             where c.Clave == id

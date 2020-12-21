@@ -9,7 +9,7 @@ namespace CapaPresentacion.Clasificaciones
 {
     public partial class frmClasificacion : Form
     {
-        readonly Nclasificacion nclasificacion = new Nclasificacion();
+        readonly Nclasificacion nClasificacion = new Nclasificacion();
         readonly Clasificacion clasificacion = new Clasificacion();
 
         public int idClasificacion = 0;
@@ -31,7 +31,7 @@ namespace CapaPresentacion.Clasificaciones
 
         private void CargaDatos()
         {
-            foreach (var item in nclasificacion.MostrarByID(idClasificacion))
+            foreach (var item in nClasificacion.MostrarByID(idClasificacion))
             {
                 txtTipo.Text = item.TipoClasificacion;
                 txtEdad.Text = item.EdadMinima;
@@ -71,7 +71,7 @@ namespace CapaPresentacion.Clasificaciones
         {
             ObtenerDatos();
 
-            if (nclasificacion.Agregar(clasificacion))
+            if (nClasificacion.Agregar(clasificacion))
             {
                 MessageBox.Show("Registro agregado con exito");
                 this.Close();
@@ -82,7 +82,7 @@ namespace CapaPresentacion.Clasificaciones
         {
             ObtenerDatos();
 
-            if (nclasificacion.Modificar(clasificacion))
+            if (nClasificacion.Modificar(clasificacion))
             {
                 MessageBox.Show("Registro modificado con exito");
                 this.Close();
@@ -103,7 +103,6 @@ namespace CapaPresentacion.Clasificaciones
         }
         
         #region Validaciones TextBoxs
-
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
             OperacionesFormulario.SoloNumeros(sender, e);

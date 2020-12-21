@@ -32,7 +32,7 @@ namespace CapaPresentacion.Utilidades
 
             // Botones tabInactivos
             cmdHabilitar.Visible = v2;
-            cmdEliminar_Inactivo.Visible = v2;
+            cmdEliminarInactivo.Visible = v2;
         }
 
         private void tabDatos_SelectedIndexChanged(object sender, EventArgs e)
@@ -41,6 +41,10 @@ namespace CapaPresentacion.Utilidades
                 MostrarBotones(true, false);
             else
                 MostrarBotones(false, true);             
+        }
+
+        private void frmPadreTab_Load(object sender, EventArgs e)
+        {
         }
     }
 }

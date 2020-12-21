@@ -42,7 +42,7 @@ namespace CapaPresentacion
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -100,7 +100,7 @@ namespace CapaPresentacion
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnUsuarios);
             this.panel2.Controls.Add(this.btnNuevo);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label7);
@@ -201,16 +201,17 @@ namespace CapaPresentacion
             this.label5.TabIndex = 2;
             this.label5.Text = "Clasificaciones";
             // 
-            // button1
+            // btnUsuarios
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.button1.BackgroundImage = global::CapaPresentacion.Properties.Resources.Admin;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Location = new System.Drawing.Point(648, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 58);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnUsuarios.BackgroundImage = global::CapaPresentacion.Properties.Resources.Admin;
+            this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUsuarios.Location = new System.Drawing.Point(648, 5);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(64, 58);
+            this.btnUsuarios.TabIndex = 3;
+            this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
             // 
             // btnNuevo
             // 
@@ -311,7 +312,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Label label7;
     }
 }

@@ -8,7 +8,6 @@ namespace CapaPresentacion.Utilidades
     /// </summary>
     class OperacionesFormulario
     {
-
         /// <summary>
         /// Obtiene el id de un gridview que contenga en la primer celda el id de registro
         /// </summary>
@@ -19,9 +18,7 @@ namespace CapaPresentacion.Utilidades
             try
             {
                 int id = 0;
-
                 id = int.Parse(dgv.Rows[dgv.CurrentRow.Index].Cells[0].Value.ToString());
-
                 return id;
             }
             catch (Exception)
@@ -32,10 +29,7 @@ namespace CapaPresentacion.Utilidades
 
         public static string ObtenerValorCelda(DataGridView dgv, int num)
         {
-            string valor = "";
-
-            valor = dgv.Rows[dgv.CurrentRow.Index].Cells[num].Value.ToString();
-
+            string valor = dgv.Rows[dgv.CurrentRow.Index].Cells[num].Value.ToString();
             return valor;
         }
 
@@ -45,9 +39,8 @@ namespace CapaPresentacion.Utilidades
 
             foreach (Control oControls in formulario.Controls)
             {
-                if (oControls is TextBox & oControls.Text == String.Empty ||
-                    oControls is ComboBox & oControls.Text == String.Empty ||
-                    oControls is NumericUpDown & oControls.Text == String.Empty) // Verificamos que no este vacio.
+                if (oControls is TextBox & oControls.Text == string.Empty
+                    || oControls is ComboBox & oControls.Text == string.Empty) // Verificamos que no este vacio.
                 {
                     vacio = true; // Si esta vacio el TextBox asignamos el valor True a nuestra variable.
                 }
@@ -66,6 +59,5 @@ namespace CapaPresentacion.Utilidades
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
             { e.Handled = true; return; }
         }
-
     }
 }

@@ -29,14 +29,14 @@ namespace CapaPresentacion.Utilidades
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabDatos = new System.Windows.Forms.TabControl();
             this.tpActivos = new System.Windows.Forms.TabPage();
             this.dgvListaActivos = new System.Windows.Forms.DataGridView();
@@ -45,12 +45,12 @@ namespace CapaPresentacion.Utilidades
             this.spContenedor = new System.Windows.Forms.SplitContainer();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panelBotones = new System.Windows.Forms.Panel();
-            this.cmdEliminar_Inactivo = new System.Windows.Forms.Button();
             this.cmdEliminar = new System.Windows.Forms.Button();
-            this.cmdHabilitar = new System.Windows.Forms.Button();
             this.cmdDeshabilitar = new System.Windows.Forms.Button();
             this.cmdModificar = new System.Windows.Forms.Button();
             this.cmdNuevo = new System.Windows.Forms.Button();
+            this.cmdEliminarInactivo = new System.Windows.Forms.Button();
+            this.cmdHabilitar = new System.Windows.Forms.Button();
             this.tabDatos.SuspendLayout();
             this.tpActivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaActivos)).BeginInit();
@@ -93,47 +93,47 @@ namespace CapaPresentacion.Utilidades
             this.dgvListaActivos.AllowUserToAddRows = false;
             this.dgvListaActivos.AllowUserToDeleteRows = false;
             this.dgvListaActivos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvListaActivos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListaActivos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaActivos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvListaActivos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvListaActivos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
             this.dgvListaActivos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListaActivos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvListaActivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaActivos.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaActivos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaActivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListaActivos.Location = new System.Drawing.Point(3, 3);
             this.dgvListaActivos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListaActivos.MultiSelect = false;
             this.dgvListaActivos.Name = "dgvListaActivos";
             this.dgvListaActivos.ReadOnly = true;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaActivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaActivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaActivos.RowHeadersVisible = false;
             this.dgvListaActivos.RowHeadersWidth = 43;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvListaActivos.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListaActivos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvListaActivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaActivos.Size = new System.Drawing.Size(805, 329);
             this.dgvListaActivos.TabIndex = 2;
@@ -156,47 +156,47 @@ namespace CapaPresentacion.Utilidades
             this.dgvListaInactivos.AllowUserToAddRows = false;
             this.dgvListaInactivos.AllowUserToDeleteRows = false;
             this.dgvListaInactivos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvListaInactivos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListaInactivos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvListaInactivos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvListaInactivos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvListaInactivos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
             this.dgvListaInactivos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListaInactivos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dgvListaInactivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaInactivos.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaInactivos.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvListaInactivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListaInactivos.Location = new System.Drawing.Point(3, 3);
             this.dgvListaInactivos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvListaInactivos.MultiSelect = false;
             this.dgvListaInactivos.Name = "dgvListaInactivos";
             this.dgvListaInactivos.ReadOnly = true;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaInactivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaInactivos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvListaInactivos.RowHeadersVisible = false;
             this.dgvListaInactivos.RowHeadersWidth = 43;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvListaInactivos.RowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListaInactivos.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvListaInactivos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaInactivos.Size = new System.Drawing.Size(805, 329);
             this.dgvListaInactivos.TabIndex = 3;
@@ -243,27 +243,12 @@ namespace CapaPresentacion.Utilidades
             this.panelBotones.Controls.Add(this.cmdDeshabilitar);
             this.panelBotones.Controls.Add(this.cmdModificar);
             this.panelBotones.Controls.Add(this.cmdNuevo);
-            this.panelBotones.Controls.Add(this.cmdEliminar_Inactivo);
+            this.panelBotones.Controls.Add(this.cmdEliminarInactivo);
             this.panelBotones.Controls.Add(this.cmdHabilitar);
             this.panelBotones.Location = new System.Drawing.Point(21, 32);
             this.panelBotones.Name = "panelBotones";
             this.panelBotones.Size = new System.Drawing.Size(711, 49);
             this.panelBotones.TabIndex = 8;
-            // 
-            // cmdEliminar_Inactivo
-            // 
-            this.cmdEliminar_Inactivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cmdEliminar_Inactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdEliminar_Inactivo.Image = global::CapaPresentacion.Properties.Resources.Delete;
-            this.cmdEliminar_Inactivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdEliminar_Inactivo.Location = new System.Drawing.Point(147, 6);
-            this.cmdEliminar_Inactivo.Name = "cmdEliminar_Inactivo";
-            this.cmdEliminar_Inactivo.Size = new System.Drawing.Size(113, 38);
-            this.cmdEliminar_Inactivo.TabIndex = 12;
-            this.cmdEliminar_Inactivo.Text = "Eliminar";
-            this.cmdEliminar_Inactivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cmdEliminar_Inactivo.UseVisualStyleBackColor = true;
-            this.cmdEliminar_Inactivo.Visible = false;
             // 
             // cmdEliminar
             // 
@@ -278,21 +263,6 @@ namespace CapaPresentacion.Utilidades
             this.cmdEliminar.Text = "Eliminar";
             this.cmdEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdEliminar.UseVisualStyleBackColor = true;
-            // 
-            // cmdHabilitar
-            // 
-            this.cmdHabilitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.cmdHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdHabilitar.Image = global::CapaPresentacion.Properties.Resources.Habilitar;
-            this.cmdHabilitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cmdHabilitar.Location = new System.Drawing.Point(12, 6);
-            this.cmdHabilitar.Name = "cmdHabilitar";
-            this.cmdHabilitar.Size = new System.Drawing.Size(116, 38);
-            this.cmdHabilitar.TabIndex = 10;
-            this.cmdHabilitar.Text = "Habilitar";
-            this.cmdHabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cmdHabilitar.UseVisualStyleBackColor = true;
-            this.cmdHabilitar.Visible = false;
             // 
             // cmdDeshabilitar
             // 
@@ -336,6 +306,36 @@ namespace CapaPresentacion.Utilidades
             this.cmdNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdNuevo.UseVisualStyleBackColor = true;
             // 
+            // cmdEliminarInactivo
+            // 
+            this.cmdEliminarInactivo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdEliminarInactivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdEliminarInactivo.Image = global::CapaPresentacion.Properties.Resources.Delete;
+            this.cmdEliminarInactivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdEliminarInactivo.Location = new System.Drawing.Point(147, 6);
+            this.cmdEliminarInactivo.Name = "cmdEliminarInactivo";
+            this.cmdEliminarInactivo.Size = new System.Drawing.Size(113, 38);
+            this.cmdEliminarInactivo.TabIndex = 12;
+            this.cmdEliminarInactivo.Text = "Eliminar";
+            this.cmdEliminarInactivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdEliminarInactivo.UseVisualStyleBackColor = true;
+            this.cmdEliminarInactivo.Visible = false;
+            // 
+            // cmdHabilitar
+            // 
+            this.cmdHabilitar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.cmdHabilitar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdHabilitar.Image = global::CapaPresentacion.Properties.Resources.Habilitar;
+            this.cmdHabilitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdHabilitar.Location = new System.Drawing.Point(12, 6);
+            this.cmdHabilitar.Name = "cmdHabilitar";
+            this.cmdHabilitar.Size = new System.Drawing.Size(116, 38);
+            this.cmdHabilitar.TabIndex = 10;
+            this.cmdHabilitar.Text = "Habilitar";
+            this.cmdHabilitar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdHabilitar.UseVisualStyleBackColor = true;
+            this.cmdHabilitar.Visible = false;
+            // 
             // frmPadreTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,6 +344,7 @@ namespace CapaPresentacion.Utilidades
             this.Controls.Add(this.spContenedor);
             this.Name = "frmPadreTab";
             this.Text = "frmPadreTab";
+            this.Load += new System.EventHandler(this.frmPadreTab_Load);
             this.tabDatos.ResumeLayout(false);
             this.tpActivos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaActivos)).EndInit();
@@ -360,10 +361,6 @@ namespace CapaPresentacion.Utilidades
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabDatos;
-        private System.Windows.Forms.TabPage tpActivos;
-        private System.Windows.Forms.TabPage tpInactivos;
         public System.Windows.Forms.DataGridView dgvListaActivos;
         public System.Windows.Forms.DataGridView dgvListaInactivos;
         public System.Windows.Forms.SplitContainer spContenedor;
@@ -374,6 +371,9 @@ namespace CapaPresentacion.Utilidades
         public System.Windows.Forms.Button cmdDeshabilitar;
         public System.Windows.Forms.Button cmdModificar;
         public System.Windows.Forms.Button cmdNuevo;
-        public System.Windows.Forms.Button cmdEliminar_Inactivo;
+        public System.Windows.Forms.Button cmdEliminarInactivo;
+        public System.Windows.Forms.TabControl tabDatos;
+        public System.Windows.Forms.TabPage tpActivos;
+        public System.Windows.Forms.TabPage tpInactivos;
     }
 }

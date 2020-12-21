@@ -83,5 +83,16 @@ namespace CapaPresentacion
 
 
         #endregion
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            if (!DetectarFormularioAbierto("frmUsuarios"))
+            {
+                Usuarios.frmUsuarios frmU = new Usuarios.frmUsuarios();
+                frmU.MdiParent = this;            
+                frmU.Show();
+                frmU.WindowState = FormWindowState.Maximized;
+            }
+        }
     }
 }

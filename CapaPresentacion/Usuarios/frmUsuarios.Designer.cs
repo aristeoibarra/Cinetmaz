@@ -29,27 +29,16 @@ namespace CapaPresentacion.Usuarios
         /// </summary>
         private void InitializeComponent()
         {
-            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
-            this.spContenedor.Panel1.SuspendLayout();
-            this.spContenedor.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // spContenedor
-            // 
-            this.spContenedor.Size = new System.Drawing.Size(800, 560);
             // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 560);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmUsuarios";
-            this.Text = "Usuarios";
+            this.Text = "frmUsuarios";
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
-            this.spContenedor.Panel1.ResumeLayout(false);
-            this.spContenedor.Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
-            this.spContenedor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
