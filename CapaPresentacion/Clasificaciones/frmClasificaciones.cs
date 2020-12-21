@@ -17,8 +17,7 @@ namespace CapaPresentacion.Clasificaciones
         private void frmClasificaciones_Load(object sender, EventArgs e)
         {
             Eventos();
-            RefrescarLista();
-          
+            RefrescarLista();         
         }
 
         private void Eventos()
@@ -38,48 +37,54 @@ namespace CapaPresentacion.Clasificaciones
 
         private void BtnModificar(object sender, EventArgs e)
         {
-            int id = OperacionesFormulario.ObtenertId(dgvLista);
-            if (id > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                //DataTable dt = nClasificacion.LlenarByID(id);
+                int id = OperacionesFormulario.ObtenertId(dgvLista);
+                if (id > 0)
+                {
+                    //DataTable dt = nClasificacion.LlenarByID(id);
 
-                frmClasificacion frmC = new frmClasificacion();
-                frmC.idClasificacion = id;
+                    frmClasificacion frmC = new frmClasificacion();
+                    frmC.idClasificacion = id;
 
-                //DataRow row = dt.Rows[0];
-                //frmC.txtTipo.Text = row[0].ToString();
-                //frmC.txtEdad.Text = row[1].ToString();
-                //frmC.txtDescripcion.Text = row[2].ToString();
+                    //DataRow row = dt.Rows[0];
+                    //frmC.txtTipo.Text = row[0].ToString();
+                    //frmC.txtEdad.Text = row[1].ToString();
+                    //frmC.txtDescripcion.Text = row[2].ToString();
 
-                frmC.ShowDialog();
-                RefrescarLista();
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                    frmC.ShowDialog();
+                    RefrescarLista();
+                }
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-            if (cveClasificacion > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveClasificacion > 0)
                 {
-                    if (nClasificacion.Eliminar(cveClasificacion))
+                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        RefrescarLista();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ocurrio un error");
+                        if (nClasificacion.Eliminar(cveClasificacion))
+                        {
+                            RefrescarLista();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un error");
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
         #endregion

@@ -32,29 +32,22 @@ namespace CapaPresentacion.Clasificaciones
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
             this.spContenedor.Panel1.SuspendLayout();
             this.spContenedor.SuspendLayout();
+            this.panelBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdEliminar
             // 
             this.cmdEliminar.Location = new System.Drawing.Point(266, 6);
             // 
-            // cmdHabilitar
-            // 
-            this.cmdHabilitar.Location = new System.Drawing.Point(564, 6);
-            // 
-            // cmdDeshabilitar
-            // 
-            this.cmdDeshabilitar.Location = new System.Drawing.Point(400, 6);
-            // 
             // spContenedor
             // 
-            this.spContenedor.Size = new System.Drawing.Size(800, 560);
+            this.spContenedor.Size = new System.Drawing.Size(790, 560);
             // 
             // frmClasificaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 560);
+            this.ClientSize = new System.Drawing.Size(790, 560);
             this.Name = "frmClasificaciones";
             this.Text = "frmClasificaciones";
             this.Load += new System.EventHandler(this.frmClasificaciones_Load);
@@ -62,6 +55,7 @@ namespace CapaPresentacion.Clasificaciones
             this.spContenedor.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
             this.spContenedor.ResumeLayout(false);
+            this.panelBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

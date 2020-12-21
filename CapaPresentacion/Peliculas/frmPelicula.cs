@@ -8,9 +8,8 @@ namespace CapaPresentacion.Peliculas
 {
     public partial class frmPelicula : Form
     {
-        readonly Npelicula npelicula = new Npelicula();
+        readonly Npelicula nPelicula = new Npelicula();
         readonly NSala nSala = new NSala();
-
         readonly Pelicula pelicula = new Pelicula();
 
         public int idPelicula = 0;
@@ -34,7 +33,7 @@ namespace CapaPresentacion.Peliculas
 
         private void CargaDatos()
         {
-            foreach (var item in npelicula.MostrarByID(idPelicula))
+            foreach (var item in nPelicula.MostrarByID(idPelicula))
             {
                 txtNombre.Text = item.NombrePelicula;
                 cmbSala.SelectedValue = item.CvesalaPelicula;
@@ -67,7 +66,7 @@ namespace CapaPresentacion.Peliculas
         {
             ObtenerDatos();
 
-            if (npelicula.Agregar(pelicula))
+            if (nPelicula.Agregar(pelicula))
             {
                 MessageBox.Show("Registro agregado con exito");
                 this.Close();
@@ -78,7 +77,7 @@ namespace CapaPresentacion.Peliculas
         {
             ObtenerDatos();
 
-            if (npelicula.Modificar(pelicula))
+            if (nPelicula.Modificar(pelicula))
             {
                 MessageBox.Show("Registro modificado con exito");
                 this.Close();

@@ -49,13 +49,13 @@ namespace CapaPresentacion
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            if (!DetectarFormularioAbierto("frmClientes"))
-            {
-                Clientes.frmClientes frmC = new Clientes.frmClientes();
-                frmC.MdiParent = this;
-                frmC.Show();
-                frmC.WindowState = FormWindowState.Maximized;
-            }
+            //if (!DetectarFormularioAbierto("frmClientes"))
+            //{
+            //    Clientes.frmClientes frmC = new Clientes.frmClientes();
+            //    frmC.MdiParent = this;
+            //    frmC.Show();
+            //    frmC.WindowState = FormWindowState.Maximized;
+            //}
         }
 
         #region METODOS PRIVADOS
@@ -83,5 +83,16 @@ namespace CapaPresentacion
 
 
         #endregion
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            if (!DetectarFormularioAbierto("frmUsuarios"))
+            {
+                Usuarios.frmUsuarios frmU = new Usuarios.frmUsuarios();
+                frmU.MdiParent = this;            
+                frmU.Show();
+                frmU.WindowState = FormWindowState.Maximized;
+            }
+        }
     }
 }

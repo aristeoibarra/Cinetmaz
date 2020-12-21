@@ -42,14 +42,6 @@ namespace CapaPresentacion.Peliculas
             // 
             this.cmdEliminar.Location = new System.Drawing.Point(266, 6);
             // 
-            // cmdHabilitar
-            // 
-            this.cmdHabilitar.Location = new System.Drawing.Point(556, 6);
-            // 
-            // cmdDeshabilitar
-            // 
-            this.cmdDeshabilitar.Location = new System.Drawing.Point(392, 6);
-            // 
             // spContenedor
             // 
             this.spContenedor.Size = new System.Drawing.Size(800, 560);

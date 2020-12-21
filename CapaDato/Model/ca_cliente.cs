@@ -34,5 +34,7 @@ namespace CapaDato.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }
         public virtual ca_estado ca_estado { get; set; }
+        public virtual ca_usuario ca_usuario { get; set; }
+        public virtual ca_usuario ca_usuario1 { get; set; }
     }
 }

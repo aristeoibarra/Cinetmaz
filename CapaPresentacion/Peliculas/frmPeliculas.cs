@@ -7,7 +7,7 @@ namespace CapaPresentacion.Peliculas
 {
     public partial class frmPeliculas : frmPadre
     {
-        readonly Npelicula npelicula = new Npelicula();
+        readonly Npelicula nPelicula = new Npelicula();
 
         public frmPeliculas()
         {
@@ -37,41 +37,47 @@ namespace CapaPresentacion.Peliculas
 
         private void BtnModificar(object sender, EventArgs e)
         {
-            int id = OperacionesFormulario.ObtenertId(dgvLista);
-            if (id > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                frmPelicula frmS = new frmPelicula();
-                frmS.idPelicula = id;
+                int id = OperacionesFormulario.ObtenertId(dgvLista);
+                if (id > 0)
+                {
+                    frmPelicula frmS = new frmPelicula();
+                    frmS.idPelicula = id;
 
-                frmS.ShowDialog();
-                RefrescarLista();
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                    frmS.ShowDialog();
+                    RefrescarLista();
+                }
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
-            if (cvePelicula > 0)
+            if (dgvLista.Rows.Count != 0)
             {
-                if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cvePelicula > 0)
                 {
-                    if (npelicula.Eliminar(cvePelicula))
+                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        RefrescarLista();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ocurrio un error ");
+                        if (nPelicula.Eliminar(cvePelicula))
+                        {
+                            RefrescarLista();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrio un error ");
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Debe existir una fila seleccionada");
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                } 
             }
         }
         #endregion
@@ -79,7 +85,7 @@ namespace CapaPresentacion.Peliculas
         private void RefrescarLista()
         {
             dgvLista.DataSource = null;
-            dgvLista.DataSource = npelicula.MostrarTodos();
+            dgvLista.DataSource = nPelicula.MostrarTodos();
             Interfaz();
         }
 

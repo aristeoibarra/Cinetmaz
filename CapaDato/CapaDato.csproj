@@ -68,6 +68,12 @@
     <Compile Include="Model\ca_sala.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ca_usuario.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnMostrarTodosUsuarioByEstado_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ma_cinetmaz.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
