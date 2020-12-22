@@ -69,7 +69,7 @@ namespace CapaPresentacion.Utilidades
             this.spContenedor.Panel2.Controls.Add(this.dgvLista);
             this.spContenedor.Panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.spContenedor.Panel2MinSize = 0;
-            this.spContenedor.Size = new System.Drawing.Size(1003, 600);
+            this.spContenedor.Size = new System.Drawing.Size(784, 600);
             this.spContenedor.SplitterDistance = 83;
             this.spContenedor.SplitterWidth = 3;
             this.spContenedor.TabIndex = 0;
@@ -183,16 +183,15 @@ namespace CapaPresentacion.Utilidades
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLista.Size = new System.Drawing.Size(1003, 514);
+            this.dgvLista.Size = new System.Drawing.Size(784, 514);
             this.dgvLista.TabIndex = 1;
             // 
             // frmPadre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 600);
+            this.ClientSize = new System.Drawing.Size(784, 600);
             this.Controls.Add(this.spContenedor);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmPadre";
             this.ShowIcon = false;

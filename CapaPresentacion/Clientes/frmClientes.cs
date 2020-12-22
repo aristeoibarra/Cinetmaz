@@ -3,18 +3,18 @@ using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Usuarios
+namespace CapaPresentacion.Clientes
 {
-    public partial class frmUsuarios : frmPadreTab
+    public partial class frmClientes : frmPadreTab
     {
-        readonly Nusuario nUsuario = new Nusuario();
+        readonly NCliente nCliente = new NCliente();
 
-        public frmUsuarios()
+        public frmClientes()
         {
             InitializeComponent();
         }
 
-        private void frmUsuarios_Load(object sender, EventArgs e)
+        private void frmClientes_Load(object sender, EventArgs e)
         {
             Eventos();
             RefrescarListas();
@@ -36,8 +36,8 @@ namespace CapaPresentacion.Usuarios
         #region tabActivos
         private void BtnNuevo(object sender, EventArgs e)
         {
-            frmUsuario frmU = new frmUsuario();
-            frmU.ShowDialog();
+            frmCliente frmC = new frmCliente();
+            frmC.ShowDialog();
             RefrescarListas();
         }
 
@@ -45,12 +45,12 @@ namespace CapaPresentacion.Usuarios
         {
             if (dgvListaActivos.Rows.Count != 0)
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveUsuario > 0)
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                if (cveCliente > 0)
                 {
-                    frmUsuario frmU = new frmUsuario();
-                    frmU.idUsuario = cveUsuario;
-                    frmU.ShowDialog();
+                    frmCliente frmC = new frmCliente();
+                    frmC.idCliente = cveCliente;
+                    frmC.ShowDialog();
                     RefrescarListas();
                 }
                 else
@@ -64,10 +64,10 @@ namespace CapaPresentacion.Usuarios
         {
             if (dgvListaActivos.Rows.Count != 0)
             {
-                int cveUsuario = Utilidades.OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveUsuario > 0)
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                if (cveCliente > 0)
                 {
-                    if (nUsuario.CambiarEstado(cveUsuario, 2))
+                    if (nCliente.CambiarEstado(cveCliente, 2))
                     {
                         RefrescarListas();
                     }
@@ -87,12 +87,12 @@ namespace CapaPresentacion.Usuarios
         {
             if (dgvListaActivos.Rows.Count != 0)
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveUsuario > 0)
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                if (cveCliente > 0)
                 {
                     if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (nUsuario.Eliminar(cveUsuario))
+                        if (nCliente.Eliminar(cveCliente))
                         {
                             RefrescarListas();
                         }
@@ -115,10 +115,10 @@ namespace CapaPresentacion.Usuarios
         {
             if (dgvListaInactivos.Rows.Count != 0)
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaInactivos);
-                if (cveUsuario > 0)
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaInactivos);
+                if (cveCliente > 0)
                 {
-                    if (nUsuario.CambiarEstado(cveUsuario, 1))
+                    if (nCliente.CambiarEstado(cveCliente, 1))
                     {
                         RefrescarListas();
                     }
@@ -138,12 +138,12 @@ namespace CapaPresentacion.Usuarios
         {
             if (dgvListaInactivos.Rows.Count != 0)
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaInactivos);
-                if (cveUsuario > 0)
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaInactivos);
+                if (cveCliente > 0)
                 {
                     if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (nUsuario.Eliminar(cveUsuario))
+                        if (nCliente.Eliminar(cveCliente))
                         {
                             RefrescarListas();
                         }
@@ -165,7 +165,7 @@ namespace CapaPresentacion.Usuarios
         {
             try
             {
-                lblTitulo.Text = "Usuarios";
+                lblTitulo.Text = "Clientes";
                 dgvListaActivos.Columns[dgvListaActivos.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvListaInactivos.Columns[dgvListaActivos.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -178,13 +178,13 @@ namespace CapaPresentacion.Usuarios
         private void RefrescarListaActivos()
         {
             dgvListaActivos.DataSource = null;
-            dgvListaActivos.DataSource = nUsuario.MostrarTodosByEstado(1);
+            dgvListaActivos.DataSource = nCliente.MostrarTodosByEstado(1);
         }
 
         private void RefrescarListaInactivos()
         {
             dgvListaInactivos.DataSource = null;
-            dgvListaInactivos.DataSource = nUsuario.MostrarTodosByEstado(2);
+            dgvListaInactivos.DataSource = nCliente.MostrarTodosByEstado(2);
         }
 
         private void RefrescarListas()

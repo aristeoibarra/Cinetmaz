@@ -241,5 +241,91 @@ namespace CapaDato.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosUsuarioByEstado_Result>("[CinetmazEntities].[fnMostrarTodosUsuarioByEstado](@cveEstado)", cveEstadoParameter);
         }
+    
+        public virtual int spAgregarCliente(string nombre, string apePaterno, string apeMaterno, Nullable<int> edad, Nullable<int> cveUsuarioAlta)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apePaternoParameter = apePaterno != null ?
+                new ObjectParameter("apePaterno", apePaterno) :
+                new ObjectParameter("apePaterno", typeof(string));
+    
+            var apeMaternoParameter = apeMaterno != null ?
+                new ObjectParameter("apeMaterno", apeMaterno) :
+                new ObjectParameter("apeMaterno", typeof(string));
+    
+            var edadParameter = edad.HasValue ?
+                new ObjectParameter("edad", edad) :
+                new ObjectParameter("edad", typeof(int));
+    
+            var cveUsuarioAltaParameter = cveUsuarioAlta.HasValue ?
+                new ObjectParameter("cveUsuarioAlta", cveUsuarioAlta) :
+                new ObjectParameter("cveUsuarioAlta", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarCliente", nombreParameter, apePaternoParameter, apeMaternoParameter, edadParameter, cveUsuarioAltaParameter);
+        }
+    
+        public virtual int spEliminarCliente(Nullable<int> cveCliente)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarCliente", cveClienteParameter);
+        }
+    
+        public virtual int spModificarCliente(Nullable<int> cveCliente, string nombre, string apePaterno, string apeMaterno, Nullable<int> edad, Nullable<int> cveUsuariomod)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var apePaternoParameter = apePaterno != null ?
+                new ObjectParameter("apePaterno", apePaterno) :
+                new ObjectParameter("apePaterno", typeof(string));
+    
+            var apeMaternoParameter = apeMaterno != null ?
+                new ObjectParameter("apeMaterno", apeMaterno) :
+                new ObjectParameter("apeMaterno", typeof(string));
+    
+            var edadParameter = edad.HasValue ?
+                new ObjectParameter("edad", edad) :
+                new ObjectParameter("edad", typeof(int));
+    
+            var cveUsuariomodParameter = cveUsuariomod.HasValue ?
+                new ObjectParameter("cveUsuariomod", cveUsuariomod) :
+                new ObjectParameter("cveUsuariomod", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarCliente", cveClienteParameter, nombreParameter, apePaternoParameter, apeMaternoParameter, edadParameter, cveUsuariomodParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnMostrarTodosClienteByEstado")]
+        public virtual IQueryable<fnMostrarTodosClienteByEstado_Result> fnMostrarTodosClienteByEstado(Nullable<int> cveEstado)
+        {
+            var cveEstadoParameter = cveEstado.HasValue ?
+                new ObjectParameter("cveEstado", cveEstado) :
+                new ObjectParameter("cveEstado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosClienteByEstado_Result>("[CinetmazEntities].[fnMostrarTodosClienteByEstado](@cveEstado)", cveEstadoParameter);
+        }
+    
+        public virtual int spCambiarEstadoCliente(Nullable<int> cveCliente, Nullable<int> cveEstado)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            var cveEstadoParameter = cveEstado.HasValue ?
+                new ObjectParameter("cveEstado", cveEstado) :
+                new ObjectParameter("cveEstado", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCambiarEstadoCliente", cveClienteParameter, cveEstadoParameter);
+        }
     }
 }

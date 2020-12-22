@@ -343,6 +343,7 @@ namespace CapaPresentacion.Utilidades
             this.ClientSize = new System.Drawing.Size(819, 454);
             this.Controls.Add(this.spContenedor);
             this.Name = "frmPadreTab";
+            this.ShowIcon = false;
             this.Text = "frmPadreTab";
             this.Load += new System.EventHandler(this.frmPadreTab_Load);
             this.tabDatos.ResumeLayout(false);

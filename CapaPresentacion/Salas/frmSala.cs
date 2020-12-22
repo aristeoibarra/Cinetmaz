@@ -1,8 +1,8 @@
 ﻿using CapaEntidades;
 using CapaNegocio.Negocio;
+using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
-using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Salas
 {
@@ -53,7 +53,7 @@ namespace CapaPresentacion.Salas
                     Agregar();
                 else
                     Modificar();
-            }       
+            }
         }
 
         private void ObtenerDatos()

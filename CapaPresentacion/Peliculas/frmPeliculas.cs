@@ -39,11 +39,11 @@ namespace CapaPresentacion.Peliculas
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int id = OperacionesFormulario.ObtenertId(dgvLista);
-                if (id > 0)
+                int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cvePelicula > 0)
                 {
                     frmPelicula frmS = new frmPelicula();
-                    frmS.idPelicula = id;
+                    frmS.idPelicula = cvePelicula;
 
                     frmS.ShowDialog();
                     RefrescarLista();
@@ -51,7 +51,7 @@ namespace CapaPresentacion.Peliculas
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
 
@@ -77,7 +77,7 @@ namespace CapaPresentacion.Peliculas
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
         #endregion

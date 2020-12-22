@@ -71,6 +71,9 @@
     <Compile Include="Model\ca_usuario.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\fnMostrarTodosClienteByEstado_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\fnMostrarTodosUsuarioByEstado_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>

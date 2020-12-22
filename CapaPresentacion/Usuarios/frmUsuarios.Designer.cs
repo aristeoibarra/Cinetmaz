@@ -29,7 +29,25 @@ namespace CapaPresentacion.Usuarios
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
+            this.spContenedor.Panel1.SuspendLayout();
+            this.spContenedor.Panel2.SuspendLayout();
+            this.spContenedor.SuspendLayout();
+            this.panelBotones.SuspendLayout();
+            this.tabDatos.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // spContenedor
+            // 
+            this.spContenedor.Size = new System.Drawing.Size(800, 450);
+            // 
+            // tabDatos
+            // 
+            this.tabDatos.Size = new System.Drawing.Size(800, 364);
+            // 
+            // tpActivos
+            // 
+            this.tpActivos.Size = new System.Drawing.Size(792, 331);
             // 
             // frmUsuarios
             // 
@@ -37,8 +55,16 @@ namespace CapaPresentacion.Usuarios
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmUsuarios";
-            this.Text = "frmUsuarios";
+            this.ShowIcon = false;
+            this.Text = "Usuarios";
             this.Load += new System.EventHandler(this.frmUsuarios_Load);
+            this.spContenedor.Panel1.ResumeLayout(false);
+            this.spContenedor.Panel1.PerformLayout();
+            this.spContenedor.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
+            this.spContenedor.ResumeLayout(false);
+            this.panelBotones.ResumeLayout(false);
+            this.tabDatos.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

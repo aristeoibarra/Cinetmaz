@@ -32,6 +32,7 @@ namespace CapaPresentacion.Salas
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
             this.spContenedor.Panel1.SuspendLayout();
             this.spContenedor.SuspendLayout();
+            this.panelBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmdEliminar
@@ -48,12 +49,13 @@ namespace CapaPresentacion.Salas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 560);
             this.Name = "frmSalas";
-            this.Text = "frmSalas";
+            this.Text = "Salas";
             this.Load += new System.EventHandler(this.frmSalas_Load);
             this.spContenedor.Panel1.ResumeLayout(false);
             this.spContenedor.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();
             this.spContenedor.ResumeLayout(false);
+            this.panelBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

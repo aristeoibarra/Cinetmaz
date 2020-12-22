@@ -17,7 +17,7 @@ namespace CapaPresentacion.Clasificaciones
         private void frmClasificaciones_Load(object sender, EventArgs e)
         {
             Eventos();
-            RefrescarLista();         
+            RefrescarLista();
         }
 
         private void Eventos()
@@ -39,13 +39,13 @@ namespace CapaPresentacion.Clasificaciones
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int id = OperacionesFormulario.ObtenertId(dgvLista);
-                if (id > 0)
+                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveClasificacion > 0)
                 {
                     //DataTable dt = nClasificacion.LlenarByID(id);
 
                     frmClasificacion frmC = new frmClasificacion();
-                    frmC.idClasificacion = id;
+                    frmC.idClasificacion = cveClasificacion;
 
                     //DataRow row = dt.Rows[0];
                     //frmC.txtTipo.Text = row[0].ToString();
@@ -58,7 +58,7 @@ namespace CapaPresentacion.Clasificaciones
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
 
@@ -84,7 +84,7 @@ namespace CapaPresentacion.Clasificaciones
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
         #endregion
@@ -102,7 +102,7 @@ namespace CapaPresentacion.Clasificaciones
             try
             {
                 lblTitulo.Text = "Clasificaciones";
-                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;              
+                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)
             {
@@ -113,8 +113,8 @@ namespace CapaPresentacion.Clasificaciones
         private void ChageRowText()
         {
             foreach (DataGridViewRow row in dgvLista.Rows)
-            {         
-               string edadMin = dgvLista.Rows[row.Index].Cells["Edad_Minima"].Value.ToString();
+            {
+                string edadMin = dgvLista.Rows[row.Index].Cells["Edad_Minima"].Value.ToString();
 
                 if (edadMin == "0")
                 {

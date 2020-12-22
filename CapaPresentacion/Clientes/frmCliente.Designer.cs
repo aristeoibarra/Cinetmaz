@@ -77,9 +77,10 @@ namespace CapaPresentacion.Clientes
             this.txtEdad.Location = new System.Drawing.Point(159, 147);
             this.txtEdad.MaxLength = 2;
             this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(57, 27);
+            this.txtEdad.Size = new System.Drawing.Size(47, 27);
             this.txtEdad.TabIndex = 4;
             this.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloNumeros);
             // 
             // txtAmaterno
             // 
@@ -88,6 +89,7 @@ namespace CapaPresentacion.Clientes
             this.txtAmaterno.Name = "txtAmaterno";
             this.txtAmaterno.Size = new System.Drawing.Size(226, 27);
             this.txtAmaterno.TabIndex = 3;
+            this.txtAmaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
             // label1
             // 
@@ -106,6 +108,7 @@ namespace CapaPresentacion.Clientes
             this.txtApaterno.Name = "txtApaterno";
             this.txtApaterno.Size = new System.Drawing.Size(226, 27);
             this.txtApaterno.TabIndex = 2;
+            this.txtApaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
             // label5
             // 
@@ -124,6 +127,7 @@ namespace CapaPresentacion.Clientes
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(226, 27);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
             // frmCliente
             // 

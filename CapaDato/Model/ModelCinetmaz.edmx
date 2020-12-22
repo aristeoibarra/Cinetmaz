@@ -257,6 +257,20 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fnMostrarTodosClienteByEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveEstado" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Clave" Type="int" Nullable="false" />
+                <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+                <Property Name="ApPaterno" Type="varchar" MaxLength="50" Nullable="false" />
+                <Property Name="ApMaterno" Type="varchar" MaxLength="50" Nullable="false" />
+                <Property Name="Edad" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fnMostrarTodosUsuarioByEstado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveEstado" Type="int" Mode="In" />
           <ReturnType>
@@ -276,6 +290,13 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="edadMinima" Type="int" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spAgregarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apePaterno" Type="varchar" Mode="In" />
+          <Parameter Name="apeMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="edad" Type="int" Mode="In" />
+          <Parameter Name="cveUsuarioAlta" Type="int" Mode="In" />
+        </Function>
         <Function Name="spAgregarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
           <Parameter Name="cveSala" Type="int" Mode="In" />
@@ -290,12 +311,19 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="userUsuario" Type="varchar" Mode="In" />
           <Parameter Name="passwordUsuario" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="spCambiarEstadoCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveCliente" Type="int" Mode="In" />
+          <Parameter Name="cveEstado" Type="int" Mode="In" />
+        </Function>
         <Function Name="SpCambiarEstadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveUsuario" Type="int" Mode="In" />
           <Parameter Name="cveEstado" Type="int" Mode="In" />
         </Function>
         <Function Name="spEliminarClasificacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveClasificacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEliminarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveCliente" Type="int" Mode="In" />
         </Function>
         <Function Name="spEliminarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cvePelicula" Type="int" Mode="In" />
@@ -311,6 +339,14 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="tipo" Type="varchar" Mode="In" />
           <Parameter Name="edadMinima" Type="int" Mode="In" />
           <Parameter Name="descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spModificarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveCliente" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="apePaterno" Type="varchar" Mode="In" />
+          <Parameter Name="apeMaterno" Type="varchar" Mode="In" />
+          <Parameter Name="edad" Type="int" Mode="In" />
+          <Parameter Name="cveUsuariomod" Type="int" Mode="In" />
         </Function>
         <Function Name="spModificarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cvePelicula" Type="int" Mode="In" />
@@ -609,6 +645,31 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <FunctionImport Name="fnMostrarTodosUsuarioByEstado" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosUsuarioByEstado_Result)">
           <Parameter Name="cveEstado" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="spAgregarCliente">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apePaterno" Mode="In" Type="String" />
+            <Parameter Name="apeMaterno" Mode="In" Type="String" />
+            <Parameter Name="edad" Mode="In" Type="Int32" />
+            <Parameter Name="cveUsuarioAlta" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarCliente">
+          <Parameter Name="cveCliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spModificarCliente">
+            <Parameter Name="cveCliente" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apePaterno" Mode="In" Type="String" />
+            <Parameter Name="apeMaterno" Mode="In" Type="String" />
+            <Parameter Name="edad" Mode="In" Type="Int32" />
+            <Parameter Name="cveUsuariomod" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fnMostrarTodosClienteByEstado" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosClienteByEstado_Result)">
+          <Parameter Name="cveEstado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spCambiarEstadoCliente">
+            <Parameter Name="cveCliente" Mode="In" Type="Int32" />
+            <Parameter Name="cveEstado" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="vwMostrarTodosPelicula">
           <Key>
@@ -805,6 +866,13 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Type="DateTime" Name="Fecha_de_Creación" Nullable="false" Precision="23" />
           <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
         </ComplexType>
+        <ComplexType Name="fnMostrarTodosClienteByEstado_Result">
+          <Property Type="Int32" Name="Clave" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApPaterno" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApMaterno" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Edad" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -951,6 +1019,21 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarCliente" FunctionName="CinetmazModel.Store.spAgregarCliente" />
+          <FunctionImportMapping FunctionImportName="spEliminarCliente" FunctionName="CinetmazModel.Store.spEliminarCliente" />
+          <FunctionImportMapping FunctionImportName="spModificarCliente" FunctionName="CinetmazModel.Store.spModificarCliente" />
+          <FunctionImportMapping FunctionImportName="fnMostrarTodosClienteByEstado" FunctionName="CinetmazModel.Store.fnMostrarTodosClienteByEstado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarTodosClienteByEstado_Result">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spCambiarEstadoCliente" FunctionName="CinetmazModel.Store.spCambiarEstadoCliente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

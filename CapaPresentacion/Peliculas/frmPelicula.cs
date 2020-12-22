@@ -1,8 +1,8 @@
 ﻿using CapaEntidades;
 using CapaNegocio.Negocio;
+using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
-using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion.Peliculas
 {
@@ -23,7 +23,7 @@ namespace CapaPresentacion.Peliculas
         {
             txtNombre.Focus();
             LlenarComboSala();
-            cmbSala.Text = null;           
+            cmbSala.Text = null;
 
             if (idPelicula > 0)
             {
@@ -52,7 +52,7 @@ namespace CapaPresentacion.Peliculas
                     Agregar();
                 else
                     Modificar();
-            }          
+            }
         }
 
         private void ObtenerDatos()

@@ -1,8 +1,8 @@
 ﻿using CapaEntidades;
 using CapaNegocio.Negocio;
+using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
-using CapaPresentacion.Utilidades;
 
 
 namespace CapaPresentacion.Clasificaciones
@@ -52,11 +52,11 @@ namespace CapaPresentacion.Clasificaciones
             }
             else
             {
-                if (idClasificacion <= 0) 
+                if (idClasificacion <= 0)
                     Agregar();
                 else
                     Modificar();
-            }      
+            }
         }
 
         private void ObtenerDatos()
@@ -99,14 +99,15 @@ namespace CapaPresentacion.Clasificaciones
             else
             {
                 txtEdad.Enabled = true;
+                txtEdad.Clear();
             }
         }
-        
+
         #region Validaciones TextBoxs
         private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
         {
             OperacionesFormulario.SoloNumeros(sender, e);
-        } 
+        }
         #endregion
     }
 }

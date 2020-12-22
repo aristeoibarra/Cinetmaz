@@ -39,11 +39,11 @@ namespace CapaPresentacion.Salas
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int id = OperacionesFormulario.ObtenertId(dgvLista);
-                if (id > 0)
+                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveClasificacion > 0)
                 {
                     frmSala frmS = new frmSala();
-                    frmS.idSala = id;
+                    frmS.idSala = cveClasificacion;
 
                     frmS.ShowDialog();
                     RefrescarLista();
@@ -51,7 +51,7 @@ namespace CapaPresentacion.Salas
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
 
@@ -77,7 +77,7 @@ namespace CapaPresentacion.Salas
                 else
                 {
                     MessageBox.Show("Debe existir una fila seleccionada");
-                } 
+                }
             }
         }
         #endregion

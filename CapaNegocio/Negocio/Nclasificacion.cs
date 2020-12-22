@@ -43,7 +43,7 @@ namespace CapaNegocio.Negocio
         public List<vwMostrarTodosClasificacion> MostrarTodos()
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
-            {   
+            {
                 return modeldb.vwMostrarTodosClasificacion.ToList();
             }
         }

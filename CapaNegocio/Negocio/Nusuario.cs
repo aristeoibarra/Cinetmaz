@@ -1,10 +1,7 @@
-﻿using System;
+﻿using CapaDato.Model;
+using CapaEntidades;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaEntidades;
-using CapaDato.Model;
 
 namespace CapaNegocio.Negocio
 {
@@ -15,8 +12,8 @@ namespace CapaNegocio.Negocio
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 modeldb.spAgregarUsuario(dat.NombreUsuario
-                                        ,dat.UserUsuario
-                                        ,dat.PasswordUsuario);
+                                        , dat.UserUsuario
+                                        , dat.PasswordUsuario);
                 return true;
             }
         }
@@ -26,9 +23,9 @@ namespace CapaNegocio.Negocio
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 modeldb.spModificarUsuario(dat.CveUsuario
-                                          ,dat.NombreUsuario
-                                          ,dat.UserUsuario
-                                          ,dat.PasswordUsuario);
+                                          , dat.NombreUsuario
+                                          , dat.UserUsuario
+                                          , dat.PasswordUsuario);
                 return true;
             }
         }
