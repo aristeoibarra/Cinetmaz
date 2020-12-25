@@ -59,5 +59,11 @@ namespace CapaPresentacion.Utilidades
             if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
             { e.Handled = true; return; }
         }
+
+        public static void CentraX(Control padre, Control hijo)
+        {
+            int x = padre.Width / 2 - hijo.Width / 2;
+            hijo.Location = new System.Drawing.Point(x, hijo.Location.Y);
+        }
     }
 }

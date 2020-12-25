@@ -97,7 +97,12 @@ namespace CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            if (!DetectarFormularioAbierto("frmReservacion"))
+            {
+                Reservación.frmReservacion frmR = new Reservación.frmReservacion();
+                frmR.Show();
+                frmR.WindowState = FormWindowState.Maximized;
+            }
         }
     }
 }

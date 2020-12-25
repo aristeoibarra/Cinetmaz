@@ -120,6 +120,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservación\frmReservacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservación\frmReservacion.Designer.cs">
+      <DependentUpon>frmReservacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Salas\frmSala.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservación\frmReservacion.resx">
+      <DependentUpon>frmReservacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salas\frmSala.resx">
       <DependentUpon>frmSala.cs</DependentUpon>
@@ -271,6 +280,10 @@
       <Project>{b48f8349-6cec-49c7-9860-a0386a7d2d35}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\silla-de-cine.png" />
+    <None Include="Resources\silla-de-cine1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
