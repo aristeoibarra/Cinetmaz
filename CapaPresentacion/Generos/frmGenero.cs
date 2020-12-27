@@ -4,25 +4,26 @@ using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Clientes
+
+namespace CapaPresentacion.Generos
 {
-    public partial class frmCliente : Form
+    public partial class frmGenero : Form
     {
-        readonly Ncliente nCliente = new Ncliente();
-        readonly Cliente cliente = new Cliente();
+        readonly Ngenero nGenero = new Ngenero();
+        readonly Genero genero = new Genero();
 
-        public int idCliente = 0;
+        public int idGenero = 0;
 
-        public frmCliente()
+        public frmGenero()
         {
             InitializeComponent();
         }
 
-        private void frmCliente_Load(object sender, EventArgs e)
+        private void frmGenero_Load(object sender, EventArgs e)
         {
             txtNombre.Focus();
 
-            if (idCliente > 0)
+            if (idGenero > 0)
             {
                 CargaDatos();
             }
@@ -30,13 +31,10 @@ namespace CapaPresentacion.Clientes
 
         private void CargaDatos()
         {
-            foreach (var item in nCliente.MostrarByID(idCliente))
+            foreach (var item in nGenero.MostrarByID(idGenero))
             {
-                txtNombre.Text = item.NombreCliente;
-                txtApaterno.Text = item.ApepaternoCliente;
-                txtAmaterno.Text = item.ApepaternoCliente;
-                txtEdad.Text = item.EdadCliente.ToString();
-            }
+                txtNombre.Text = item.NombreGenero;
+            }          
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -47,7 +45,7 @@ namespace CapaPresentacion.Clientes
             }
             else
             {
-                if (idCliente <= 0)
+                if (idGenero <= 0)
                     Agregar();
                 else
                     Modificar();
@@ -56,18 +54,15 @@ namespace CapaPresentacion.Clientes
 
         private void ObtenerDatos()
         {
-            cliente.CveCliente = idCliente;
-            cliente.NombreCliente = txtNombre.Text.Trim();
-            cliente.ApepaternoCliente = txtApaterno.Text.Trim();
-            cliente.ApematernoCliente = txtAmaterno.Text.Trim();
-            cliente.EdadCliente = Convert.ToInt32(txtEdad.Text.Trim());
+            genero.CveGenero = idGenero;
+            genero.NombreGenero = txtNombre.Text.Trim();            
         }
 
         private void Agregar()
         {
             ObtenerDatos();
 
-            if (nCliente.Agregar(cliente))
+            if (nGenero.Agregar(genero))
             {
                 MessageBox.Show("Registro agregado con exito");
                 this.Close();
@@ -78,7 +73,7 @@ namespace CapaPresentacion.Clientes
         {
             ObtenerDatos();
 
-            if (nCliente.Modificar(cliente))
+            if (nGenero.Modificar(genero))
             {
                 MessageBox.Show("Registro modificado con exito");
                 this.Close();
@@ -86,14 +81,9 @@ namespace CapaPresentacion.Clientes
         }
 
         #region Validaciones TextBoxs
-        private void txtBoxSoloLetras(object sender, KeyPressEventArgs e)
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             OperacionesFormulario.SoloLetras(sender, e);
-        }
-
-        private void txtBoxSoloNumeros(object sender, KeyPressEventArgs e)
-        {
-            OperacionesFormulario.SoloNumeros(sender, e);
         }
         #endregion
     }

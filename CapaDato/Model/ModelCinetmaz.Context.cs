@@ -27,17 +27,51 @@ namespace CapaDato.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
         public virtual DbSet<ca_clasificacion> ca_clasificacion { get; set; }
+        public virtual DbSet<ca_cliente> ca_cliente { get; set; }
+        public virtual DbSet<ca_estatus> ca_estatus { get; set; }
+        public virtual DbSet<ca_estatusAsiento> ca_estatusAsiento { get; set; }
+        public virtual DbSet<ca_genero> ca_genero { get; set; }
         public virtual DbSet<ca_pelicula> ca_pelicula { get; set; }
         public virtual DbSet<ca_sala> ca_sala { get; set; }
+        public virtual DbSet<ca_usuario> ca_usuario { get; set; }
         public virtual DbSet<ma_cinetmaz> ma_cinetmaz { get; set; }
+        public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
+        public virtual DbSet<vwMostrarTodosCliente> vwMostrarTodosCliente { get; set; }
         public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
         public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
-        public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
-        public virtual DbSet<ca_cliente> ca_cliente { get; set; }
-        public virtual DbSet<ca_estado> ca_estado { get; set; }
-        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
-        public virtual DbSet<ca_usuario> ca_usuario { get; set; }
+        public virtual DbSet<vwMostrarTodosGenero> vwMostrarTodosGenero { get; set; }
+    
+        public virtual int spAgregarAsiento(Nullable<int> cveSala, Nullable<int> capacidadSala)
+        {
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            var capacidadSalaParameter = capacidadSala.HasValue ?
+                new ObjectParameter("capacidadSala", capacidadSala) :
+                new ObjectParameter("capacidadSala", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarAsiento", cveSalaParameter, capacidadSalaParameter);
+        }
+    
+        public virtual int spAgregarCinetmaz(Nullable<int> cveCliente, Nullable<int> cvepelicula, Nullable<int> cveasiento)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            var cvepeliculaParameter = cvepelicula.HasValue ?
+                new ObjectParameter("cvepelicula", cvepelicula) :
+                new ObjectParameter("cvepelicula", typeof(int));
+    
+            var cveasientoParameter = cveasiento.HasValue ?
+                new ObjectParameter("cveasiento", cveasiento) :
+                new ObjectParameter("cveasiento", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarCinetmaz", cveClienteParameter, cvepeliculaParameter, cveasientoParameter);
+        }
     
         public virtual int spAgregarClasificacion(string tipo, Nullable<int> edadMinima, string descripcion)
         {
@@ -54,192 +88,6 @@ namespace CapaDato.Model
                 new ObjectParameter("descripcion", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarClasificacion", tipoParameter, edadMinimaParameter, descripcionParameter);
-        }
-    
-        public virtual int spEliminarClasificacion(Nullable<int> cveClasificacion)
-        {
-            var cveClasificacionParameter = cveClasificacion.HasValue ?
-                new ObjectParameter("cveClasificacion", cveClasificacion) :
-                new ObjectParameter("cveClasificacion", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarClasificacion", cveClasificacionParameter);
-        }
-    
-        public virtual int spModificarClasificacion(Nullable<int> cveClasificacion, string tipo, Nullable<int> edadMinima, string descripcion)
-        {
-            var cveClasificacionParameter = cveClasificacion.HasValue ?
-                new ObjectParameter("cveClasificacion", cveClasificacion) :
-                new ObjectParameter("cveClasificacion", typeof(int));
-    
-            var tipoParameter = tipo != null ?
-                new ObjectParameter("tipo", tipo) :
-                new ObjectParameter("tipo", typeof(string));
-    
-            var edadMinimaParameter = edadMinima.HasValue ?
-                new ObjectParameter("edadMinima", edadMinima) :
-                new ObjectParameter("edadMinima", typeof(int));
-    
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("descripcion", descripcion) :
-                new ObjectParameter("descripcion", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarClasificacion", cveClasificacionParameter, tipoParameter, edadMinimaParameter, descripcionParameter);
-        }
-    
-        public virtual int spAgregarSala(string nombre, Nullable<int> capacidad, Nullable<int> cveClasificacion)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var capacidadParameter = capacidad.HasValue ?
-                new ObjectParameter("capacidad", capacidad) :
-                new ObjectParameter("capacidad", typeof(int));
-    
-            var cveClasificacionParameter = cveClasificacion.HasValue ?
-                new ObjectParameter("cveClasificacion", cveClasificacion) :
-                new ObjectParameter("cveClasificacion", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarSala", nombreParameter, capacidadParameter, cveClasificacionParameter);
-        }
-    
-        public virtual int spEliminarSala(Nullable<int> cveSala)
-        {
-            var cveSalaParameter = cveSala.HasValue ?
-                new ObjectParameter("cveSala", cveSala) :
-                new ObjectParameter("cveSala", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarSala", cveSalaParameter);
-        }
-    
-        public virtual int spModificarSala(Nullable<int> cveSala, string nombre, Nullable<int> capacidad, Nullable<int> cveClasificacion)
-        {
-            var cveSalaParameter = cveSala.HasValue ?
-                new ObjectParameter("cveSala", cveSala) :
-                new ObjectParameter("cveSala", typeof(int));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var capacidadParameter = capacidad.HasValue ?
-                new ObjectParameter("capacidad", capacidad) :
-                new ObjectParameter("capacidad", typeof(int));
-    
-            var cveClasificacionParameter = cveClasificacion.HasValue ?
-                new ObjectParameter("cveClasificacion", cveClasificacion) :
-                new ObjectParameter("cveClasificacion", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarSala", cveSalaParameter, nombreParameter, capacidadParameter, cveClasificacionParameter);
-        }
-    
-        public virtual int spAgregarPelicula(string nombre, Nullable<int> cveSala)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var cveSalaParameter = cveSala.HasValue ?
-                new ObjectParameter("cveSala", cveSala) :
-                new ObjectParameter("cveSala", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarPelicula", nombreParameter, cveSalaParameter);
-        }
-    
-        public virtual int spEliminarPelicula(Nullable<int> cvePelicula)
-        {
-            var cvePeliculaParameter = cvePelicula.HasValue ?
-                new ObjectParameter("cvePelicula", cvePelicula) :
-                new ObjectParameter("cvePelicula", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarPelicula", cvePeliculaParameter);
-        }
-    
-        public virtual int spModificarPelicula(Nullable<int> cvePelicula, string nombre, Nullable<int> cveSala)
-        {
-            var cvePeliculaParameter = cvePelicula.HasValue ?
-                new ObjectParameter("cvePelicula", cvePelicula) :
-                new ObjectParameter("cvePelicula", typeof(int));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            var cveSalaParameter = cveSala.HasValue ?
-                new ObjectParameter("cveSala", cveSala) :
-                new ObjectParameter("cveSala", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarPelicula", cvePeliculaParameter, nombreParameter, cveSalaParameter);
-        }
-    
-        public virtual int spAgregarUsuario(string nombreUsuario, string userUsuario, string passwordUsuario)
-        {
-            var nombreUsuarioParameter = nombreUsuario != null ?
-                new ObjectParameter("nombreUsuario", nombreUsuario) :
-                new ObjectParameter("nombreUsuario", typeof(string));
-    
-            var userUsuarioParameter = userUsuario != null ?
-                new ObjectParameter("userUsuario", userUsuario) :
-                new ObjectParameter("userUsuario", typeof(string));
-    
-            var passwordUsuarioParameter = passwordUsuario != null ?
-                new ObjectParameter("passwordUsuario", passwordUsuario) :
-                new ObjectParameter("passwordUsuario", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarUsuario", nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
-        }
-    
-        public virtual int spEliminarUsuario(Nullable<int> cveUsuario)
-        {
-            var cveUsuarioParameter = cveUsuario.HasValue ?
-                new ObjectParameter("cveUsuario", cveUsuario) :
-                new ObjectParameter("cveUsuario", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarUsuario", cveUsuarioParameter);
-        }
-    
-        public virtual int spModificarUsuario(Nullable<int> cveUsuario, string nombreUsuario, string userUsuario, string passwordUsuario)
-        {
-            var cveUsuarioParameter = cveUsuario.HasValue ?
-                new ObjectParameter("cveUsuario", cveUsuario) :
-                new ObjectParameter("cveUsuario", typeof(int));
-    
-            var nombreUsuarioParameter = nombreUsuario != null ?
-                new ObjectParameter("nombreUsuario", nombreUsuario) :
-                new ObjectParameter("nombreUsuario", typeof(string));
-    
-            var userUsuarioParameter = userUsuario != null ?
-                new ObjectParameter("userUsuario", userUsuario) :
-                new ObjectParameter("userUsuario", typeof(string));
-    
-            var passwordUsuarioParameter = passwordUsuario != null ?
-                new ObjectParameter("passwordUsuario", passwordUsuario) :
-                new ObjectParameter("passwordUsuario", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarUsuario", cveUsuarioParameter, nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
-        }
-    
-        public virtual int SpCambiarEstadoUsuario(Nullable<int> cveUsuario, Nullable<int> cveEstado)
-        {
-            var cveUsuarioParameter = cveUsuario.HasValue ?
-                new ObjectParameter("cveUsuario", cveUsuario) :
-                new ObjectParameter("cveUsuario", typeof(int));
-    
-            var cveEstadoParameter = cveEstado.HasValue ?
-                new ObjectParameter("cveEstado", cveEstado) :
-                new ObjectParameter("cveEstado", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCambiarEstadoUsuario", cveUsuarioParameter, cveEstadoParameter);
-        }
-    
-        [DbFunction("CinetmazEntities", "fnMostrarTodosUsuarioByEstado")]
-        public virtual IQueryable<fnMostrarTodosUsuarioByEstado_Result> fnMostrarTodosUsuarioByEstado(Nullable<int> cveEstado)
-        {
-            var cveEstadoParameter = cveEstado.HasValue ?
-                new ObjectParameter("cveEstado", cveEstado) :
-                new ObjectParameter("cveEstado", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosUsuarioByEstado_Result>("[CinetmazEntities].[fnMostrarTodosUsuarioByEstado](@cveEstado)", cveEstadoParameter);
         }
     
         public virtual int spAgregarCliente(string nombre, string apePaterno, string apeMaterno, Nullable<int> edad, Nullable<int> cveUsuarioAlta)
@@ -267,6 +115,100 @@ namespace CapaDato.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarCliente", nombreParameter, apePaternoParameter, apeMaternoParameter, edadParameter, cveUsuarioAltaParameter);
         }
     
+        public virtual int spAgregarPelicula(string nombre, Nullable<System.TimeSpan> duracion, Nullable<int> cveSala, byte[] portada, Nullable<int> cveGenero)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var duracionParameter = duracion.HasValue ?
+                new ObjectParameter("duracion", duracion) :
+                new ObjectParameter("duracion", typeof(System.TimeSpan));
+    
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            var portadaParameter = portada != null ?
+                new ObjectParameter("portada", portada) :
+                new ObjectParameter("portada", typeof(byte[]));
+    
+            var cveGeneroParameter = cveGenero.HasValue ?
+                new ObjectParameter("cveGenero", cveGenero) :
+                new ObjectParameter("cveGenero", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarPelicula", nombreParameter, duracionParameter, cveSalaParameter, portadaParameter, cveGeneroParameter);
+        }
+    
+        public virtual int spAgregarSala(string nombre, Nullable<int> capacidad, Nullable<int> cveClasificacion)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("capacidad", capacidad) :
+                new ObjectParameter("capacidad", typeof(int));
+    
+            var cveClasificacionParameter = cveClasificacion.HasValue ?
+                new ObjectParameter("cveClasificacion", cveClasificacion) :
+                new ObjectParameter("cveClasificacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarSala", nombreParameter, capacidadParameter, cveClasificacionParameter);
+        }
+    
+        public virtual int spAgregarUsuario(string nombreUsuario, string userUsuario, string passwordUsuario)
+        {
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("nombreUsuario", nombreUsuario) :
+                new ObjectParameter("nombreUsuario", typeof(string));
+    
+            var userUsuarioParameter = userUsuario != null ?
+                new ObjectParameter("userUsuario", userUsuario) :
+                new ObjectParameter("userUsuario", typeof(string));
+    
+            var passwordUsuarioParameter = passwordUsuario != null ?
+                new ObjectParameter("passwordUsuario", passwordUsuario) :
+                new ObjectParameter("passwordUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarUsuario", nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
+        }
+    
+        public virtual int spCambiarEstadoCliente(Nullable<int> cveCliente, Nullable<int> cveEstatus)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            var cveEstatusParameter = cveEstatus.HasValue ?
+                new ObjectParameter("cveEstatus", cveEstatus) :
+                new ObjectParameter("cveEstatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCambiarEstadoCliente", cveClienteParameter, cveEstatusParameter);
+        }
+    
+        public virtual int SpCambiarEstadoUsuario(Nullable<int> cveUsuario, Nullable<int> cveEstatus)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            var cveEstatusParameter = cveEstatus.HasValue ?
+                new ObjectParameter("cveEstatus", cveEstatus) :
+                new ObjectParameter("cveEstatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SpCambiarEstadoUsuario", cveUsuarioParameter, cveEstatusParameter);
+        }
+    
+        public virtual int spEliminarClasificacion(Nullable<int> cveClasificacion)
+        {
+            var cveClasificacionParameter = cveClasificacion.HasValue ?
+                new ObjectParameter("cveClasificacion", cveClasificacion) :
+                new ObjectParameter("cveClasificacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarClasificacion", cveClasificacionParameter);
+        }
+    
         public virtual int spEliminarCliente(Nullable<int> cveCliente)
         {
             var cveClienteParameter = cveCliente.HasValue ?
@@ -274,6 +216,63 @@ namespace CapaDato.Model
                 new ObjectParameter("cveCliente", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarCliente", cveClienteParameter);
+        }
+    
+        public virtual int spEliminarGenero(Nullable<int> cveGenero)
+        {
+            var cveGeneroParameter = cveGenero.HasValue ?
+                new ObjectParameter("cveGenero", cveGenero) :
+                new ObjectParameter("cveGenero", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarGenero", cveGeneroParameter);
+        }
+    
+        public virtual int spEliminarPelicula(Nullable<int> cvePelicula)
+        {
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarPelicula", cvePeliculaParameter);
+        }
+    
+        public virtual int spEliminarSala(Nullable<int> cveSala)
+        {
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarSala", cveSalaParameter);
+        }
+    
+        public virtual int spEliminarUsuario(Nullable<int> cveUsuario)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spEliminarUsuario", cveUsuarioParameter);
+        }
+    
+        public virtual int spModificarClasificacion(Nullable<int> cveClasificacion, string tipo, Nullable<int> edadMinima, string descripcion)
+        {
+            var cveClasificacionParameter = cveClasificacion.HasValue ?
+                new ObjectParameter("cveClasificacion", cveClasificacion) :
+                new ObjectParameter("cveClasificacion", typeof(int));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            var edadMinimaParameter = edadMinima.HasValue ?
+                new ObjectParameter("edadMinima", edadMinima) :
+                new ObjectParameter("edadMinima", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("descripcion", descripcion) :
+                new ObjectParameter("descripcion", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarClasificacion", cveClasificacionParameter, tipoParameter, edadMinimaParameter, descripcionParameter);
         }
     
         public virtual int spModificarCliente(Nullable<int> cveCliente, string nombre, string apePaterno, string apeMaterno, Nullable<int> edad, Nullable<int> cveUsuariomod)
@@ -305,27 +304,117 @@ namespace CapaDato.Model
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarCliente", cveClienteParameter, nombreParameter, apePaternoParameter, apeMaternoParameter, edadParameter, cveUsuariomodParameter);
         }
     
-        [DbFunction("CinetmazEntities", "fnMostrarTodosClienteByEstado")]
-        public virtual IQueryable<fnMostrarTodosClienteByEstado_Result> fnMostrarTodosClienteByEstado(Nullable<int> cveEstado)
+        public virtual int spModificarGenero(Nullable<int> cveGenero, string nombreGenero)
         {
-            var cveEstadoParameter = cveEstado.HasValue ?
-                new ObjectParameter("cveEstado", cveEstado) :
-                new ObjectParameter("cveEstado", typeof(int));
+            var cveGeneroParameter = cveGenero.HasValue ?
+                new ObjectParameter("cveGenero", cveGenero) :
+                new ObjectParameter("cveGenero", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosClienteByEstado_Result>("[CinetmazEntities].[fnMostrarTodosClienteByEstado](@cveEstado)", cveEstadoParameter);
+            var nombreGeneroParameter = nombreGenero != null ?
+                new ObjectParameter("nombreGenero", nombreGenero) :
+                new ObjectParameter("nombreGenero", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarGenero", cveGeneroParameter, nombreGeneroParameter);
         }
     
-        public virtual int spCambiarEstadoCliente(Nullable<int> cveCliente, Nullable<int> cveEstado)
+        public virtual int spModificarPelicula(Nullable<int> cvePelicula, string nombre, Nullable<System.TimeSpan> duracion, Nullable<int> cveSala, byte[] portada, Nullable<int> cveGenero)
         {
-            var cveClienteParameter = cveCliente.HasValue ?
-                new ObjectParameter("cveCliente", cveCliente) :
-                new ObjectParameter("cveCliente", typeof(int));
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
     
-            var cveEstadoParameter = cveEstado.HasValue ?
-                new ObjectParameter("cveEstado", cveEstado) :
-                new ObjectParameter("cveEstado", typeof(int));
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spCambiarEstadoCliente", cveClienteParameter, cveEstadoParameter);
+            var duracionParameter = duracion.HasValue ?
+                new ObjectParameter("duracion", duracion) :
+                new ObjectParameter("duracion", typeof(System.TimeSpan));
+    
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            var portadaParameter = portada != null ?
+                new ObjectParameter("portada", portada) :
+                new ObjectParameter("portada", typeof(byte[]));
+    
+            var cveGeneroParameter = cveGenero.HasValue ?
+                new ObjectParameter("cveGenero", cveGenero) :
+                new ObjectParameter("cveGenero", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarPelicula", cvePeliculaParameter, nombreParameter, duracionParameter, cveSalaParameter, portadaParameter, cveGeneroParameter);
+        }
+    
+        public virtual int spModificarSala(Nullable<int> cveSala, string nombre, Nullable<int> capacidad, Nullable<int> cveClasificacion)
+        {
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            var capacidadParameter = capacidad.HasValue ?
+                new ObjectParameter("capacidad", capacidad) :
+                new ObjectParameter("capacidad", typeof(int));
+    
+            var cveClasificacionParameter = cveClasificacion.HasValue ?
+                new ObjectParameter("cveClasificacion", cveClasificacion) :
+                new ObjectParameter("cveClasificacion", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarSala", cveSalaParameter, nombreParameter, capacidadParameter, cveClasificacionParameter);
+        }
+    
+        public virtual int spModificarUsuario(Nullable<int> cveUsuario, string nombreUsuario, string userUsuario, string passwordUsuario)
+        {
+            var cveUsuarioParameter = cveUsuario.HasValue ?
+                new ObjectParameter("cveUsuario", cveUsuario) :
+                new ObjectParameter("cveUsuario", typeof(int));
+    
+            var nombreUsuarioParameter = nombreUsuario != null ?
+                new ObjectParameter("nombreUsuario", nombreUsuario) :
+                new ObjectParameter("nombreUsuario", typeof(string));
+    
+            var userUsuarioParameter = userUsuario != null ?
+                new ObjectParameter("userUsuario", userUsuario) :
+                new ObjectParameter("userUsuario", typeof(string));
+    
+            var passwordUsuarioParameter = passwordUsuario != null ?
+                new ObjectParameter("passwordUsuario", passwordUsuario) :
+                new ObjectParameter("passwordUsuario", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spModificarUsuario", cveUsuarioParameter, nombreUsuarioParameter, userUsuarioParameter, passwordUsuarioParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnMostrarTodosClienteByEstatus")]
+        public virtual IQueryable<fnMostrarTodosClienteByEstatus_Result> fnMostrarTodosClienteByEstatus(Nullable<int> cveEstatus)
+        {
+            var cveEstatusParameter = cveEstatus.HasValue ?
+                new ObjectParameter("cveEstatus", cveEstatus) :
+                new ObjectParameter("cveEstatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosClienteByEstatus_Result>("[CinetmazEntities].[fnMostrarTodosClienteByEstatus](@cveEstatus)", cveEstatusParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnMostrarTodosUsuarioByEstatus")]
+        public virtual IQueryable<fnMostrarTodosUsuarioByEstatus_Result> fnMostrarTodosUsuarioByEstatus(Nullable<int> cveEstatus)
+        {
+            var cveEstatusParameter = cveEstatus.HasValue ?
+                new ObjectParameter("cveEstatus", cveEstatus) :
+                new ObjectParameter("cveEstatus", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarTodosUsuarioByEstatus_Result>("[CinetmazEntities].[fnMostrarTodosUsuarioByEstatus](@cveEstatus)", cveEstatusParameter);
+        }
+    
+        public virtual int spAgregarGenero(string nombre)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarGenero", nombreParameter);
         }
     }
 }

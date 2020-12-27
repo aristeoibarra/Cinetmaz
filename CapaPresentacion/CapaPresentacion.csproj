@@ -106,6 +106,18 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generos\frmGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generos\frmGenero.Designer.cs">
+      <DependentUpon>frmGenero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generos\frmGeneros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generos\frmGeneros.Designer.cs">
+      <DependentUpon>frmGeneros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Peliculas\frmPelicula.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generos\frmGenero.resx">
+      <DependentUpon>frmGenero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generos\frmGeneros.resx">
+      <DependentUpon>frmGeneros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Peliculas\frmPelicula.resx">
       <DependentUpon>frmPelicula.cs</DependentUpon>
@@ -285,6 +303,7 @@
     <Content Include="Resources\silla-de-cine.png" />
     <None Include="Resources\silla-de-cine1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

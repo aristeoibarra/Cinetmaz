@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CapaNegocio.Negocio
 {
-    public class NSala
+    public class Nsala
     {
         public bool Agregar(Sala dat)
         {

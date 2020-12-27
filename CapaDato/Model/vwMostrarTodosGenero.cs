@@ -10,13 +10,11 @@
 namespace CapaDato.Model
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class fnMostrarTodosUsuarioByEstado_Result
+    public partial class vwMostrarTodosGenero
     {
         public int Clave { get; set; }
-        public string Usuario { get; set; }
         public string Nombre { get; set; }
-        public System.DateTime Fecha_de_Creación { get; set; }
-        public string Estado { get; set; }
     }
 }

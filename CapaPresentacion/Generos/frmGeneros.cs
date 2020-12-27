@@ -3,18 +3,18 @@ using CapaPresentacion.Utilidades;
 using System;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Salas
+namespace CapaPresentacion.Generos
 {
-    public partial class frmSalas : frmPadre
+    public partial class frmGeneros : frmPadre
     {
-        readonly Nsala nSala = new Nsala();
+        readonly Ngenero nGenero = new Ngenero();
 
-        public frmSalas()
+        public frmGeneros()
         {
             InitializeComponent();
         }
 
-        private void frmSalas_Load(object sender, EventArgs e)
+        private void frmGeneros_Load(object sender, EventArgs e)
         {
             Eventos();
             RefrescarLista();
@@ -30,8 +30,8 @@ namespace CapaPresentacion.Salas
         #region Eventos Botones
         private void BtnNuevo(object sender, EventArgs e)
         {
-            frmSala frmS = new frmSala();
-            frmS.ShowDialog();
+            frmGenero frmG = new frmGenero();
+            frmG.ShowDialog();
             RefrescarLista();
         }
 
@@ -39,13 +39,13 @@ namespace CapaPresentacion.Salas
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveClasificacion > 0)
+                int cveGenero = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveGenero > 0)
                 {
-                    frmSala frmS = new frmSala();
-                    frmS.idSala = cveClasificacion;
+                    frmGenero frmG = new frmGenero();
+                    frmG.idGenero = cveGenero;
 
-                    frmS.ShowDialog();
+                    frmG.ShowDialog();
                     RefrescarLista();
                 }
                 else
@@ -59,18 +59,18 @@ namespace CapaPresentacion.Salas
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveClasificacion > 0)
+                int cveGenero = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveGenero > 0)
                 {
                     if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (nSala.Eliminar(cveClasificacion))
+                        if (nGenero.Eliminar(cveGenero))
                         {
                             RefrescarLista();
                         }
                         else
                         {
-                            MessageBox.Show("Ocurrio un error ");
+                            MessageBox.Show("Ocurrio un error");
                         }
                     }
                 }
@@ -85,7 +85,7 @@ namespace CapaPresentacion.Salas
         private void RefrescarLista()
         {
             dgvLista.DataSource = null;
-            dgvLista.DataSource = nSala.MostrarTodos();
+            dgvLista.DataSource = nGenero.MostrarTodos();
             Interfaz();
         }
 
@@ -93,8 +93,7 @@ namespace CapaPresentacion.Salas
         {
             try
             {
-                lblTitulo.Text = "Salas";
-                dgvLista.Columns[3].Visible = false;
+                lblTitulo.Text = "Generos";
                 dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             catch (Exception ex)

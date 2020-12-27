@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CapaNegocio.Negocio
 {
-    public class NCliente
+    public class Ncliente
     {
         public bool Agregar(Cliente dat)
         {
@@ -43,7 +43,7 @@ namespace CapaNegocio.Negocio
             }
         }
 
-        public bool CambiarEstado(int cveCliente, int cveEstado)
+        public bool CambiarEstatus(int cveCliente, int cveEstado)
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
@@ -52,12 +52,12 @@ namespace CapaNegocio.Negocio
             }
         }
 
-        public List<fnMostrarTodosClienteByEstado_Result> MostrarTodosByEstado(int cveEstado)
+        public List<fnMostrarTodosClienteByEstatus_Result> MostrarTodosByEstatus(int cveEstado)
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 // 1) Activo 2) Inactivo 3) Eliminado
-                return modeldb.fnMostrarTodosClienteByEstado(cveEstado).ToList();
+                return modeldb.fnMostrarTodosClienteByEstatus(cveEstado).ToList();
             }
         }
 
@@ -65,7 +65,7 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                var query = from c in modeldb.fnMostrarTodosClienteByEstado(1)
+                var query = from c in modeldb.fnMostrarTodosClienteByEstatus(1)
                             where c.Clave == id
                             select new Cliente
                             {

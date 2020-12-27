@@ -12,24 +12,18 @@ namespace CapaDato.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ca_estado
+    public partial class ca_estatusAsiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ca_estado()
+        public ca_estatusAsiento()
         {
-            this.ca_cliente = new HashSet<ca_cliente>();
             this.ca_asiento = new HashSet<ca_asiento>();
-            this.ca_usuario = new HashSet<ca_usuario>();
         }
     
-        public int cve_estado { get; set; }
-        public string estado { get; set; }
+        public int cve_estatusAsiento { get; set; }
+        public string estatus_asiento { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ca_cliente> ca_cliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_asiento> ca_asiento { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ca_usuario> ca_usuario { get; set; }
     }
 }

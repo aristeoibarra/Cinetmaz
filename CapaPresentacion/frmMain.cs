@@ -104,5 +104,16 @@ namespace CapaPresentacion
                 frmR.WindowState = FormWindowState.Maximized;
             }
         }
+
+        private void bnGeneros_Click(object sender, EventArgs e)
+        {
+            if (!DetectarFormularioAbierto("frmGeneros"))
+            {
+                Generos.frmGeneros frmG = new Generos.frmGeneros();
+                frmG.MdiParent = this;
+                frmG.Show();
+                frmG.WindowState = FormWindowState.Maximized;
+            }
+        }
     }
 }

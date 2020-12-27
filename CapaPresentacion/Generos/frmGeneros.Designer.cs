@@ -1,7 +1,7 @@
 ﻿
-namespace CapaPresentacion.Clasificaciones
+namespace CapaPresentacion.Generos
 {
-    partial class frmClasificaciones
+    partial class frmGeneros
     {
         /// <summary>
         /// Required designer variable.
@@ -35,22 +35,18 @@ namespace CapaPresentacion.Clasificaciones
             this.panelBotones.SuspendLayout();
             this.SuspendLayout();
             // 
-            // cmdEliminar
-            // 
-            this.cmdEliminar.Location = new System.Drawing.Point(266, 6);
-            // 
             // spContenedor
             // 
-            this.spContenedor.Size = new System.Drawing.Size(790, 561);
+            this.spContenedor.Size = new System.Drawing.Size(800, 561);
             // 
-            // frmClasificaciones
+            // frmGeneros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 561);
-            this.Name = "frmClasificaciones";
-            this.Text = "Clasificaciones";
-            this.Load += new System.EventHandler(this.frmClasificaciones_Load);
+            this.ClientSize = new System.Drawing.Size(800, 561);
+            this.Name = "frmGeneros";
+            this.Text = "frmGeneros";
+            this.Load += new System.EventHandler(this.frmGeneros_Load);
             this.spContenedor.Panel1.ResumeLayout(false);
             this.spContenedor.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).EndInit();

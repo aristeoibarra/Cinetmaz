@@ -59,7 +59,13 @@
     <Compile Include="Model\ca_cliente.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ca_estado.cs">
+    <Compile Include="Model\ca_estatus.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ca_estatusAsiento.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ca_genero.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ca_pelicula.cs">
@@ -71,10 +77,10 @@
     <Compile Include="Model\ca_usuario.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\fnMostrarTodosClienteByEstado_Result.cs">
+    <Compile Include="Model\fnMostrarTodosClienteByEstatus_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\fnMostrarTodosUsuarioByEstado_Result.cs">
+    <Compile Include="Model\fnMostrarTodosUsuarioByEstatus_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ma_cinetmaz.cs">
@@ -98,6 +104,12 @@
     <Compile Include="Model\vwMostrarTodosClasificacion.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\vwMostrarTodosCliente.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwMostrarTodosGenero.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\vwMostrarTodosPelicula.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
@@ -108,32 +120,30 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Model\ModelCinetmaz.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelCinetmaz.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="Model\ModelCinetmaz.edmx.diagram">
       <DependentUpon>ModelCinetmaz.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\ModelCinetmaz.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelCinetmaz.Context.cs</LastGenOutput>
       <DependentUpon>ModelCinetmaz.edmx</DependentUpon>
+      <LastGenOutput>ModelCinetmaz.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\ModelCinetmaz.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelCinetmaz.edmx</DependentUpon>
       <LastGenOutput>ModelCinetmaz.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

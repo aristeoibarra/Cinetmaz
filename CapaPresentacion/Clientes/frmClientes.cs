@@ -7,7 +7,7 @@ namespace CapaPresentacion.Clientes
 {
     public partial class frmClientes : frmPadreTab
     {
-        readonly NCliente nCliente = new NCliente();
+        readonly Ncliente nCliente = new Ncliente();
 
         public frmClientes()
         {
@@ -67,7 +67,7 @@ namespace CapaPresentacion.Clientes
                 int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
                 if (cveCliente > 0)
                 {
-                    if (nCliente.CambiarEstado(cveCliente, 2))
+                    if (nCliente.CambiarEstatus(cveCliente, 2))
                     {
                         RefrescarListas();
                     }
@@ -118,7 +118,7 @@ namespace CapaPresentacion.Clientes
                 int cveCliente = OperacionesFormulario.ObtenertId(dgvListaInactivos);
                 if (cveCliente > 0)
                 {
-                    if (nCliente.CambiarEstado(cveCliente, 1))
+                    if (nCliente.CambiarEstatus(cveCliente, 1))
                     {
                         RefrescarListas();
                     }
@@ -178,13 +178,13 @@ namespace CapaPresentacion.Clientes
         private void RefrescarListaActivos()
         {
             dgvListaActivos.DataSource = null;
-            dgvListaActivos.DataSource = nCliente.MostrarTodosByEstado(1);
+            dgvListaActivos.DataSource = nCliente.MostrarTodosByEstatus(1);
         }
 
         private void RefrescarListaInactivos()
         {
             dgvListaInactivos.DataSource = null;
-            dgvListaInactivos.DataSource = nCliente.MostrarTodosByEstado(2);
+            dgvListaInactivos.DataSource = nCliente.MostrarTodosByEstatus(2);
         }
 
         private void RefrescarListas()

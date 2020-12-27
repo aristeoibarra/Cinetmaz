@@ -9,6 +9,6 @@ namespace CapaEntidades
         public string UserUsuario { get; set; }
         public string PasswordUsuario { get; set; }
         public DateTime FechacreacionUsuario { get; set; }
-        public int CveestadoUsuario { get; set; }
+        public int CveestatusUsuario { get; set; }
     }
 }

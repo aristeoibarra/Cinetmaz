@@ -11,12 +11,12 @@ namespace CapaDato.Model
 {
     using System;
     
-    public partial class fnMostrarTodosClienteByEstado_Result
+    public partial class fnMostrarTodosUsuarioByEstatus_Result
     {
         public int Clave { get; set; }
+        public string Usuario { get; set; }
         public string Nombre { get; set; }
-        public string ApPaterno { get; set; }
-        public string ApMaterno { get; set; }
-        public int Edad { get; set; }
+        public System.DateTime Fecha_de_Creación { get; set; }
+        public string Estado { get; set; }
     }
 }

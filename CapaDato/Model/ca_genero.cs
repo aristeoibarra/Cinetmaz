@@ -12,24 +12,18 @@ namespace CapaDato.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ca_pelicula
+    public partial class ca_genero
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ca_pelicula()
+        public ca_genero()
         {
-            this.ma_cinetmaz = new HashSet<ma_cinetmaz>();
+            this.ca_pelicula = new HashSet<ca_pelicula>();
         }
     
-        public int cve_pelicula { get; set; }
-        public string nombre_pelicula { get; set; }
-        public System.TimeSpan duracion_pelicula { get; set; }
-        public int cvesala_pelicula { get; set; }
-        public byte[] portada_pelicula { get; set; }
-        public Nullable<int> cvegenero_pelicula { get; set; }
+        public int cve_genero { get; set; }
+        public string nombre_genero { get; set; }
     
-        public virtual ca_genero ca_genero { get; set; }
-        public virtual ca_sala ca_sala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }
+        public virtual ICollection<ca_pelicula> ca_pelicula { get; set; }
     }
 }

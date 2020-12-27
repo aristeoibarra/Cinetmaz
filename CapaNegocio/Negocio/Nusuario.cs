@@ -48,12 +48,12 @@ namespace CapaNegocio.Negocio
             }
         }
 
-        public List<fnMostrarTodosUsuarioByEstado_Result> MostrarTodosByEstado(int cveEstado)
+        public List<fnMostrarTodosUsuarioByEstatus_Result> MostrarTodosByEstatus(int cveEstado)
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 // 1) Activo 2) Inactivo 3) Eliminado
-                return modeldb.fnMostrarTodosUsuarioByEstado(cveEstado).ToList();
+                return modeldb.fnMostrarTodosUsuarioByEstatus(cveEstado).ToList();
             }
         }
 
@@ -61,7 +61,7 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                var query = from u in modeldb.fnMostrarTodosUsuarioByEstado(1)
+                var query = from u in modeldb.fnMostrarTodosUsuarioByEstatus(1)
                             where u.Clave == id
                             select new Usuario
                             {

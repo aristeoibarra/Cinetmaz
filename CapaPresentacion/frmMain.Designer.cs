@@ -56,6 +56,7 @@ namespace CapaPresentacion
             this.clasificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bnGeneros = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -88,19 +89,20 @@ namespace CapaPresentacion
             // iniciarSesiónToolStripMenuItem
             // 
             this.iniciarSesiónToolStripMenuItem.Name = "iniciarSesiónToolStripMenuItem";
-            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.iniciarSesiónToolStripMenuItem.Size = new System.Drawing.Size(181, 28);
             this.iniciarSesiónToolStripMenuItem.Text = "Iniciar Sesión";
             // 
             // cerrarSesiónToolStripMenuItem
             // 
             this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
-            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(183, 28);
+            this.cerrarSesiónToolStripMenuItem.Size = new System.Drawing.Size(181, 28);
             this.cerrarSesiónToolStripMenuItem.Text = "Cerrar Sesión";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.bnGeneros);
             this.panel2.Controls.Add(this.btnNuevo);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label3);
@@ -150,7 +152,7 @@ namespace CapaPresentacion
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(203, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 20);
+            this.label3.Size = new System.Drawing.Size(76, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Peliculas";
             // 
@@ -160,7 +162,7 @@ namespace CapaPresentacion
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(386, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 20);
+            this.label5.Size = new System.Drawing.Size(123, 18);
             this.label5.TabIndex = 2;
             this.label5.Text = "Clasificaciones";
             // 
@@ -182,7 +184,7 @@ namespace CapaPresentacion
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label7.Location = new System.Drawing.Point(628, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 20);
+            this.label7.Size = new System.Drawing.Size(76, 18);
             this.label7.TabIndex = 2;
             this.label7.Text = "Usuarios";
             // 
@@ -192,7 +194,7 @@ namespace CapaPresentacion
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(316, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 20);
+            this.label4.Size = new System.Drawing.Size(50, 18);
             this.label4.TabIndex = 2;
             this.label4.Text = "Salas";
             // 
@@ -214,7 +216,7 @@ namespace CapaPresentacion
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(108, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Clientes";
             // 
@@ -236,7 +238,7 @@ namespace CapaPresentacion
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(526, 68);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 20);
+            this.label6.Size = new System.Drawing.Size(77, 18);
             this.label6.TabIndex = 2;
             this.label6.Text = "Reportes";
             // 
@@ -258,7 +260,7 @@ namespace CapaPresentacion
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(18, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 20);
+            this.label1.Size = new System.Drawing.Size(56, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Nuevo";
             // 
@@ -290,7 +292,7 @@ namespace CapaPresentacion
             this.adminToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(78, 132);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(630, 76);
+            this.menuStrip2.Size = new System.Drawing.Size(597, 74);
             this.menuStrip2.TabIndex = 46;
             this.menuStrip2.Text = "menuStrip2";
             this.menuStrip2.Visible = false;
@@ -301,7 +303,7 @@ namespace CapaPresentacion
             this.nuevoToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Add;
             this.nuevoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(71, 72);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(68, 70);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.nuevoToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -312,7 +314,7 @@ namespace CapaPresentacion
             this.clientesToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Clientes;
             this.clientesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(86, 72);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(81, 70);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.clientesToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -323,7 +325,7 @@ namespace CapaPresentacion
             this.películasToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Peliculas;
             this.películasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.películasToolStripMenuItem.Name = "películasToolStripMenuItem";
-            this.películasToolStripMenuItem.Size = new System.Drawing.Size(92, 72);
+            this.películasToolStripMenuItem.Size = new System.Drawing.Size(88, 70);
             this.películasToolStripMenuItem.Text = "Películas";
             this.películasToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.películasToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -334,7 +336,7 @@ namespace CapaPresentacion
             this.salasToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Sala;
             this.salasToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.salasToolStripMenuItem.Name = "salasToolStripMenuItem";
-            this.salasToolStripMenuItem.Size = new System.Drawing.Size(66, 72);
+            this.salasToolStripMenuItem.Size = new System.Drawing.Size(62, 70);
             this.salasToolStripMenuItem.Text = "Salas";
             this.salasToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.salasToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -345,7 +347,7 @@ namespace CapaPresentacion
             this.clasificaciónToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Clasificacion;
             this.clasificaciónToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.clasificaciónToolStripMenuItem.Name = "clasificaciónToolStripMenuItem";
-            this.clasificaciónToolStripMenuItem.Size = new System.Drawing.Size(141, 72);
+            this.clasificaciónToolStripMenuItem.Size = new System.Drawing.Size(135, 70);
             this.clasificaciónToolStripMenuItem.Text = "Clasificaciones";
             this.clasificaciónToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.clasificaciónToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -356,7 +358,7 @@ namespace CapaPresentacion
             this.reportesToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Report;
             this.reportesToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(95, 72);
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(89, 70);
             this.reportesToolStripMenuItem.Text = "Reportes";
             this.reportesToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.reportesToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -367,10 +369,21 @@ namespace CapaPresentacion
             this.adminToolStripMenuItem.Image = global::CapaPresentacion.Properties.Resources.Admin;
             this.adminToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(71, 72);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(66, 70);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.adminToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // bnGeneros
+            // 
+            this.bnGeneros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnGeneros.Location = new System.Drawing.Point(725, 11);
+            this.bnGeneros.Name = "bnGeneros";
+            this.bnGeneros.Size = new System.Drawing.Size(99, 60);
+            this.bnGeneros.TabIndex = 4;
+            this.bnGeneros.Text = "Generos";
+            this.bnGeneros.UseVisualStyleBackColor = true;
+            this.bnGeneros.Click += new System.EventHandler(this.bnGeneros_Click);
             // 
             // frmMain
             // 
@@ -433,6 +446,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.ToolStripMenuItem clasificaciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
+        private System.Windows.Forms.Button bnGeneros;
     }
 }
 

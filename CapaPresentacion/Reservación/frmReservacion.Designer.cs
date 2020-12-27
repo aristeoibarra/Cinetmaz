@@ -32,7 +32,6 @@ namespace CapaPresentacion.Reservación
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnPelicula = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtEdad = new System.Windows.Forms.TextBox();
@@ -40,7 +39,6 @@ namespace CapaPresentacion.Reservación
             this.label9 = new System.Windows.Forms.Label();
             this.txtApaterno = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtPelicula = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -68,6 +66,7 @@ namespace CapaPresentacion.Reservación
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlBtnAsientos = new System.Windows.Forms.Panel();
+            this.cmbPelicula = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -132,7 +131,7 @@ namespace CapaPresentacion.Reservación
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.Lavender;
-            this.groupBox4.Controls.Add(this.btnPelicula);
+            this.groupBox4.Controls.Add(this.cmbPelicula);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txtEdad);
@@ -140,7 +139,6 @@ namespace CapaPresentacion.Reservación
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtApaterno);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.txtPelicula);
             this.groupBox4.Controls.Add(this.txtNombre);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
@@ -150,16 +148,6 @@ namespace CapaPresentacion.Reservación
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "DATOS DE CLIENTE";
             this.groupBox4.UseCompatibleTextRendering = true;
-            // 
-            // btnPelicula
-            // 
-            this.btnPelicula.Location = new System.Drawing.Point(474, 230);
-            this.btnPelicula.Name = "btnPelicula";
-            this.btnPelicula.Size = new System.Drawing.Size(41, 27);
-            this.btnPelicula.TabIndex = 16;
-            this.btnPelicula.Text = "...";
-            this.btnPelicula.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnPelicula.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -230,15 +218,6 @@ namespace CapaPresentacion.Reservación
             this.label10.Size = new System.Drawing.Size(80, 20);
             this.label10.TabIndex = 9;
             this.label10.Text = "Nombre:";
-            // 
-            // txtPelicula
-            // 
-            this.txtPelicula.BackColor = System.Drawing.Color.White;
-            this.txtPelicula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtPelicula.Location = new System.Drawing.Point(191, 230);
-            this.txtPelicula.Name = "txtPelicula";
-            this.txtPelicula.Size = new System.Drawing.Size(277, 27);
-            this.txtPelicula.TabIndex = 10;
             // 
             // txtNombre
             // 
@@ -538,6 +517,17 @@ namespace CapaPresentacion.Reservación
             this.pnlBtnAsientos.Size = new System.Drawing.Size(499, 298);
             this.pnlBtnAsientos.TabIndex = 1;
             // 
+            // cmbPelicula
+            // 
+            this.cmbPelicula.BackColor = System.Drawing.Color.White;
+            this.cmbPelicula.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPelicula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbPelicula.FormattingEnabled = true;
+            this.cmbPelicula.Location = new System.Drawing.Point(191, 230);
+            this.cmbPelicula.Name = "cmbPelicula";
+            this.cmbPelicula.Size = new System.Drawing.Size(277, 28);
+            this.cmbPelicula.TabIndex = 17;
+            // 
             // frmReservacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -615,7 +605,6 @@ namespace CapaPresentacion.Reservación
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button btnPelicula;
-        private System.Windows.Forms.TextBox txtPelicula;
+        private System.Windows.Forms.ComboBox cmbPelicula;
     }
 }

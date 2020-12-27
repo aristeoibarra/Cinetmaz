@@ -178,13 +178,13 @@ namespace CapaPresentacion.Usuarios
         private void RefrescarListaActivos()
         {
             dgvListaActivos.DataSource = null;
-            dgvListaActivos.DataSource = nUsuario.MostrarTodosByEstado(1);
+            dgvListaActivos.DataSource = nUsuario.MostrarTodosByEstatus(1);
         }
 
         private void RefrescarListaInactivos()
         {
             dgvListaInactivos.DataSource = null;
-            dgvListaInactivos.DataSource = nUsuario.MostrarTodosByEstado(2);
+            dgvListaInactivos.DataSource = nUsuario.MostrarTodosByEstatus(2);
         }
 
         private void RefrescarListas()

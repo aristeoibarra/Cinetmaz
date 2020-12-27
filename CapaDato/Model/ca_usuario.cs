@@ -26,12 +26,12 @@ namespace CapaDato.Model
         public string user_usuario { get; set; }
         public string password_usuario { get; set; }
         public System.DateTime fechacreacion_usuario { get; set; }
-        public int cveestado_usuario { get; set; }
+        public int cveestatus_usuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_cliente> ca_cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_cliente> ca_cliente1 { get; set; }
-        public virtual ca_estado ca_estado { get; set; }
+        public virtual ca_estatus ca_estatus { get; set; }
     }
 }

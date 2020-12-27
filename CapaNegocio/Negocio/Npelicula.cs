@@ -11,7 +11,11 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spAgregarPelicula(dat.NombrePelicula, dat.CvesalaPelicula);
+                modeldb.spAgregarPelicula(dat.NombrePelicula,
+                                          dat.DuracionPelicula,
+                                          dat.CvesalaPelicula,
+                                          dat.PortadaPelicula,
+                                          dat.CvegeneroPelicula);
                 return true;
             }
         }
@@ -20,7 +24,12 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spModificarPelicula(dat.CvePelicula, dat.NombrePelicula, dat.CvesalaPelicula);
+                modeldb.spModificarPelicula(dat.CvePelicula,
+                                            dat.NombrePelicula,
+                                            dat.DuracionPelicula,
+                                            dat.CvesalaPelicula,
+                                            dat.PortadaPelicula,
+                                            dat.CvegeneroPelicula); 
                 return true;
             }
         }

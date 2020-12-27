@@ -9,7 +9,7 @@ namespace CapaPresentacion.Peliculas
     public partial class frmPelicula : Form
     {
         readonly Npelicula nPelicula = new Npelicula();
-        readonly NSala nSala = new NSala();
+        readonly Nsala nSala = new Nsala();
         readonly Pelicula pelicula = new Pelicula();
 
         public int idPelicula = 0;

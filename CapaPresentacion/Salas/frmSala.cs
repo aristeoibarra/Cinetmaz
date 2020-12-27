@@ -8,7 +8,7 @@ namespace CapaPresentacion.Salas
 {
     public partial class frmSala : Form
     {
-        readonly NSala nSala = new NSala();
+        readonly Nsala nSala = new Nsala();
         readonly Nclasificacion nclasificacion = new Nclasificacion();
         readonly Sala sala = new Sala();
 

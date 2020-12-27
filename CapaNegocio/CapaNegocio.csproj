@@ -52,9 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Negocio\Nclasificacion.cs" />
-    <Compile Include="Negocio\NCliente.cs" />
+    <Compile Include="Negocio\Ncliente.cs" />
+    <Compile Include="Negocio\Ngenero.cs" />
     <Compile Include="Negocio\Npelicula.cs" />
-    <Compile Include="Negocio\NSala.cs" />
+    <Compile Include="Negocio\Nsala.cs" />
     <Compile Include="Negocio\Nusuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
