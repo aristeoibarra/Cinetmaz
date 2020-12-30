@@ -94,8 +94,12 @@ namespace CapaPresentacion.Peliculas
             try
             {
                 lblTitulo.Text = "Películas";
-                dgvLista.Columns[2].Visible = false;
-                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvLista.Columns[3].Visible = false;
+                dgvLista.Columns[5].Visible = false;
+                dgvLista.Columns[8].Visible = false;
+
+                dgvLista.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
             }
             catch (Exception ex)
             {

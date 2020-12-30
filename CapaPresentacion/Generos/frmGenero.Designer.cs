@@ -40,7 +40,7 @@ namespace CapaPresentacion.Generos
             this.btnGuardar.Location = new System.Drawing.Point(99, 94);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(139, 38);
-            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -52,7 +52,7 @@ namespace CapaPresentacion.Generos
             this.label5.Location = new System.Drawing.Point(12, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 20);
-            this.label5.TabIndex = 4;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Nombre:";
             // 
             // txtNombre
@@ -61,7 +61,7 @@ namespace CapaPresentacion.Generos
             this.txtNombre.Location = new System.Drawing.Point(99, 27);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(226, 26);
-            this.txtNombre.TabIndex = 5;
+            this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // frmGenero

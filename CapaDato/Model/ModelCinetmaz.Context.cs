@@ -27,11 +27,9 @@ namespace CapaDato.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
         public virtual DbSet<ca_clasificacion> ca_clasificacion { get; set; }
         public virtual DbSet<ca_cliente> ca_cliente { get; set; }
         public virtual DbSet<ca_estatus> ca_estatus { get; set; }
-        public virtual DbSet<ca_estatusAsiento> ca_estatusAsiento { get; set; }
         public virtual DbSet<ca_genero> ca_genero { get; set; }
         public virtual DbSet<ca_pelicula> ca_pelicula { get; set; }
         public virtual DbSet<ca_sala> ca_sala { get; set; }
@@ -39,9 +37,11 @@ namespace CapaDato.Model
         public virtual DbSet<ma_cinetmaz> ma_cinetmaz { get; set; }
         public virtual DbSet<vwMostrarTodosClasificacion> vwMostrarTodosClasificacion { get; set; }
         public virtual DbSet<vwMostrarTodosCliente> vwMostrarTodosCliente { get; set; }
-        public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
         public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
         public virtual DbSet<vwMostrarTodosGenero> vwMostrarTodosGenero { get; set; }
+        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
+        public virtual DbSet<ca_estatusAsiento> ca_estatusAsiento { get; set; }
+        public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
     
         public virtual int spAgregarAsiento(Nullable<int> cveSala, Nullable<int> capacidadSala)
         {

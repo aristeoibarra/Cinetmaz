@@ -57,7 +57,8 @@ namespace CapaNegocio.Negocio
                             {
                                 NombreSala = s.Nombre,
                                 CapacidadSala = s.Capacidad,
-                                CveclasificacionSala = s.cveclasificacion_sala
+                                CveclasificacionSala = s.cveclasificacion_sala,
+                                TipoClasificacion = s.Clasificacion
                             };
                 return query.ToList();
             }

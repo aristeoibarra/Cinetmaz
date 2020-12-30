@@ -17,8 +17,8 @@ namespace CapaDato.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ca_sala()
         {
-            this.ca_asiento = new HashSet<ca_asiento>();
             this.ca_pelicula = new HashSet<ca_pelicula>();
+            this.ca_asiento = new HashSet<ca_asiento>();
         }
     
         public int cve_sala { get; set; }
@@ -26,10 +26,10 @@ namespace CapaDato.Model
         public int capacidad_sala { get; set; }
         public int cveclasificacion_sala { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ca_asiento> ca_asiento { get; set; }
         public virtual ca_clasificacion ca_clasificacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_pelicula> ca_pelicula { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ca_asiento> ca_asiento { get; set; }
     }
 }

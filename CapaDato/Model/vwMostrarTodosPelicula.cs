@@ -16,7 +16,12 @@ namespace CapaDato.Model
     {
         public int Clave { get; set; }
         public string Nombre { get; set; }
+        public Nullable<System.TimeSpan> Duración { get; set; }
+        public Nullable<int> cvegenero_pelicula { get; set; }
+        public string Genero { get; set; }
         public int cvesala_pelicula { get; set; }
         public string Sala { get; set; }
+        public string Clasificación { get; set; }
+        public byte[] portada_pelicula { get; set; }
     }
 }

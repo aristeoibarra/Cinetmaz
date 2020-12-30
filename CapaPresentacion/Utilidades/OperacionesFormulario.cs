@@ -3,16 +3,8 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion.Utilidades
 {
-    /// <summary>
-    /// Funciones y eventos comunes del formulario
-    /// </summary>
     class OperacionesFormulario
     {
-        /// <summary>
-        /// Obtiene el id de un gridview que contenga en la primer celda el id de registro
-        /// </summary>
-        /// <param name="dgv">gridview para obtener el id</param>
-        /// <returns>Regresa el entero del id</returns>
         public static int ObtenertId(DataGridView dgv)
         {
             try
@@ -64,6 +56,14 @@ namespace CapaPresentacion.Utilidades
         {
             int x = padre.Width / 2 - hijo.Width / 2;
             hijo.Location = new System.Drawing.Point(x, hijo.Location.Y);
+        }
+
+        public static byte[] ConviertePicBoxImageToByte(PictureBox pbImage)
+        {
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            System.Drawing.Bitmap bmap = new System.Drawing.Bitmap(pbImage.Image);//liena agregad apa evitar el pedo de exepcion de gdi
+            bmap.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.ToArray();
         }
     }
 }

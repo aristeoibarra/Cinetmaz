@@ -6,9 +6,12 @@ namespace CapaEntidades
     {
         public int CvePelicula { get; set; }
         public string NombrePelicula { get; set; }
-        public TimeSpan DuracionPelicula { get; set; }
+        public Nullable<System.TimeSpan> DuracionPelicula { get; set; }
         public int CvesalaPelicula { get; set; }
         public byte[] PortadaPelicula { get; set; }
         public int CvegeneroPelicula { get; set; }
+
+
+        public string TipoClasificacion { get; set; }
     }
 }

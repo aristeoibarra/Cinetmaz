@@ -60,7 +60,11 @@ namespace CapaNegocio.Negocio
                             select new Pelicula
                             {
                                 NombrePelicula = p.Nombre,
-                                CvesalaPelicula = p.cvesala_pelicula
+                                DuracionPelicula = p.Duración,                                
+                                CvegeneroPelicula = (int)p.cvegenero_pelicula,
+                                CvesalaPelicula = p.cvesala_pelicula,
+                                TipoClasificacion = p.Clasificación,
+                                PortadaPelicula = p.portada_pelicula
                             };
                 return query.ToList();
             }

@@ -65,7 +65,7 @@
           </Key>
           <Property Name="cve_pelicula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre_pelicula" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="duracion_pelicula" Type="time" Precision="7" Nullable="false" />
+          <Property Name="duracion_pelicula" Type="time" Precision="5" Nullable="false" />
           <Property Name="cvesala_pelicula" Type="int" Nullable="false" />
           <Property Name="portada_pelicula" Type="image" Nullable="false" />
           <Property Name="cvegenero_pelicula" Type="int" />
@@ -144,13 +144,21 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosPelicula' no tien
           <Key>
             <PropertyRef Name="Clave" />
             <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Genero" />
             <PropertyRef Name="cvesala_pelicula" />
             <PropertyRef Name="Sala" />
+            <PropertyRef Name="Clasificación" />
+            <PropertyRef Name="portada_pelicula" />
           </Key>
           <Property Name="Clave" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Duración" Type="time" Precision="0" />
+          <Property Name="cvegenero_pelicula" Type="int" />
+          <Property Name="Genero" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="cvesala_pelicula" Type="int" Nullable="false" />
           <Property Name="Sala" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Clasificación" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="portada_pelicula" Type="image" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -168,19 +176,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="cveclasificacion_sala" Type="int" Nullable="false" />
           <Property Name="Clasificacion" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <Association Name="FK_ca_asiento_ca_estado">
-          <End Role="ca_estatus" Type="Self.ca_estatus" Multiplicity="1" />
-          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_estatus">
-              <PropertyRef Name="cve_estatus" />
-            </Principal>
-            <Dependent Role="ca_asiento">
-              <PropertyRef Name="cveestatus_asiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ca_asiento_ca_estadoAsiento">
+        <Association Name="FK_ca_asiento_ca_estatusAsiento">
           <End Role="ca_estatusAsiento" Type="Self.ca_estatusAsiento" Multiplicity="1" />
           <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="*" />
           <ReferentialConstraint>
@@ -188,7 +184,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               <PropertyRef Name="cve_estatusAsiento" />
             </Principal>
             <Dependent Role="ca_asiento">
-              <PropertyRef Name="cvesala_asiento" />
+              <PropertyRef Name="cveestatus_asiento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -495,8 +491,13 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <DefiningQuery>SELECT 
     [vwMostrarTodosPelicula].[Clave] AS [Clave], 
     [vwMostrarTodosPelicula].[Nombre] AS [Nombre], 
+    [vwMostrarTodosPelicula].[Duración] AS [Duración], 
+    [vwMostrarTodosPelicula].[cvegenero_pelicula] AS [cvegenero_pelicula], 
+    [vwMostrarTodosPelicula].[Genero] AS [Genero], 
     [vwMostrarTodosPelicula].[cvesala_pelicula] AS [cvesala_pelicula], 
-    [vwMostrarTodosPelicula].[Sala] AS [Sala]
+    [vwMostrarTodosPelicula].[Sala] AS [Sala], 
+    [vwMostrarTodosPelicula].[Clasificación] AS [Clasificación], 
+    [vwMostrarTodosPelicula].[portada_pelicula] AS [portada_pelicula]
     FROM [dbo].[vwMostrarTodosPelicula] AS [vwMostrarTodosPelicula]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vwMostrarTodosSala" EntityType="Self.vwMostrarTodosSala" store:Type="Views" store:Schema="dbo">
@@ -508,11 +509,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
     [vwMostrarTodosSala].[Clasificacion] AS [Clasificacion]
     FROM [dbo].[vwMostrarTodosSala] AS [vwMostrarTodosSala]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_ca_asiento_ca_estado" Association="Self.FK_ca_asiento_ca_estado">
-            <End Role="ca_estatus" EntitySet="ca_estatus" />
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_asiento_ca_estadoAsiento" Association="Self.FK_ca_asiento_ca_estadoAsiento">
+          <AssociationSet Name="FK_ca_asiento_ca_estatusAsiento" Association="Self.FK_ca_asiento_ca_estatusAsiento">
             <End Role="ca_estatusAsiento" EntitySet="ca_estatusAsiento" />
             <End Role="ca_asiento" EntitySet="ca_asiento" />
           </AssociationSet>
@@ -565,19 +562,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CinetmazModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ca_asiento">
-          <Key>
-            <PropertyRef Name="cve_asiento" />
-          </Key>
-          <Property Name="cve_asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="numero_asiento" Type="Int32" Nullable="false" />
-          <Property Name="cveestatus_asiento" Type="Int32" Nullable="false" />
-          <Property Name="cvesala_asiento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_estatus" Relationship="Self.FK_ca_asiento_ca_estado" FromRole="ca_asiento" ToRole="ca_estatus" />
-          <NavigationProperty Name="ca_estatusAsiento" Relationship="Self.FK_ca_asiento_ca_estadoAsiento" FromRole="ca_asiento" ToRole="ca_estatusAsiento" />
-          <NavigationProperty Name="ca_sala" Relationship="Self.FK_ca_asiento_ca_sala" FromRole="ca_asiento" ToRole="ca_sala" />
-          <NavigationProperty Name="ma_cinetmaz" Relationship="Self.FK_ma_cinetmaz_ca_asiento" FromRole="ca_asiento" ToRole="ma_cinetmaz" />
-        </EntityType>
         <EntityType Name="ca_clasificacion">
           <Key>
             <PropertyRef Name="cve_clasificacion" />
@@ -613,17 +597,8 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </Key>
           <Property Name="cve_estatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ca_asiento" Relationship="Self.FK_ca_asiento_ca_estado" FromRole="ca_estatus" ToRole="ca_asiento" />
           <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ca_cliente_ca_estado" FromRole="ca_estatus" ToRole="ca_cliente" />
           <NavigationProperty Name="ca_usuario" Relationship="Self.FK_ca_usuario_ca_estado" FromRole="ca_estatus" ToRole="ca_usuario" />
-        </EntityType>
-        <EntityType Name="ca_estatusAsiento">
-          <Key>
-            <PropertyRef Name="cve_estatusAsiento" />
-          </Key>
-          <Property Name="cve_estatusAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="estatus_asiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ca_asiento" Relationship="Self.FK_ca_asiento_ca_estadoAsiento" FromRole="ca_estatusAsiento" ToRole="ca_asiento" />
         </EntityType>
         <EntityType Name="ca_genero">
           <Key>
@@ -639,7 +614,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </Key>
           <Property Name="cve_pelicula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre_pelicula" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="duracion_pelicula" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="duracion_pelicula" Type="Time" Nullable="false" Precision="5" />
           <Property Name="cvesala_pelicula" Type="Int32" Nullable="false" />
           <Property Name="portada_pelicula" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
           <Property Name="cvegenero_pelicula" Type="Int32" />
@@ -655,9 +630,9 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="nombre_sala" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="capacidad_sala" Type="Int32" Nullable="false" />
           <Property Name="cveclasificacion_sala" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_asiento" Relationship="Self.FK_ca_asiento_ca_sala" FromRole="ca_sala" ToRole="ca_asiento" />
           <NavigationProperty Name="ca_clasificacion" Relationship="Self.FK_ca_sala_ca_clasificacion" FromRole="ca_sala" ToRole="ca_clasificacion" />
           <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ca_pelicula_ca_sala" FromRole="ca_sala" ToRole="ca_pelicula" />
+          <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ca_asiento_ca_sala" FromRole="ca_sala" ToRole="ca_asiento" />
         </EntityType>
         <EntityType Name="ca_usuario">
           <Key>
@@ -681,58 +656,10 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="cvecliente_cinetmaz" Type="Int32" Nullable="false" />
           <Property Name="cvepelicula_cinetmaz" Type="Int32" Nullable="false" />
           <Property Name="cveasiento_cinetmaz" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_asiento" Relationship="Self.FK_ma_cinetmaz_ca_asiento" FromRole="ma_cinetmaz" ToRole="ca_asiento" />
           <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ma_cinetmaz_ca_cliente" FromRole="ma_cinetmaz" ToRole="ca_cliente" />
           <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ma_cinetmaz_ca_pelicula" FromRole="ma_cinetmaz" ToRole="ca_pelicula" />
+          <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_asiento" FromRole="ma_cinetmaz" ToRole="ca_asiento" />
         </EntityType>
-        <Association Name="FK_ca_asiento_ca_estado">
-          <End Role="ca_estatus" Type="Self.ca_estatus" Multiplicity="1" />
-          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_estatus">
-              <PropertyRef Name="cve_estatus" />
-            </Principal>
-            <Dependent Role="ca_asiento">
-              <PropertyRef Name="cveestatus_asiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ca_asiento_ca_estadoAsiento">
-          <End Role="ca_estatusAsiento" Type="Self.ca_estatusAsiento" Multiplicity="1" />
-          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_estatusAsiento">
-              <PropertyRef Name="cve_estatusAsiento" />
-            </Principal>
-            <Dependent Role="ca_asiento">
-              <PropertyRef Name="cvesala_asiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ca_asiento_ca_sala">
-          <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="1" />
-          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_sala">
-              <PropertyRef Name="cve_sala" />
-            </Principal>
-            <Dependent Role="ca_asiento">
-              <PropertyRef Name="cvesala_asiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ma_cinetmaz_ca_asiento">
-          <End Role="ca_asiento" Type="Self.ca_asiento" Multiplicity="1" />
-          <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_asiento">
-              <PropertyRef Name="cve_asiento" />
-            </Principal>
-            <Dependent Role="ma_cinetmaz">
-              <PropertyRef Name="cveasiento_cinetmaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ca_sala_ca_clasificacion">
           <End Role="ca_clasificacion" Type="Self.ca_clasificacion" Multiplicity="1" />
           <End Role="ca_sala" Type="Self.ca_sala" Multiplicity="*" />
@@ -842,32 +769,14 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CinetmazEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ca_asiento" EntityType="Self.ca_asiento" />
           <EntitySet Name="ca_clasificacion" EntityType="Self.ca_clasificacion" />
           <EntitySet Name="ca_cliente" EntityType="Self.ca_cliente" />
           <EntitySet Name="ca_estatus" EntityType="Self.ca_estatus" />
-          <EntitySet Name="ca_estatusAsiento" EntityType="Self.ca_estatusAsiento" />
           <EntitySet Name="ca_genero" EntityType="Self.ca_genero" />
           <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" />
           <EntitySet Name="ca_sala" EntityType="Self.ca_sala" />
           <EntitySet Name="ca_usuario" EntityType="Self.ca_usuario" />
           <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" />
-          <AssociationSet Name="FK_ca_asiento_ca_estado" Association="Self.FK_ca_asiento_ca_estado">
-            <End Role="ca_estatus" EntitySet="ca_estatus" />
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_asiento_ca_estadoAsiento" Association="Self.FK_ca_asiento_ca_estadoAsiento">
-            <End Role="ca_estatusAsiento" EntitySet="ca_estatusAsiento" />
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_asiento_ca_sala" Association="Self.FK_ca_asiento_ca_sala">
-            <End Role="ca_sala" EntitySet="ca_sala" />
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ma_cinetmaz_ca_asiento" Association="Self.FK_ma_cinetmaz_ca_asiento">
-            <End Role="ca_asiento" EntitySet="ca_asiento" />
-            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
           <AssociationSet Name="FK_ca_sala_ca_clasificacion" Association="Self.FK_ca_sala_ca_clasificacion">
             <End Role="ca_clasificacion" EntitySet="ca_clasificacion" />
             <End Role="ca_sala" EntitySet="ca_sala" />
@@ -1008,7 +917,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </FunctionImport>
           <EntitySet Name="vwMostrarTodosClasificacion" EntityType="CinetmazModel.vwMostrarTodosClasificacion" />
           <EntitySet Name="vwMostrarTodosCliente" EntityType="CinetmazModel.vwMostrarTodosCliente" />
-          <EntitySet Name="vwMostrarTodosPelicula" EntityType="CinetmazModel.vwMostrarTodosPelicula" />
           <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
           <FunctionImport Name="fnMostrarTodosClienteByEstatus" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosClienteByEstatus_Result)">
           <Parameter Name="cveEstatus" Mode="In" Type="Int32" />
@@ -1020,6 +928,21 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="vwMostrarTodosGenero" EntityType="CinetmazModel.vwMostrarTodosGenero" />
+          <EntitySet Name="ca_asiento" EntityType="CinetmazModel.ca_asiento" />
+          <EntitySet Name="ca_estatusAsiento" EntityType="CinetmazModel.ca_estatusAsiento" />
+          <AssociationSet Name="FK_ca_asiento_ca_estatusAsiento" Association="CinetmazModel.FK_ca_asiento_ca_estatusAsiento">
+            <End Role="ca_estatusAsiento" EntitySet="ca_estatusAsiento" />
+            <End Role="ca_asiento" EntitySet="ca_asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ca_asiento_ca_sala" Association="CinetmazModel.FK_ca_asiento_ca_sala">
+            <End Role="ca_sala" EntitySet="ca_sala" />
+            <End Role="ca_asiento" EntitySet="ca_asiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ma_cinetmaz_ca_asiento" Association="CinetmazModel.FK_ma_cinetmaz_ca_asiento">
+            <End Role="ca_asiento" EntitySet="ca_asiento" />
+            <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
+          </AssociationSet>
+          <EntitySet Name="vwMostrarTodosPelicula" EntityType="CinetmazModel.vwMostrarTodosPelicula" />
         </EntityContainer>
         <EntityType Name="vwMostrarTodosClasificacion">
           <Key>
@@ -1045,18 +968,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="ApPaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApMaterno" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Edad" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vwMostrarTodosPelicula">
-          <Key>
-            <PropertyRef Name="Clave" />
-            <PropertyRef Name="Nombre" />
-            <PropertyRef Name="cvesala_pelicula" />
-            <PropertyRef Name="Sala" />
-          </Key>
-          <Property Name="Clave" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="cvesala_pelicula" Type="Int32" Nullable="false" />
-          <Property Name="Sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vwMostrarTodosSala">
           <Key>
@@ -1094,22 +1005,88 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="Clave" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="ca_asiento">
+          <Key>
+            <PropertyRef Name="cve_asiento" />
+          </Key>
+          <Property Name="cve_asiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="numero_asiento" Type="Int32" Nullable="false" />
+          <Property Name="cveestatus_asiento" Type="Int32" Nullable="false" />
+          <Property Name="cvesala_asiento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ca_estatusAsiento" Relationship="CinetmazModel.FK_ca_asiento_ca_estatusAsiento" FromRole="ca_asiento" ToRole="ca_estatusAsiento" />
+          <NavigationProperty Name="ca_sala" Relationship="CinetmazModel.FK_ca_asiento_ca_sala" FromRole="ca_asiento" ToRole="ca_sala" />
+          <NavigationProperty Name="ma_cinetmaz" Relationship="CinetmazModel.FK_ma_cinetmaz_ca_asiento" FromRole="ca_asiento" ToRole="ma_cinetmaz" />
+        </EntityType>
+        <EntityType Name="ca_estatusAsiento">
+          <Key>
+            <PropertyRef Name="cve_estatusAsiento" />
+          </Key>
+          <Property Name="cve_estatusAsiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="estatus_asiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ca_asiento_ca_estatusAsiento" FromRole="ca_estatusAsiento" ToRole="ca_asiento" />
+        </EntityType>
+        <Association Name="FK_ca_asiento_ca_estatusAsiento">
+          <End Type="CinetmazModel.ca_estatusAsiento" Role="ca_estatusAsiento" Multiplicity="1" />
+          <End Type="CinetmazModel.ca_asiento" Role="ca_asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_estatusAsiento">
+              <PropertyRef Name="cve_estatusAsiento" />
+            </Principal>
+            <Dependent Role="ca_asiento">
+              <PropertyRef Name="cveestatus_asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ca_asiento_ca_sala">
+          <End Type="CinetmazModel.ca_sala" Role="ca_sala" Multiplicity="1" />
+          <End Type="CinetmazModel.ca_asiento" Role="ca_asiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_sala">
+              <PropertyRef Name="cve_sala" />
+            </Principal>
+            <Dependent Role="ca_asiento">
+              <PropertyRef Name="cvesala_asiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ma_cinetmaz_ca_asiento">
+          <End Type="CinetmazModel.ca_asiento" Role="ca_asiento" Multiplicity="1" />
+          <End Type="CinetmazModel.ma_cinetmaz" Role="ma_cinetmaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_asiento">
+              <PropertyRef Name="cve_asiento" />
+            </Principal>
+            <Dependent Role="ma_cinetmaz">
+              <PropertyRef Name="cveasiento_cinetmaz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="vwMostrarTodosPelicula">
+          <Key>
+            <PropertyRef Name="Clave" />
+            <PropertyRef Name="Nombre" />
+            <PropertyRef Name="Genero" />
+            <PropertyRef Name="cvesala_pelicula" />
+            <PropertyRef Name="Sala" />
+            <PropertyRef Name="Clasificación" />
+            <PropertyRef Name="portada_pelicula" />
+          </Key>
+          <Property Name="Clave" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Duración" Type="Time" Precision="0" />
+          <Property Name="cvegenero_pelicula" Type="Int32" />
+          <Property Name="Genero" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cvesala_pelicula" Type="Int32" Nullable="false" />
+          <Property Name="Sala" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Clasificación" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="portada_pelicula" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CinetmazModelStoreContainer" CdmEntityContainer="CinetmazEntities">
-          <EntitySetMapping Name="ca_asiento">
-            <EntityTypeMapping TypeName="CinetmazModel.ca_asiento">
-              <MappingFragment StoreEntitySet="ca_asiento">
-                <ScalarProperty Name="cve_asiento" ColumnName="cve_asiento" />
-                <ScalarProperty Name="numero_asiento" ColumnName="numero_asiento" />
-                <ScalarProperty Name="cveestatus_asiento" ColumnName="cveestatus_asiento" />
-                <ScalarProperty Name="cvesala_asiento" ColumnName="cvesala_asiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ca_clasificacion">
             <EntityTypeMapping TypeName="CinetmazModel.ca_clasificacion">
               <MappingFragment StoreEntitySet="ca_clasificacion">
@@ -1141,14 +1118,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               <MappingFragment StoreEntitySet="ca_estatus">
                 <ScalarProperty Name="cve_estatus" ColumnName="cve_estatus" />
                 <ScalarProperty Name="estatus" ColumnName="estatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ca_estatusAsiento">
-            <EntityTypeMapping TypeName="CinetmazModel.ca_estatusAsiento">
-              <MappingFragment StoreEntitySet="ca_estatusAsiento">
-                <ScalarProperty Name="cve_estatusAsiento" ColumnName="cve_estatusAsiento" />
-                <ScalarProperty Name="estatus_asiento" ColumnName="estatus_asiento" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1246,16 +1215,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vwMostrarTodosPelicula">
-            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosPelicula">
-              <MappingFragment StoreEntitySet="vwMostrarTodosPelicula">
-                <ScalarProperty Name="Sala" ColumnName="Sala" />
-                <ScalarProperty Name="cvesala_pelicula" ColumnName="cvesala_pelicula" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Clave" ColumnName="Clave" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vwMostrarTodosSala">
             <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosSala">
               <MappingFragment StoreEntitySet="vwMostrarTodosSala">
@@ -1293,6 +1252,39 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <EntitySetMapping Name="vwMostrarTodosGenero">
             <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosGenero">
               <MappingFragment StoreEntitySet="vwMostrarTodosGenero">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ca_asiento">
+            <EntityTypeMapping TypeName="CinetmazModel.ca_asiento">
+              <MappingFragment StoreEntitySet="ca_asiento">
+                <ScalarProperty Name="cvesala_asiento" ColumnName="cvesala_asiento" />
+                <ScalarProperty Name="cveestatus_asiento" ColumnName="cveestatus_asiento" />
+                <ScalarProperty Name="numero_asiento" ColumnName="numero_asiento" />
+                <ScalarProperty Name="cve_asiento" ColumnName="cve_asiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ca_estatusAsiento">
+            <EntityTypeMapping TypeName="CinetmazModel.ca_estatusAsiento">
+              <MappingFragment StoreEntitySet="ca_estatusAsiento">
+                <ScalarProperty Name="estatus_asiento" ColumnName="estatus_asiento" />
+                <ScalarProperty Name="cve_estatusAsiento" ColumnName="cve_estatusAsiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwMostrarTodosPelicula">
+            <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosPelicula">
+              <MappingFragment StoreEntitySet="vwMostrarTodosPelicula">
+                <ScalarProperty Name="portada_pelicula" ColumnName="portada_pelicula" />
+                <ScalarProperty Name="Clasificación" ColumnName="Clasificación" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+                <ScalarProperty Name="cvesala_pelicula" ColumnName="cvesala_pelicula" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="cvegenero_pelicula" ColumnName="cvegenero_pelicula" />
+                <ScalarProperty Name="Duración" ColumnName="Duración" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
               </MappingFragment>
