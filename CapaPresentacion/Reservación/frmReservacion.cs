@@ -20,20 +20,26 @@ namespace CapaPresentacion.Reservación
         private void frmReservacion_Load(object sender, EventArgs e)
         {
             //63, 118, 140
-            txtNombre.Focus();
+            //txtNombre.Focus();
             GenerarAsiento(15);
            
-            Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox1);
-            Utilidades.OperacionesFormulario.CentraX(groupBox1, pnlBtnAsientos);
-            Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox2);
-            Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox3);
-            Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox5);
+            //Asientos
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox1);
+            //Utilidades.OperacionesFormulario.CentraX(groupBox1, pnlBtnAsientos);
 
+            //estados
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox2);
 
-            Utilidades.OperacionesFormulario.CentraX(groupBox3, dgvLista);
+            //reservacion
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox3);
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer1.Panel2, groupBox5);
+            //Utilidades.OperacionesFormulario.CentraX(groupBox3, dgvLista);
 
-            Utilidades.OperacionesFormulario.CentraX(splitContainer2.Panel1, groupBox4);
-            Utilidades.OperacionesFormulario.CentraX(splitContainer2.Panel2, groupBox6);
+            // CLIENTES
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer2.Panel1, groupBox4);
+
+            //PELICULAS
+            //Utilidades.OperacionesFormulario.CentraX(splitContainer2.Panel2, groupBox6);
             
         }
 
@@ -63,7 +69,7 @@ namespace CapaPresentacion.Reservación
         {
             btnAsiento[i] = new Button
             {
-                Size = new Size(96, 96),
+                Size = new Size(92, 92),
                 Text = $"{i + 1}",
                 Top = valorTop,
                 Left = valorLeft * 100,
