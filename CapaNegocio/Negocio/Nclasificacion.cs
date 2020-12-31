@@ -44,7 +44,7 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                return modeldb.vwMostrarTodosClasificacion.ToList();
+                return modeldb.vwMostrarTodosClasificacion.OrderBy(x => x.Tipo).ToList();
             }
         }
 
@@ -52,14 +52,15 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                var query = from c in modeldb.vwMostrarTodosClasificacion
-                            where c.Clave == id
-                            select new Clasificacion
-                            {
-                                TipoClasificacion = c.Tipo,
-                                EdadMinima = c.Edad_Minima,
-                                DescripcionClasificacion = c.Descripcion
-                            };
+                var query = (from c in modeldb.vwMostrarTodosClasificacion
+                             where c.Clave == id
+                             select new Clasificacion
+                             {
+                                 TipoClasificacion = c.Tipo,
+                                 EdadMinima = c.Edad_Minima,
+                                 DescripcionClasificacion = c.Descripcion
+                             }).OrderBy(x => x.TipoClasificacion);
+
                 return query.ToList();
             }
         }

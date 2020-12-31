@@ -24,7 +24,7 @@ namespace CapaPresentacion.Peliculas
         }
 
         private void frmPelicula_Load(object sender, EventArgs e)
-        {           
+        {
             txtNombre.Focus();
             LlenarComboSala();
             LlenarComboGenero();
@@ -37,7 +37,7 @@ namespace CapaPresentacion.Peliculas
             {
                 CargaDatos();
             }
-            
+
         }
 
         private void CargaDatos()
@@ -50,7 +50,7 @@ namespace CapaPresentacion.Peliculas
                 cmbSala.SelectedValue = item.CvesalaPelicula;
                 lbClasificacion.Text = item.TipoClasificacion;
 
-                if(item.PortadaPelicula != null)
+                if (item.PortadaPelicula != null)
                 {
                     MemoryStream stream = new MemoryStream(item.PortadaPelicula);
                     Bitmap image = new Bitmap(stream);
@@ -60,14 +60,14 @@ namespace CapaPresentacion.Peliculas
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-        {          
+        {
             if (OperacionesFormulario.ValidarTextBox(this))
             {
                 MessageBox.Show("Campos vacios");
                 return;
             }
 
-            if(picimagen.Image == null)
+            if (picimagen.Image == null)
             {
                 MessageBox.Show("Agregue una imagen");
             }
@@ -101,7 +101,7 @@ namespace CapaPresentacion.Peliculas
         {
             ObtenerDatos();
 
-            if(pelicula.DuracionPelicula != TimeSpan.Parse("0"))
+            if (pelicula.DuracionPelicula != TimeSpan.Parse("0"))
             {
                 if (nPelicula.Agregar(pelicula))
                 {
@@ -114,7 +114,7 @@ namespace CapaPresentacion.Peliculas
                 MessageBox.Show("Intervalo de hora Incorrecto");
                 txtDuracion.Clear();
             }
-            
+
         }
 
         private void Modificar()
@@ -150,17 +150,6 @@ namespace CapaPresentacion.Peliculas
             cmbGenero.ValueMember = "Clave";
         }
 
-       
-        private void cmbSala_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void cmbSala_SelectedValueChanged(object sender, EventArgs e)
-        {
-           
-        }
-
         private void cmbSala_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cmbSala.SelectedValue != null)
@@ -184,7 +173,7 @@ namespace CapaPresentacion.Peliculas
                 Filter = "Archivos jpg (*.jpg)|*.jpg|Archivos png (*.png)|*.png|Archivos gif (*.gif)|*.gif",
                 FilterIndex = 1,
                 RestoreDirectory = true,
-                             
+
             };
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)

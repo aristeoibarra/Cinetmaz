@@ -67,9 +67,7 @@ namespace CapaPresentacion.Peliculas
             this.cmbSala.Name = "cmbSala";
             this.cmbSala.Size = new System.Drawing.Size(226, 28);
             this.cmbSala.TabIndex = 4;
-            this.cmbSala.SelectedIndexChanged += new System.EventHandler(this.cmbSala_SelectedIndexChanged);
             this.cmbSala.SelectionChangeCommitted += new System.EventHandler(this.cmbSala_SelectionChangeCommitted);
-            this.cmbSala.SelectedValueChanged += new System.EventHandler(this.cmbSala_SelectedValueChanged);
             // 
             // label2
             // 

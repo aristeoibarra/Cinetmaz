@@ -63,5 +63,16 @@ namespace CapaNegocio.Negocio
                 return query.ToList();
             }
         }
+
+        public List<fnObtenerCapacidadSala_Result> ObtenerCapacidad(int cveSalaPelicula)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from s in modeldb.fnObtenerCapacidadSala(cveSalaPelicula)
+                            select s;
+
+                return query.ToList();
+            }
+        }
     }
 }

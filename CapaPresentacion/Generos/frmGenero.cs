@@ -34,7 +34,7 @@ namespace CapaPresentacion.Generos
             foreach (var item in nGenero.MostrarByID(idGenero))
             {
                 txtNombre.Text = item.NombreGenero;
-            }          
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace CapaPresentacion.Generos
         private void ObtenerDatos()
         {
             genero.CveGenero = idGenero;
-            genero.NombreGenero = txtNombre.Text.Trim();            
+            genero.NombreGenero = txtNombre.Text.Trim();
         }
 
         private void Agregar()

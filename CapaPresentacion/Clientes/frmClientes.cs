@@ -193,5 +193,23 @@ namespace CapaPresentacion.Clientes
             RefrescarListaInactivos();
             Interfaz();
         }
+
+        private void btnReservar_Click(object sender, EventArgs e)
+        {
+            if (dgvListaActivos.Rows.Count != 0)
+            {
+                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                if (cveCliente > 0)
+                {
+                    Reservación.frmReservacion frmR = new Reservación.frmReservacion();
+                    frmR.idCliente = cveCliente;
+                    frmR.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Debe existir una fila seleccionada");
+                }
+            }
+        }
     }
 }

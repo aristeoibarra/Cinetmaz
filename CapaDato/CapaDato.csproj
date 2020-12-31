@@ -62,9 +62,6 @@
     <Compile Include="Model\ca_estatus.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ca_estatusAsiento.cs">
-      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\ca_genero.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
@@ -77,10 +74,19 @@
     <Compile Include="Model\ca_usuario.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\fnMostrarReservasByPelicula_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\fnMostrarTodosClienteByEstatus_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\fnMostrarTodosUsuarioByEstatus_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnObtenerCapacidadSala_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnPeliculasByEdad_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ma_cinetmaz.cs">

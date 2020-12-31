@@ -19,6 +19,7 @@ namespace CapaDato.Model
         {
             this.ca_cliente = new HashSet<ca_cliente>();
             this.ca_usuario = new HashSet<ca_usuario>();
+            this.ca_asiento = new HashSet<ca_asiento>();
         }
     
         public int cve_estatus { get; set; }
@@ -28,5 +29,7 @@ namespace CapaDato.Model
         public virtual ICollection<ca_cliente> ca_cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ca_usuario> ca_usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ca_asiento> ca_asiento { get; set; }
     }
 }

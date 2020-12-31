@@ -1,10 +1,7 @@
 ﻿using CapaDato.Model;
 using CapaEntidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CapaNegocio.Negocio
 {
@@ -53,7 +50,7 @@ namespace CapaNegocio.Negocio
                             where g.Clave == id
                             select new Genero
                             {
-                               NombreGenero = g.Nombre
+                                NombreGenero = g.Nombre
                             };
                 return query.ToList();
             }

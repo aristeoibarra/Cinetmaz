@@ -34,6 +34,7 @@ namespace CapaPresentacion
             this.iniciarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.bnGeneros = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@ namespace CapaPresentacion
             this.clasificaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bnGeneros = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -100,7 +100,7 @@ namespace CapaPresentacion
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(214)))), ((int)(((byte)(214)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.bnGeneros);
             this.panel2.Controls.Add(this.btnNuevo);
@@ -118,10 +118,22 @@ namespace CapaPresentacion
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.btnClientes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(908, 98);
             this.panel2.TabIndex = 44;
+            // 
+            // bnGeneros
+            // 
+            this.bnGeneros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bnGeneros.Location = new System.Drawing.Point(725, 11);
+            this.bnGeneros.Name = "bnGeneros";
+            this.bnGeneros.Size = new System.Drawing.Size(99, 60);
+            this.bnGeneros.TabIndex = 4;
+            this.bnGeneros.Text = "Generos";
+            this.bnGeneros.UseVisualStyleBackColor = true;
+            this.bnGeneros.Click += new System.EventHandler(this.bnGeneros_Click);
             // 
             // btnNuevo
             // 
@@ -150,6 +162,7 @@ namespace CapaPresentacion
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(203, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 18);
@@ -160,6 +173,7 @@ namespace CapaPresentacion
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(386, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 18);
@@ -182,6 +196,7 @@ namespace CapaPresentacion
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(628, 68);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 18);
@@ -192,6 +207,7 @@ namespace CapaPresentacion
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(316, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 18);
@@ -214,6 +230,7 @@ namespace CapaPresentacion
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(108, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 18);
@@ -236,6 +253,7 @@ namespace CapaPresentacion
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(526, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 18);
@@ -244,7 +262,7 @@ namespace CapaPresentacion
             // 
             // btnUsuarios
             // 
-            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnUsuarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
             this.btnUsuarios.BackgroundImage = global::CapaPresentacion.Properties.Resources.Admin;
             this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnUsuarios.Location = new System.Drawing.Point(632, 7);
@@ -258,6 +276,7 @@ namespace CapaPresentacion
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(18, 68);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 18);
@@ -290,7 +309,7 @@ namespace CapaPresentacion
             this.clasificaciónToolStripMenuItem,
             this.reportesToolStripMenuItem,
             this.adminToolStripMenuItem});
-            this.menuStrip2.Location = new System.Drawing.Point(78, 132);
+            this.menuStrip2.Location = new System.Drawing.Point(73, 121);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(597, 74);
             this.menuStrip2.TabIndex = 46;
@@ -374,17 +393,6 @@ namespace CapaPresentacion
             this.adminToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.adminToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
-            // bnGeneros
-            // 
-            this.bnGeneros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bnGeneros.Location = new System.Drawing.Point(725, 11);
-            this.bnGeneros.Name = "bnGeneros";
-            this.bnGeneros.Size = new System.Drawing.Size(99, 60);
-            this.bnGeneros.TabIndex = 4;
-            this.bnGeneros.Text = "Generos";
-            this.bnGeneros.UseVisualStyleBackColor = true;
-            this.bnGeneros.Click += new System.EventHandler(this.bnGeneros_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,6 +404,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.841584F);
+            this.ForeColor = System.Drawing.Color.Black;
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;

@@ -29,31 +29,36 @@ namespace CapaPresentacion.Reservación
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.cmbPelicula = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
+            this.lblEdad = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
+            this.lblAMaterno = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.lblApaterno = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.lblDatosCliente = new System.Windows.Forms.Label();
+            this.lblClasificacion = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lblGenero = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lblDuracion = new System.Windows.Forms.Label();
+            this.lblSala = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.PicPortada = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblDatosPelicula = new System.Windows.Forms.Label();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.GroupBox7 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,13 +70,13 @@ namespace CapaPresentacion.Reservación
             this.pnlBtnAsientos = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.DataGridView1 = new System.Windows.Forms.DataGridView();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.Button1 = new System.Windows.Forms.Button();
-            this.Button2 = new System.Windows.Forms.Button();
+            this.btnReservar = new System.Windows.Forms.Button();
             this.Button3 = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,8 +91,8 @@ namespace CapaPresentacion.Reservación
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.GroupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
             this.GroupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -121,32 +126,32 @@ namespace CapaPresentacion.Reservación
             // 
             this.splitContainer2.Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer2.Panel1.Controls.Add(this.cmbPelicula);
-            this.splitContainer2.Panel1.Controls.Add(this.label25);
+            this.splitContainer2.Panel1.Controls.Add(this.lblEdad);
             this.splitContainer2.Panel1.Controls.Add(this.label9);
-            this.splitContainer2.Panel1.Controls.Add(this.label24);
+            this.splitContainer2.Panel1.Controls.Add(this.lblAMaterno);
             this.splitContainer2.Panel1.Controls.Add(this.label10);
-            this.splitContainer2.Panel1.Controls.Add(this.label23);
+            this.splitContainer2.Panel1.Controls.Add(this.lblApaterno);
             this.splitContainer2.Panel1.Controls.Add(this.label11);
-            this.splitContainer2.Panel1.Controls.Add(this.label22);
+            this.splitContainer2.Panel1.Controls.Add(this.lblNombre);
             this.splitContainer2.Panel1.Controls.Add(this.label12);
             this.splitContainer2.Panel1.Controls.Add(this.label21);
             this.splitContainer2.Panel1.Controls.Add(this.label8);
-            this.splitContainer2.Panel1.Controls.Add(this.label7);
+            this.splitContainer2.Panel1.Controls.Add(this.lblDatosCliente);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer2.Panel2.Controls.Add(this.label27);
+            this.splitContainer2.Panel2.Controls.Add(this.lblClasificacion);
             this.splitContainer2.Panel2.Controls.Add(this.label15);
-            this.splitContainer2.Panel2.Controls.Add(this.label26);
+            this.splitContainer2.Panel2.Controls.Add(this.lblGenero);
             this.splitContainer2.Panel2.Controls.Add(this.label19);
-            this.splitContainer2.Panel2.Controls.Add(this.label20);
-            this.splitContainer2.Panel2.Controls.Add(this.label18);
+            this.splitContainer2.Panel2.Controls.Add(this.lblDuracion);
+            this.splitContainer2.Panel2.Controls.Add(this.lblSala);
             this.splitContainer2.Panel2.Controls.Add(this.label17);
             this.splitContainer2.Panel2.Controls.Add(this.label16);
             this.splitContainer2.Panel2.Controls.Add(this.PicPortada);
             this.splitContainer2.Panel2.Controls.Add(this.label14);
-            this.splitContainer2.Panel2.Controls.Add(this.label13);
+            this.splitContainer2.Panel2.Controls.Add(this.lblDatosPelicula);
             this.splitContainer2.Size = new System.Drawing.Size(600, 748);
             this.splitContainer2.SplitterDistance = 352;
             this.splitContainer2.TabIndex = 0;
@@ -160,17 +165,18 @@ namespace CapaPresentacion.Reservación
             this.cmbPelicula.Name = "cmbPelicula";
             this.cmbPelicula.Size = new System.Drawing.Size(369, 28);
             this.cmbPelicula.TabIndex = 29;
+            this.cmbPelicula.SelectionChangeCommitted += new System.EventHandler(this.cmbPelicula_SelectionChangeCommitted);
             // 
-            // label25
+            // lblEdad
             // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.Silver;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(152, 211);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(47, 20);
-            this.label25.TabIndex = 24;
-            this.label25.Text = "Edad";
+            this.lblEdad.AutoSize = true;
+            this.lblEdad.BackColor = System.Drawing.Color.Silver;
+            this.lblEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdad.Location = new System.Drawing.Point(152, 211);
+            this.lblEdad.Name = "lblEdad";
+            this.lblEdad.Size = new System.Drawing.Size(47, 20);
+            this.lblEdad.TabIndex = 24;
+            this.lblEdad.Text = "Edad";
             // 
             // label9
             // 
@@ -183,16 +189,16 @@ namespace CapaPresentacion.Reservación
             this.label9.TabIndex = 24;
             this.label9.Text = "Edad:";
             // 
-            // label24
+            // lblAMaterno
             // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.Color.Silver;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(152, 169);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(87, 20);
-            this.label24.TabIndex = 25;
-            this.label24.Text = "A. Materno";
+            this.lblAMaterno.AutoSize = true;
+            this.lblAMaterno.BackColor = System.Drawing.Color.Silver;
+            this.lblAMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAMaterno.Location = new System.Drawing.Point(152, 169);
+            this.lblAMaterno.Name = "lblAMaterno";
+            this.lblAMaterno.Size = new System.Drawing.Size(87, 20);
+            this.lblAMaterno.TabIndex = 25;
+            this.lblAMaterno.Text = "A. Materno";
             // 
             // label10
             // 
@@ -205,16 +211,16 @@ namespace CapaPresentacion.Reservación
             this.label10.TabIndex = 25;
             this.label10.Text = "A. Materno:";
             // 
-            // label23
+            // lblApaterno
             // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.Silver;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(152, 126);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(84, 20);
-            this.label23.TabIndex = 26;
-            this.label23.Text = "A. Paterno";
+            this.lblApaterno.AutoSize = true;
+            this.lblApaterno.BackColor = System.Drawing.Color.Silver;
+            this.lblApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApaterno.Location = new System.Drawing.Point(152, 126);
+            this.lblApaterno.Name = "lblApaterno";
+            this.lblApaterno.Size = new System.Drawing.Size(84, 20);
+            this.lblApaterno.TabIndex = 26;
+            this.lblApaterno.Text = "A. Paterno";
             // 
             // label11
             // 
@@ -227,16 +233,16 @@ namespace CapaPresentacion.Reservación
             this.label11.TabIndex = 26;
             this.label11.Text = "A. Paterno:";
             // 
-            // label22
+            // lblNombre
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Silver;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(152, 84);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(65, 20);
-            this.label22.TabIndex = 27;
-            this.label22.Text = "Nombre";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.BackColor = System.Drawing.Color.Silver;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(152, 84);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(65, 20);
+            this.lblNombre.TabIndex = 27;
+            this.lblNombre.Text = "Nombre";
             // 
             // label12
             // 
@@ -272,25 +278,25 @@ namespace CapaPresentacion.Reservación
             this.label8.Text = "DATOS DEL CLIENTE";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
+            // lblDatosCliente
             // 
-            this.label7.BackColor = System.Drawing.Color.Silver;
-            this.label7.Enabled = false;
-            this.label7.Location = new System.Drawing.Point(17, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(564, 303);
-            this.label7.TabIndex = 22;
+            this.lblDatosCliente.BackColor = System.Drawing.Color.Silver;
+            this.lblDatosCliente.Enabled = false;
+            this.lblDatosCliente.Location = new System.Drawing.Point(17, 42);
+            this.lblDatosCliente.Name = "lblDatosCliente";
+            this.lblDatosCliente.Size = new System.Drawing.Size(564, 303);
+            this.lblDatosCliente.TabIndex = 22;
             // 
-            // label27
+            // lblClasificacion
             // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Silver;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(160, 295);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(33, 20);
-            this.label27.TabIndex = 32;
-            this.label27.Text = "......";
+            this.lblClasificacion.AutoSize = true;
+            this.lblClasificacion.BackColor = System.Drawing.Color.Silver;
+            this.lblClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClasificacion.Location = new System.Drawing.Point(160, 295);
+            this.lblClasificacion.Name = "lblClasificacion";
+            this.lblClasificacion.Size = new System.Drawing.Size(33, 20);
+            this.lblClasificacion.TabIndex = 32;
+            this.lblClasificacion.Text = "......";
             // 
             // label15
             // 
@@ -303,16 +309,16 @@ namespace CapaPresentacion.Reservación
             this.label15.TabIndex = 32;
             this.label15.Text = "Clasificación:";
             // 
-            // label26
+            // lblGenero
             // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.Silver;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(119, 178);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(33, 20);
-            this.label26.TabIndex = 33;
-            this.label26.Text = "......";
+            this.lblGenero.AutoSize = true;
+            this.lblGenero.BackColor = System.Drawing.Color.Silver;
+            this.lblGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenero.Location = new System.Drawing.Point(119, 178);
+            this.lblGenero.Name = "lblGenero";
+            this.lblGenero.Size = new System.Drawing.Size(33, 20);
+            this.lblGenero.TabIndex = 33;
+            this.lblGenero.Text = "......";
             // 
             // label19
             // 
@@ -325,27 +331,27 @@ namespace CapaPresentacion.Reservación
             this.label19.TabIndex = 33;
             this.label19.Text = "Genero:";
             // 
-            // label20
+            // lblDuracion
             // 
-            this.label20.AutoSize = true;
-            this.label20.BackColor = System.Drawing.Color.Silver;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(126, 117);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(33, 20);
-            this.label20.TabIndex = 34;
-            this.label20.Text = "......";
+            this.lblDuracion.AutoSize = true;
+            this.lblDuracion.BackColor = System.Drawing.Color.Silver;
+            this.lblDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuracion.Location = new System.Drawing.Point(126, 117);
+            this.lblDuracion.Name = "lblDuracion";
+            this.lblDuracion.Size = new System.Drawing.Size(33, 20);
+            this.lblDuracion.TabIndex = 34;
+            this.lblDuracion.Text = "......";
             // 
-            // label18
+            // lblSala
             // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Silver;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(91, 235);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(33, 20);
-            this.label18.TabIndex = 35;
-            this.label18.Text = "......";
+            this.lblSala.AutoSize = true;
+            this.lblSala.BackColor = System.Drawing.Color.Silver;
+            this.lblSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSala.Location = new System.Drawing.Point(91, 235);
+            this.lblSala.Name = "lblSala";
+            this.lblSala.Size = new System.Drawing.Size(33, 20);
+            this.lblSala.TabIndex = 35;
+            this.lblSala.Text = "......";
             // 
             // label17
             // 
@@ -371,11 +377,11 @@ namespace CapaPresentacion.Reservación
             // 
             // PicPortada
             // 
-            this.PicPortada.BackColor = System.Drawing.Color.Transparent;
-            this.PicPortada.Location = new System.Drawing.Point(320, 49);
+            this.PicPortada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.PicPortada.Location = new System.Drawing.Point(297, 48);
             this.PicPortada.Name = "PicPortada";
-            this.PicPortada.Size = new System.Drawing.Size(251, 327);
-            this.PicPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicPortada.Size = new System.Drawing.Size(274, 327);
+            this.PicPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicPortada.TabIndex = 31;
             this.PicPortada.TabStop = false;
             // 
@@ -391,14 +397,14 @@ namespace CapaPresentacion.Reservación
             this.label14.Text = "DATOS DE PELÍCULA";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label13
+            // lblDatosPelicula
             // 
-            this.label13.BackColor = System.Drawing.Color.Silver;
-            this.label13.Enabled = false;
-            this.label13.Location = new System.Drawing.Point(18, 41);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(564, 342);
-            this.label13.TabIndex = 23;
+            this.lblDatosPelicula.BackColor = System.Drawing.Color.Silver;
+            this.lblDatosPelicula.Enabled = false;
+            this.lblDatosPelicula.Location = new System.Drawing.Point(18, 41);
+            this.lblDatosPelicula.Name = "lblDatosPelicula";
+            this.lblDatosPelicula.Size = new System.Drawing.Size(564, 342);
+            this.lblDatosPelicula.TabIndex = 23;
             // 
             // splitContainer3
             // 
@@ -419,7 +425,7 @@ namespace CapaPresentacion.Reservación
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainer3.Panel2.Controls.Add(this.DataGridView1);
+            this.splitContainer3.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer3.Panel2.Controls.Add(this.GroupBox2);
             this.splitContainer3.Panel2.Controls.Add(this.label31);
             this.splitContainer3.Panel2.Controls.Add(this.label30);
@@ -532,21 +538,11 @@ namespace CapaPresentacion.Reservación
             this.label28.Size = new System.Drawing.Size(737, 304);
             this.label28.TabIndex = 42;
             // 
-            // DataGridView1
-            // 
-            this.DataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridView1.Location = new System.Drawing.Point(28, 127);
-            this.DataGridView1.Name = "DataGridView1";
-            this.DataGridView1.RowHeadersWidth = 43;
-            this.DataGridView1.Size = new System.Drawing.Size(710, 250);
-            this.DataGridView1.TabIndex = 45;
-            // 
             // GroupBox2
             // 
             this.GroupBox2.BackColor = System.Drawing.Color.Silver;
             this.GroupBox2.Controls.Add(this.Button1);
-            this.GroupBox2.Controls.Add(this.Button2);
+            this.GroupBox2.Controls.Add(this.btnReservar);
             this.GroupBox2.Controls.Add(this.Button3);
             this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.GroupBox2.Location = new System.Drawing.Point(100, 49);
@@ -567,17 +563,17 @@ namespace CapaPresentacion.Reservación
             this.Button1.Text = "Limpiar";
             this.Button1.UseVisualStyleBackColor = false;
             // 
-            // Button2
+            // btnReservar
             // 
-            this.Button2.BackColor = System.Drawing.SystemColors.Control;
-            this.Button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button2.Location = new System.Drawing.Point(57, 23);
-            this.Button2.Name = "Button2";
-            this.Button2.Size = new System.Drawing.Size(139, 38);
-            this.Button2.TabIndex = 6;
-            this.Button2.Text = "Reservar";
-            this.Button2.UseVisualStyleBackColor = false;
+            this.btnReservar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReservar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReservar.Location = new System.Drawing.Point(61, 23);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(139, 38);
+            this.btnReservar.TabIndex = 6;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = false;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click_1);
             // 
             // Button3
             // 
@@ -611,6 +607,64 @@ namespace CapaPresentacion.Reservación
             this.label30.Size = new System.Drawing.Size(737, 342);
             this.label30.TabIndex = 43;
             // 
+            // dgvLista
+            // 
+            this.dgvLista.AllowUserToAddRows = false;
+            this.dgvLista.AllowUserToDeleteRows = false;
+            this.dgvLista.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvLista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLista.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvLista.Location = new System.Drawing.Point(28, 127);
+            this.dgvLista.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvLista.MultiSelect = false;
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvLista.RowHeadersVisible = false;
+            this.dgvLista.RowHeadersWidth = 43;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLista.Size = new System.Drawing.Size(710, 250);
+            this.dgvLista.TabIndex = 45;
+            // 
             // frmReservacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,8 +697,8 @@ namespace CapaPresentacion.Reservación
             this.splitContainer3.ResumeLayout(false);
             this.GroupBox7.ResumeLayout(false);
             this.GroupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
             this.GroupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -654,28 +708,28 @@ namespace CapaPresentacion.Reservación
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         internal System.Windows.Forms.Label label8;
-        internal System.Windows.Forms.Label label7;
+        internal System.Windows.Forms.Label lblDatosCliente;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cmbPelicula;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lblEdad;
+        private System.Windows.Forms.Label lblAMaterno;
+        private System.Windows.Forms.Label lblApaterno;
+        private System.Windows.Forms.Label lblNombre;
         internal System.Windows.Forms.Label label14;
-        internal System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.Label lblDatosPelicula;
         internal System.Windows.Forms.PictureBox PicPortada;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lblClasificacion;
+        private System.Windows.Forms.Label lblGenero;
+        private System.Windows.Forms.Label lblDuracion;
+        private System.Windows.Forms.Label lblSala;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.GroupBox GroupBox7;
         private System.Windows.Forms.Label label6;
@@ -687,12 +741,13 @@ namespace CapaPresentacion.Reservación
         private System.Windows.Forms.Panel pnlBtnAsientos;
         internal System.Windows.Forms.Label label29;
         internal System.Windows.Forms.Label label28;
-        private System.Windows.Forms.DataGridView DataGridView1;
         private System.Windows.Forms.GroupBox GroupBox2;
         private System.Windows.Forms.Button Button1;
-        private System.Windows.Forms.Button Button2;
+        private System.Windows.Forms.Button Reservar;
         private System.Windows.Forms.Button Button3;
         internal System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button btnReservar;
+        private System.Windows.Forms.DataGridView dgvLista;
     }
 }

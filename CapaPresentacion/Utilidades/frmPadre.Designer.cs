@@ -80,7 +80,7 @@ namespace CapaPresentacion.Utilidades
             this.lblTitulo.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.Location = new System.Drawing.Point(12, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(167, 34);
+            this.lblTitulo.Size = new System.Drawing.Size(162, 32);
             this.lblTitulo.TabIndex = 7;
             this.lblTitulo.Text = "Formulario";
             // 

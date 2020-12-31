@@ -39,9 +39,8 @@ namespace CapaDato.Model
         public virtual DbSet<vwMostrarTodosCliente> vwMostrarTodosCliente { get; set; }
         public virtual DbSet<vwMostrarTodosSala> vwMostrarTodosSala { get; set; }
         public virtual DbSet<vwMostrarTodosGenero> vwMostrarTodosGenero { get; set; }
-        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
-        public virtual DbSet<ca_estatusAsiento> ca_estatusAsiento { get; set; }
         public virtual DbSet<vwMostrarTodosPelicula> vwMostrarTodosPelicula { get; set; }
+        public virtual DbSet<ca_asiento> ca_asiento { get; set; }
     
         public virtual int spAgregarAsiento(Nullable<int> cveSala, Nullable<int> capacidadSala)
         {
@@ -415,6 +414,67 @@ namespace CapaDato.Model
                 new ObjectParameter("nombre", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarGenero", nombreParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnPeliculasByEdad")]
+        public virtual IQueryable<fnPeliculasByEdad_Result> fnPeliculasByEdad(Nullable<int> edadMinima)
+        {
+            var edadMinimaParameter = edadMinima.HasValue ?
+                new ObjectParameter("edadMinima", edadMinima) :
+                new ObjectParameter("edadMinima", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnPeliculasByEdad_Result>("[CinetmazEntities].[fnPeliculasByEdad](@edadMinima)", edadMinimaParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnObtenerCapacidadSala")]
+        public virtual IQueryable<fnObtenerCapacidadSala_Result> fnObtenerCapacidadSala(Nullable<int> cveSalaPelicula)
+        {
+            var cveSalaPeliculaParameter = cveSalaPelicula.HasValue ?
+                new ObjectParameter("cveSalaPelicula", cveSalaPelicula) :
+                new ObjectParameter("cveSalaPelicula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnObtenerCapacidadSala_Result>("[CinetmazEntities].[fnObtenerCapacidadSala](@cveSalaPelicula)", cveSalaPeliculaParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnObtenerCveAsiento")]
+        public virtual IQueryable<Nullable<int>> fnObtenerCveAsiento(Nullable<int> cveSala, Nullable<int> numeroAsiento)
+        {
+            var cveSalaParameter = cveSala.HasValue ?
+                new ObjectParameter("cveSala", cveSala) :
+                new ObjectParameter("cveSala", typeof(int));
+    
+            var numeroAsientoParameter = numeroAsiento.HasValue ?
+                new ObjectParameter("numeroAsiento", numeroAsiento) :
+                new ObjectParameter("numeroAsiento", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<int>>("[CinetmazEntities].[fnObtenerCveAsiento](@cveSala, @numeroAsiento)", cveSalaParameter, numeroAsientoParameter);
+        }
+    
+        public virtual int spAgregarReservacion(Nullable<int> cveCliente, Nullable<int> cvePelicula, Nullable<int> cveAsiento)
+        {
+            var cveClienteParameter = cveCliente.HasValue ?
+                new ObjectParameter("cveCliente", cveCliente) :
+                new ObjectParameter("cveCliente", typeof(int));
+    
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
+    
+            var cveAsientoParameter = cveAsiento.HasValue ?
+                new ObjectParameter("cveAsiento", cveAsiento) :
+                new ObjectParameter("cveAsiento", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spAgregarReservacion", cveClienteParameter, cvePeliculaParameter, cveAsientoParameter);
+        }
+    
+        [DbFunction("CinetmazEntities", "fnMostrarReservasByPelicula")]
+        public virtual IQueryable<fnMostrarReservasByPelicula_Result> fnMostrarReservasByPelicula(Nullable<int> cvePelicula)
+        {
+            var cvePeliculaParameter = cvePelicula.HasValue ?
+                new ObjectParameter("cvePelicula", cvePelicula) :
+                new ObjectParameter("cvePelicula", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnMostrarReservasByPelicula_Result>("[CinetmazEntities].[fnMostrarReservasByPelicula](@cvePelicula)", cvePeliculaParameter);
         }
     }
 }

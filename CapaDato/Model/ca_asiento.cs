@@ -25,7 +25,7 @@ namespace CapaDato.Model
         public int cveestatus_asiento { get; set; }
         public int cvesala_asiento { get; set; }
     
-        public virtual ca_estatusAsiento ca_estatusAsiento { get; set; }
+        public virtual ca_estatus ca_estatus { get; set; }
         public virtual ca_sala ca_sala { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ma_cinetmaz> ma_cinetmaz { get; set; }

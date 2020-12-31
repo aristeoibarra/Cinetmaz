@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Negocio\Nasiento.cs" />
+    <Compile Include="Negocio\Ncinetmaz.cs" />
     <Compile Include="Negocio\Nclasificacion.cs" />
     <Compile Include="Negocio\Ncliente.cs" />
     <Compile Include="Negocio\Ngenero.cs" />

@@ -12,6 +12,8 @@ namespace CapaEntidades
         public int CvegeneroPelicula { get; set; }
 
 
+        public string NombreGenero { get; set; }
+        public string NombreSala { get; set; }
         public string TipoClasificacion { get; set; }
     }
 }

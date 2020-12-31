@@ -29,7 +29,7 @@ namespace CapaNegocio.Negocio
                                             dat.DuracionPelicula,
                                             dat.CvesalaPelicula,
                                             dat.PortadaPelicula,
-                                            dat.CvegeneroPelicula); 
+                                            dat.CvegeneroPelicula);
                 return true;
             }
         }
@@ -60,12 +60,25 @@ namespace CapaNegocio.Negocio
                             select new Pelicula
                             {
                                 NombrePelicula = p.Nombre,
-                                DuracionPelicula = p.Duración,                                
+                                DuracionPelicula = p.Duración,
                                 CvegeneroPelicula = (int)p.cvegenero_pelicula,
+                                NombreGenero = p.Genero,
                                 CvesalaPelicula = p.cvesala_pelicula,
+                                NombreSala = p.Sala,
                                 TipoClasificacion = p.Clasificación,
                                 PortadaPelicula = p.portada_pelicula
                             };
+                return query.ToList();
+            }
+        }
+
+        public List<fnPeliculasByEdad_Result> MostrarByEdad(int edadMinima)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from p in modeldb.fnPeliculasByEdad(edadMinima)
+                            select p;
+
                 return query.ToList();
             }
         }
