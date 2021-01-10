@@ -59,6 +59,7 @@ namespace CapaPresentacion.Utilidades
             // 
             // spContenedor.Panel1
             // 
+            this.spContenedor.Panel1.BackColor = System.Drawing.SystemColors.Control;
             this.spContenedor.Panel1.Controls.Add(this.lblTitulo);
             this.spContenedor.Panel1.Controls.Add(this.panelBotones);
             this.spContenedor.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
@@ -215,7 +216,7 @@ namespace CapaPresentacion.Utilidades
         public System.Windows.Forms.Button cmdModificar;
         public System.Windows.Forms.Button cmdNuevo;
         public System.Windows.Forms.SplitContainer spContenedor;
-        public System.Windows.Forms.DataGridView dgvLista;
         public System.Windows.Forms.Panel panelBotones;
+        public System.Windows.Forms.DataGridView dgvLista;
     }
 }

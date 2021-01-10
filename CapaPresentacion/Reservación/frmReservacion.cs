@@ -37,9 +37,11 @@ namespace CapaPresentacion.Reservación
         {
             if (idCliente > 0)
             {
+                GenerarAsiento(15);
                 CargaDatos();
                 LlenarComboPelicula();
                 cmbPelicula.Text = null;
+                CargaDatosReservas(0);
             }
         }
 
@@ -154,7 +156,7 @@ namespace CapaPresentacion.Reservación
 
                 foreach (var item in nPelicula.MostrarByID(idPelicula))
                 {
-                    lblDuracion.Text = item.DuracionPelicula.ToString().Substring(1);
+                    lblDuracion.Text = item.DuracionPelicula.ToString().Substring(1) + "Hrs";
                     lblGenero.Text = item.NombreGenero;
                     lblSala.Text = item.NombreSala;
                     lblClasificacion.Text = item.TipoClasificacion;
@@ -180,9 +182,17 @@ namespace CapaPresentacion.Reservación
             ObtenerDatos();
 
             if (nCinetmaz.Agregar(cinetmaz))
-            {
-                MessageBox.Show("Reservación agregada con exito");
+            {               
+                Reserva reserva = new Reserva();
+                reserva.ShowDialog();
+                this.Close();              
             }
+        }
+
+        private void Mesaje()
+        {
+            
+           
         }
 
         private void ObtenerDatos()
@@ -218,6 +228,35 @@ namespace CapaPresentacion.Reservación
             idAsiento = nAsiento.ObtenerCveAsiento(cveSala, numeroAsiento);
         }
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        void Limpiar()
+        {
+            //PELICULA 
+            string lbl = "......";
+            cmbPelicula.SelectedItem = null;         
+            lblDuracion.Text = lbl;
+            lblGenero.Text = lbl;
+            lblSala.Text = lbl;
+            lblClasificacion.Text = lbl;
+            PicPortada.Image = Properties.Resources.Film;
+
+            //REGISTRO
+            CargaDatosReservas(0);
+
+
+            //ASIENTOS
+            pnlBtnAsientos.Controls.Clear();
+            GenerarAsiento(15);
+        }
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
         private void CargaDatosReservas(int idPelicula)
         {
             dgvLista.DataSource = null;
@@ -228,7 +267,10 @@ namespace CapaPresentacion.Reservación
                 dgvLista.Rows[0].Selected = false;
             }
 
-            dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvLista.Columns[0].Visible = false;
+            dgvLista.Columns[3].Visible = false;
+            dgvLista.Columns[4].Visible = false;
+            dgvLista.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void CargarAsientosOcupados(int idPelicula)

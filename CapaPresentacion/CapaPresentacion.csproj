@@ -55,6 +55,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Film.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
@@ -132,11 +135,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservación\frmInfoReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservación\frmInfoReserva.Designer.cs">
+      <DependentUpon>frmInfoReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reservación\frmReservacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reservación\frmReservacion.Designer.cs">
       <DependentUpon>frmReservacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Salas\frmReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Salas\frmReservas.Designer.cs">
+      <DependentUpon>frmReservas.cs</DependentUpon>
     </Compile>
     <Compile Include="Salas\frmSala.cs">
       <SubType>Form</SubType>
@@ -150,6 +165,12 @@
     <Compile Include="Salas\frmSalas.Designer.cs">
       <DependentUpon>frmSalas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sesion\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sesion\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\frmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +183,7 @@
     <Compile Include="Usuarios\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\ClsUsuario.cs" />
     <Compile Include="Utilidades\frmPadre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,14 +228,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reservación\frmInfoReserva.resx">
+      <DependentUpon>frmInfoReserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reservación\frmReservacion.resx">
       <DependentUpon>frmReservacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Salas\frmReservas.resx">
+      <DependentUpon>frmReservas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salas\frmSala.resx">
       <DependentUpon>frmSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Salas\frmSalas.resx">
       <DependentUpon>frmSalas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sesion\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -300,6 +331,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Film.png" />
+    <None Include="Resources\House.png" />
+    <Content Include="Film.ico" />
     <Content Include="Resources\silla-de-cine.png" />
     <None Include="Resources\silla-de-cine1.png" />
   </ItemGroup>

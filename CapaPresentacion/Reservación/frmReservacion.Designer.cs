@@ -34,6 +34,7 @@ namespace CapaPresentacion.Reservación
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReservacion));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.cmbPelicula = new System.Windows.Forms.ComboBox();
@@ -70,13 +71,13 @@ namespace CapaPresentacion.Reservación
             this.pnlBtnAsientos = new System.Windows.Forms.Panel();
             this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.Button1 = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnReservar = new System.Windows.Forms.Button();
-            this.Button3 = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.dgvLista = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,8 +92,8 @@ namespace CapaPresentacion.Reservación
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.GroupBox7.SuspendLayout();
-            this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.GroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -111,7 +112,7 @@ namespace CapaPresentacion.Reservación
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.Lavender;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer1.Size = new System.Drawing.Size(1370, 748);
-            this.splitContainer1.SplitterDistance = 600;
+            this.splitContainer1.SplitterDistance = 598;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
@@ -152,18 +153,19 @@ namespace CapaPresentacion.Reservación
             this.splitContainer2.Panel2.Controls.Add(this.PicPortada);
             this.splitContainer2.Panel2.Controls.Add(this.label14);
             this.splitContainer2.Panel2.Controls.Add(this.lblDatosPelicula);
-            this.splitContainer2.Size = new System.Drawing.Size(600, 748);
+            this.splitContainer2.Size = new System.Drawing.Size(598, 748);
             this.splitContainer2.SplitterDistance = 352;
             this.splitContainer2.TabIndex = 0;
             // 
             // cmbPelicula
             // 
-            this.cmbPelicula.BackColor = System.Drawing.SystemColors.Control;
-            this.cmbPelicula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.cmbPelicula.BackColor = System.Drawing.Color.White;
+            this.cmbPelicula.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbPelicula.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(7)))), ((int)(((byte)(16)))));
             this.cmbPelicula.FormattingEnabled = true;
-            this.cmbPelicula.Location = new System.Drawing.Point(156, 248);
+            this.cmbPelicula.Location = new System.Drawing.Point(188, 251);
             this.cmbPelicula.Name = "cmbPelicula";
-            this.cmbPelicula.Size = new System.Drawing.Size(369, 28);
+            this.cmbPelicula.Size = new System.Drawing.Size(369, 32);
             this.cmbPelicula.TabIndex = 29;
             this.cmbPelicula.SelectionChangeCommitted += new System.EventHandler(this.cmbPelicula_SelectionChangeCommitted);
             // 
@@ -171,10 +173,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblEdad.AutoSize = true;
             this.lblEdad.BackColor = System.Drawing.Color.Silver;
-            this.lblEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEdad.Location = new System.Drawing.Point(152, 211);
+            this.lblEdad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEdad.Location = new System.Drawing.Point(190, 213);
             this.lblEdad.Name = "lblEdad";
-            this.lblEdad.Size = new System.Drawing.Size(47, 20);
+            this.lblEdad.Size = new System.Drawing.Size(59, 24);
             this.lblEdad.TabIndex = 24;
             this.lblEdad.Text = "Edad";
             // 
@@ -182,10 +184,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Silver;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(85, 211);
+            this.label9.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label9.Location = new System.Drawing.Point(105, 209);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 20);
+            this.label9.Size = new System.Drawing.Size(77, 30);
             this.label9.TabIndex = 24;
             this.label9.Text = "Edad:";
             // 
@@ -193,10 +196,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblAMaterno.AutoSize = true;
             this.lblAMaterno.BackColor = System.Drawing.Color.Silver;
-            this.lblAMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAMaterno.Location = new System.Drawing.Point(152, 169);
+            this.lblAMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAMaterno.Location = new System.Drawing.Point(190, 173);
             this.lblAMaterno.Name = "lblAMaterno";
-            this.lblAMaterno.Size = new System.Drawing.Size(87, 20);
+            this.lblAMaterno.Size = new System.Drawing.Size(112, 24);
             this.lblAMaterno.TabIndex = 25;
             this.lblAMaterno.Text = "A. Materno";
             // 
@@ -204,10 +207,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Silver;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkBlue;
             this.label10.Location = new System.Drawing.Point(39, 169);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 20);
+            this.label10.Size = new System.Drawing.Size(145, 30);
             this.label10.TabIndex = 25;
             this.label10.Text = "A. Materno:";
             // 
@@ -215,10 +219,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblApaterno.AutoSize = true;
             this.lblApaterno.BackColor = System.Drawing.Color.Silver;
-            this.lblApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApaterno.Location = new System.Drawing.Point(152, 126);
+            this.lblApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApaterno.Location = new System.Drawing.Point(188, 130);
             this.lblApaterno.Name = "lblApaterno";
-            this.lblApaterno.Size = new System.Drawing.Size(84, 20);
+            this.lblApaterno.Size = new System.Drawing.Size(108, 24);
             this.lblApaterno.TabIndex = 26;
             this.lblApaterno.Text = "A. Paterno";
             // 
@@ -226,10 +230,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Silver;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.DarkBlue;
             this.label11.Location = new System.Drawing.Point(42, 126);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(99, 20);
+            this.label11.Size = new System.Drawing.Size(140, 30);
             this.label11.TabIndex = 26;
             this.label11.Text = "A. Paterno:";
             // 
@@ -237,10 +242,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblNombre.AutoSize = true;
             this.lblNombre.BackColor = System.Drawing.Color.Silver;
-            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(152, 84);
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(189, 88);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(65, 20);
+            this.lblNombre.Size = new System.Drawing.Size(85, 24);
             this.lblNombre.TabIndex = 27;
             this.lblNombre.Text = "Nombre";
             // 
@@ -248,10 +253,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Silver;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(65, 84);
+            this.label12.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label12.Location = new System.Drawing.Point(72, 84);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 20);
+            this.label12.Size = new System.Drawing.Size(110, 30);
             this.label12.TabIndex = 27;
             this.label12.Text = "Nombre:";
             // 
@@ -259,10 +265,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.Silver;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(59, 251);
+            this.label21.Font = new System.Drawing.Font("Arial Black", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label21.Location = new System.Drawing.Point(71, 251);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(82, 20);
+            this.label21.Size = new System.Drawing.Size(111, 30);
             this.label21.TabIndex = 28;
             this.label21.Text = "Pelicula:";
             // 
@@ -291,10 +298,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblClasificacion.AutoSize = true;
             this.lblClasificacion.BackColor = System.Drawing.Color.Silver;
-            this.lblClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClasificacion.Location = new System.Drawing.Point(160, 295);
+            this.lblClasificacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClasificacion.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblClasificacion.Location = new System.Drawing.Point(180, 297);
             this.lblClasificacion.Name = "lblClasificacion";
-            this.lblClasificacion.Size = new System.Drawing.Size(33, 20);
+            this.lblClasificacion.Size = new System.Drawing.Size(46, 24);
             this.lblClasificacion.TabIndex = 32;
             this.lblClasificacion.Text = "......";
             // 
@@ -302,10 +310,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.Silver;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(39, 295);
+            this.label15.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(20, 295);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(115, 20);
+            this.label15.Size = new System.Drawing.Size(154, 27);
             this.label15.TabIndex = 32;
             this.label15.Text = "Clasificación:";
             // 
@@ -313,10 +321,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblGenero.AutoSize = true;
             this.lblGenero.BackColor = System.Drawing.Color.Silver;
-            this.lblGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGenero.Location = new System.Drawing.Point(119, 178);
+            this.lblGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenero.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblGenero.Location = new System.Drawing.Point(120, 180);
             this.lblGenero.Name = "lblGenero";
-            this.lblGenero.Size = new System.Drawing.Size(33, 20);
+            this.lblGenero.Size = new System.Drawing.Size(46, 24);
             this.lblGenero.TabIndex = 33;
             this.lblGenero.Text = "......";
             // 
@@ -324,10 +333,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.Silver;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label19.Location = new System.Drawing.Point(39, 178);
+            this.label19.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(20, 178);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 20);
+            this.label19.Size = new System.Drawing.Size(94, 27);
             this.label19.TabIndex = 33;
             this.label19.Text = "Genero:";
             // 
@@ -335,10 +344,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblDuracion.AutoSize = true;
             this.lblDuracion.BackColor = System.Drawing.Color.Silver;
-            this.lblDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuracion.Location = new System.Drawing.Point(126, 117);
+            this.lblDuracion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuracion.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblDuracion.Location = new System.Drawing.Point(138, 119);
             this.lblDuracion.Name = "lblDuracion";
-            this.lblDuracion.Size = new System.Drawing.Size(33, 20);
+            this.lblDuracion.Size = new System.Drawing.Size(46, 24);
             this.lblDuracion.TabIndex = 34;
             this.lblDuracion.Text = "......";
             // 
@@ -346,10 +356,11 @@ namespace CapaPresentacion.Reservación
             // 
             this.lblSala.AutoSize = true;
             this.lblSala.BackColor = System.Drawing.Color.Silver;
-            this.lblSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSala.Location = new System.Drawing.Point(91, 235);
+            this.lblSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSala.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lblSala.Location = new System.Drawing.Point(90, 237);
             this.lblSala.Name = "lblSala";
-            this.lblSala.Size = new System.Drawing.Size(33, 20);
+            this.lblSala.Size = new System.Drawing.Size(46, 24);
             this.lblSala.TabIndex = 35;
             this.lblSala.Text = "......";
             // 
@@ -357,10 +368,10 @@ namespace CapaPresentacion.Reservación
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Silver;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(39, 117);
+            this.label17.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 117);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(86, 20);
+            this.label17.Size = new System.Drawing.Size(112, 27);
             this.label17.TabIndex = 34;
             this.label17.Text = "Duración:";
             // 
@@ -368,19 +379,20 @@ namespace CapaPresentacion.Reservación
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Silver;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(39, 235);
+            this.label16.Font = new System.Drawing.Font("Arial Black", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(20, 235);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(50, 20);
+            this.label16.Size = new System.Drawing.Size(64, 27);
             this.label16.TabIndex = 35;
             this.label16.Text = "Sala:";
             // 
             // PicPortada
             // 
-            this.PicPortada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
-            this.PicPortada.Location = new System.Drawing.Point(297, 48);
+            this.PicPortada.BackColor = System.Drawing.Color.Silver;
+            this.PicPortada.Image = global::CapaPresentacion.Properties.Resources.Film;
+            this.PicPortada.Location = new System.Drawing.Point(327, 48);
             this.PicPortada.Name = "PicPortada";
-            this.PicPortada.Size = new System.Drawing.Size(274, 327);
+            this.PicPortada.Size = new System.Drawing.Size(244, 327);
             this.PicPortada.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PicPortada.TabIndex = 31;
             this.PicPortada.TabStop = false;
@@ -429,7 +441,7 @@ namespace CapaPresentacion.Reservación
             this.splitContainer3.Panel2.Controls.Add(this.GroupBox2);
             this.splitContainer3.Panel2.Controls.Add(this.label31);
             this.splitContainer3.Panel2.Controls.Add(this.label30);
-            this.splitContainer3.Size = new System.Drawing.Size(766, 748);
+            this.splitContainer3.Size = new System.Drawing.Size(768, 748);
             this.splitContainer3.SplitterDistance = 352;
             this.splitContainer3.TabIndex = 0;
             // 
@@ -512,9 +524,9 @@ namespace CapaPresentacion.Reservación
             this.pnlBtnAsientos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBtnAsientos.BackColor = System.Drawing.Color.Silver;
-            this.pnlBtnAsientos.Location = new System.Drawing.Point(48, 46);
+            this.pnlBtnAsientos.Location = new System.Drawing.Point(47, 47);
             this.pnlBtnAsientos.Name = "pnlBtnAsientos";
-            this.pnlBtnAsientos.Size = new System.Drawing.Size(495, 293);
+            this.pnlBtnAsientos.Size = new System.Drawing.Size(510, 293);
             this.pnlBtnAsientos.TabIndex = 43;
             // 
             // label29
@@ -537,75 +549,6 @@ namespace CapaPresentacion.Reservación
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(737, 304);
             this.label28.TabIndex = 42;
-            // 
-            // GroupBox2
-            // 
-            this.GroupBox2.BackColor = System.Drawing.Color.Silver;
-            this.GroupBox2.Controls.Add(this.Button1);
-            this.GroupBox2.Controls.Add(this.btnReservar);
-            this.GroupBox2.Controls.Add(this.Button3);
-            this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.GroupBox2.Location = new System.Drawing.Point(100, 49);
-            this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(574, 69);
-            this.GroupBox2.TabIndex = 44;
-            this.GroupBox2.TabStop = false;
-            this.GroupBox2.Text = "OPERACIONES";
-            // 
-            // Button1
-            // 
-            this.Button1.BackColor = System.Drawing.SystemColors.Control;
-            this.Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button1.Location = new System.Drawing.Point(371, 23);
-            this.Button1.Name = "Button1";
-            this.Button1.Size = new System.Drawing.Size(139, 38);
-            this.Button1.TabIndex = 6;
-            this.Button1.Text = "Limpiar";
-            this.Button1.UseVisualStyleBackColor = false;
-            // 
-            // btnReservar
-            // 
-            this.btnReservar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReservar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReservar.Location = new System.Drawing.Point(61, 23);
-            this.btnReservar.Name = "btnReservar";
-            this.btnReservar.Size = new System.Drawing.Size(139, 38);
-            this.btnReservar.TabIndex = 6;
-            this.btnReservar.Text = "Reservar";
-            this.btnReservar.UseVisualStyleBackColor = false;
-            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click_1);
-            // 
-            // Button3
-            // 
-            this.Button3.BackColor = System.Drawing.SystemColors.Control;
-            this.Button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Button3.Location = new System.Drawing.Point(216, 23);
-            this.Button3.Name = "Button3";
-            this.Button3.Size = new System.Drawing.Size(139, 38);
-            this.Button3.TabIndex = 6;
-            this.Button3.Text = "Cancelar";
-            this.Button3.UseVisualStyleBackColor = false;
-            // 
-            // label31
-            // 
-            this.label31.BackColor = System.Drawing.Color.Black;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(14, 8);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(738, 33);
-            this.label31.TabIndex = 42;
-            this.label31.Text = "RESERVAR";
-            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label30
-            // 
-            this.label30.BackColor = System.Drawing.Color.Silver;
-            this.label30.Enabled = false;
-            this.label30.Location = new System.Drawing.Point(14, 41);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(737, 342);
-            this.label30.TabIndex = 43;
             // 
             // dgvLista
             // 
@@ -665,6 +608,77 @@ namespace CapaPresentacion.Reservación
             this.dgvLista.Size = new System.Drawing.Size(710, 250);
             this.dgvLista.TabIndex = 45;
             // 
+            // GroupBox2
+            // 
+            this.GroupBox2.BackColor = System.Drawing.Color.Silver;
+            this.GroupBox2.Controls.Add(this.btnSalir);
+            this.GroupBox2.Controls.Add(this.btnReservar);
+            this.GroupBox2.Controls.Add(this.btnLimpiar);
+            this.GroupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.GroupBox2.Location = new System.Drawing.Point(100, 49);
+            this.GroupBox2.Name = "GroupBox2";
+            this.GroupBox2.Size = new System.Drawing.Size(574, 69);
+            this.GroupBox2.TabIndex = 44;
+            this.GroupBox2.TabStop = false;
+            this.GroupBox2.Text = "OPERACIONES";
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(371, 23);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(139, 38);
+            this.btnSalir.TabIndex = 6;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnReservar
+            // 
+            this.btnReservar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReservar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReservar.Location = new System.Drawing.Point(61, 23);
+            this.btnReservar.Name = "btnReservar";
+            this.btnReservar.Size = new System.Drawing.Size(139, 38);
+            this.btnReservar.TabIndex = 6;
+            this.btnReservar.Text = "Reservar";
+            this.btnReservar.UseVisualStyleBackColor = false;
+            this.btnReservar.Click += new System.EventHandler(this.btnReservar_Click_1);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.11881F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(216, 23);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(139, 38);
+            this.btnLimpiar.TabIndex = 6;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // label31
+            // 
+            this.label31.BackColor = System.Drawing.Color.Black;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(14, 8);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(738, 33);
+            this.label31.TabIndex = 42;
+            this.label31.Text = "RESERVAR";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.BackColor = System.Drawing.Color.Silver;
+            this.label30.Enabled = false;
+            this.label30.Location = new System.Drawing.Point(14, 41);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(737, 342);
+            this.label30.TabIndex = 43;
+            // 
             // frmReservacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -673,10 +687,10 @@ namespace CapaPresentacion.Reservación
             this.ClientSize = new System.Drawing.Size(1370, 748);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmReservacion";
-            this.ShowIcon = false;
             this.Text = "Reservación";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmReservacion_Load);
@@ -697,8 +711,8 @@ namespace CapaPresentacion.Reservación
             this.splitContainer3.ResumeLayout(false);
             this.GroupBox7.ResumeLayout(false);
             this.GroupBox7.PerformLayout();
-            this.GroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.GroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -742,9 +756,8 @@ namespace CapaPresentacion.Reservación
         internal System.Windows.Forms.Label label29;
         internal System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox GroupBox2;
-        private System.Windows.Forms.Button Button1;
-        private System.Windows.Forms.Button Reservar;
-        private System.Windows.Forms.Button Button3;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnLimpiar;
         internal System.Windows.Forms.Label label31;
         internal System.Windows.Forms.Label label30;
         private System.Windows.Forms.Button btnReservar;
