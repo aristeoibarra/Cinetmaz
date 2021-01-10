@@ -29,6 +29,7 @@ namespace CapaPresentacion.Clasificaciones
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClasificaciones));
             ((System.ComponentModel.ISupportInitialize)(this.spContenedor)).BeginInit();
             this.spContenedor.Panel1.SuspendLayout();
             this.spContenedor.SuspendLayout();
@@ -48,6 +49,7 @@ namespace CapaPresentacion.Clasificaciones
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 561);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClasificaciones";
             this.Text = "Clasificaciones";
             this.Load += new System.EventHandler(this.frmClasificaciones_Load);

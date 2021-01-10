@@ -64,27 +64,35 @@ namespace CapaPresentacion.Clasificaciones
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
+            try
             {
-                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveClasificacion > 0)
+
+                if (dgvLista.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
+                    if (cveClasificacion > 0)
                     {
-                        if (nClasificacion.Eliminar(cveClasificacion))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarLista();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error");
+                            if (nClasificacion.Eliminar(cveClasificacion))
+                            {
+                                RefrescarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "CLASIFICACIÓN ACTIVA");
             }
         }
         #endregion
@@ -102,7 +110,7 @@ namespace CapaPresentacion.Clasificaciones
             try
             {
                 lblTitulo.Text = "Clasificaciones";
-                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvLista.Columns[dgvLista.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;              
             }
             catch (Exception ex)
             {

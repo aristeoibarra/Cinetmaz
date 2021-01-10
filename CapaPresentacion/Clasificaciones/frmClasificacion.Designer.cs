@@ -29,6 +29,7 @@ namespace CapaPresentacion.Clasificaciones
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmClasificacion));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,7 +57,7 @@ namespace CapaPresentacion.Clasificaciones
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 20);
+            this.label4.Size = new System.Drawing.Size(108, 20);
             this.label4.TabIndex = 0;
             this.label4.Text = "Descripción:";
             // 
@@ -66,9 +67,9 @@ namespace CapaPresentacion.Clasificaciones
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(117, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Edad:";
+            this.label1.Text = "Edad Minima:";
             // 
             // label5
             // 
@@ -76,7 +77,7 @@ namespace CapaPresentacion.Clasificaciones
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Tipo:";
             // 
@@ -86,7 +87,7 @@ namespace CapaPresentacion.Clasificaciones
             this.chkPublicoGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.chkPublicoGeneral.Location = new System.Drawing.Point(209, 60);
             this.chkPublicoGeneral.Name = "chkPublicoGeneral";
-            this.chkPublicoGeneral.Size = new System.Drawing.Size(166, 24);
+            this.chkPublicoGeneral.Size = new System.Drawing.Size(158, 24);
             this.chkPublicoGeneral.TabIndex = 3;
             this.chkPublicoGeneral.Text = "Público en general";
             this.chkPublicoGeneral.UseVisualStyleBackColor = true;
@@ -107,7 +108,7 @@ namespace CapaPresentacion.Clasificaciones
             this.txtEdad.Location = new System.Drawing.Point(141, 58);
             this.txtEdad.MaxLength = 2;
             this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(41, 27);
+            this.txtEdad.Size = new System.Drawing.Size(41, 26);
             this.txtEdad.TabIndex = 2;
             this.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
@@ -117,14 +118,14 @@ namespace CapaPresentacion.Clasificaciones
             this.txtTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtTipo.Location = new System.Drawing.Point(141, 16);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(337, 27);
+            this.txtTipo.Size = new System.Drawing.Size(337, 26);
             this.txtTipo.TabIndex = 1;
             // 
             // frmClasificacion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 308);
+            this.ClientSize = new System.Drawing.Size(507, 309);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -134,13 +135,13 @@ namespace CapaPresentacion.Clasificaciones
             this.Controls.Add(this.txtEdad);
             this.Controls.Add(this.txtTipo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(523, 348);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(523, 348);
             this.Name = "frmClasificacion";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Clasificación";
             this.Load += new System.EventHandler(this.frmClasificacion_Load);
