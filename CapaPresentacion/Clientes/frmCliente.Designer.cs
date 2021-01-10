@@ -29,6 +29,7 @@ namespace CapaPresentacion.Clientes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCliente));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +58,7 @@ namespace CapaPresentacion.Clientes
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 150);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Edad:";
             // 
@@ -67,7 +68,7 @@ namespace CapaPresentacion.Clientes
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.Size = new System.Drawing.Size(102, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "A. Materno:";
             // 
@@ -77,7 +78,7 @@ namespace CapaPresentacion.Clientes
             this.txtEdad.Location = new System.Drawing.Point(159, 147);
             this.txtEdad.MaxLength = 2;
             this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(47, 27);
+            this.txtEdad.Size = new System.Drawing.Size(47, 26);
             this.txtEdad.TabIndex = 4;
             this.txtEdad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloNumeros);
@@ -87,7 +88,7 @@ namespace CapaPresentacion.Clientes
             this.txtAmaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtAmaterno.Location = new System.Drawing.Point(159, 104);
             this.txtAmaterno.Name = "txtAmaterno";
-            this.txtAmaterno.Size = new System.Drawing.Size(226, 27);
+            this.txtAmaterno.Size = new System.Drawing.Size(226, 26);
             this.txtAmaterno.TabIndex = 3;
             this.txtAmaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
@@ -97,7 +98,7 @@ namespace CapaPresentacion.Clientes
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "A. Paterno:";
             // 
@@ -106,7 +107,7 @@ namespace CapaPresentacion.Clientes
             this.txtApaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtApaterno.Location = new System.Drawing.Point(159, 61);
             this.txtApaterno.Name = "txtApaterno";
-            this.txtApaterno.Size = new System.Drawing.Size(226, 27);
+            this.txtApaterno.Size = new System.Drawing.Size(226, 26);
             this.txtApaterno.TabIndex = 2;
             this.txtApaterno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
@@ -116,7 +117,7 @@ namespace CapaPresentacion.Clientes
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 20);
+            this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Nombre:";
             // 
@@ -125,15 +126,15 @@ namespace CapaPresentacion.Clientes
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtNombre.Location = new System.Drawing.Point(159, 18);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(226, 27);
+            this.txtNombre.Size = new System.Drawing.Size(226, 26);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxSoloLetras);
             // 
             // frmCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 247);
+            this.ClientSize = new System.Drawing.Size(405, 248);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,13 +145,13 @@ namespace CapaPresentacion.Clientes
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNombre);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(421, 287);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(421, 287);
             this.Name = "frmCliente";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Cliente";
             this.Load += new System.EventHandler(this.frmCliente_Load);

@@ -61,6 +61,8 @@ namespace CapaPresentacion.Clientes
             cliente.ApepaternoCliente = txtApaterno.Text.Trim();
             cliente.ApematernoCliente = txtAmaterno.Text.Trim();
             cliente.EdadCliente = Convert.ToInt32(txtEdad.Text.Trim());
+            cliente.CveusuarioaltaCliente = ClsUsuario.idUsuario;
+            cliente.CveusuariomodCliente = ClsUsuario.idUsuario;
         }
 
         private void Agregar()

@@ -29,6 +29,7 @@ namespace CapaPresentacion.Peliculas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPelicula));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.cmbSala = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -209,13 +210,13 @@ namespace CapaPresentacion.Peliculas
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNombre);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(641, 415);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(641, 415);
             this.Name = "frmPelicula";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Película";
             this.Load += new System.EventHandler(this.frmPelicula_Load);

@@ -57,27 +57,34 @@ namespace CapaPresentacion.Generos
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
+            try
             {
-                int cveGenero = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveGenero > 0)
+                if (dgvLista.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveGenero = OperacionesFormulario.ObtenertId(dgvLista);
+                    if (cveGenero > 0)
                     {
-                        if (nGenero.Eliminar(cveGenero))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarLista();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error");
+                            if (nGenero.Eliminar(cveGenero))
+                            {
+                                RefrescarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "GENERO ACTIVO");
             }
         }
         #endregion

@@ -1,6 +1,7 @@
 ﻿using CapaNegocio.Negocio;
 using CapaPresentacion.Utilidades;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Clientes
@@ -8,6 +9,8 @@ namespace CapaPresentacion.Clientes
     public partial class frmClientes : frmPadreTab
     {
         readonly Ncliente nCliente = new Ncliente();
+        Npelicula npelicula = new Npelicula();
+
 
         public frmClientes()
         {
@@ -85,27 +88,34 @@ namespace CapaPresentacion.Clientes
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvListaActivos.Rows.Count != 0)
+            try
             {
-                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveCliente > 0)
+                if (dgvListaActivos.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                    if (cveCliente > 0)
                     {
-                        if (nCliente.Eliminar(cveCliente))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarListas();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error");
+                            if (nCliente.Eliminar(cveCliente))
+                            {
+                                RefrescarListas();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "CLIENTE ACTIVO");
             }
         }
         #endregion
@@ -166,6 +176,9 @@ namespace CapaPresentacion.Clientes
             try
             {
                 lblTitulo.Text = "Clientes";
+                dgvListaActivos.Columns[0].Visible = false;
+                dgvListaInactivos.Columns[0].Visible = false;
+
                 dgvListaActivos.Columns[dgvListaActivos.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dgvListaInactivos.Columns[dgvListaActivos.Columns.Count - 1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
@@ -194,22 +207,40 @@ namespace CapaPresentacion.Clientes
             Interfaz();
         }
 
-        private void btnReservar_Click(object sender, EventArgs e)
+        public void btnReservar_Click(object sender, EventArgs e)
         {
+
             if (dgvListaActivos.Rows.Count != 0)
             {
-                int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveCliente > 0)
+                if(npelicula.MostrarTodos().Count() > 0)
                 {
-                    Reservación.frmReservacion frmR = new Reservación.frmReservacion();
-                    frmR.idCliente = cveCliente;
-                    frmR.ShowDialog();
+                    int cveCliente = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                    if (cveCliente > 0)
+                    {
+
+                        Reservación.frmReservacion frmR = new Reservación.frmReservacion();
+                        frmR.idCliente = cveCliente;
+                        frmR.Show();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+                    MessageBox.Show("No existen pelicula(s)");
+                }           
             }
+        }
+
+        private void tabDatos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabDatos.SelectedTab == tpActivos)
+                btnReservar.Visible = true;
+            else
+                btnReservar.Visible = false;
         }
     }
 }

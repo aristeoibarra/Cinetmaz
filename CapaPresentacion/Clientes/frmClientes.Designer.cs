@@ -36,6 +36,7 @@ namespace CapaPresentacion.Clientes
             this.spContenedor.SuspendLayout();
             this.panelBotones.SuspendLayout();
             this.tabDatos.SuspendLayout();
+            this.pnlPadre.SuspendLayout();
             this.SuspendLayout();
             // 
             // spContenedor
@@ -56,10 +57,15 @@ namespace CapaPresentacion.Clientes
             // tabDatos
             // 
             this.tabDatos.Size = new System.Drawing.Size(800, 364);
+            this.tabDatos.SelectedIndexChanged += new System.EventHandler(this.tabDatos_SelectedIndexChanged);
             // 
             // tpActivos
             // 
             this.tpActivos.Size = new System.Drawing.Size(792, 331);
+            // 
+            // pnlPadre
+            // 
+            this.pnlPadre.Size = new System.Drawing.Size(800, 450);
             // 
             // btnReservar
             // 
@@ -89,12 +95,13 @@ namespace CapaPresentacion.Clientes
             this.spContenedor.ResumeLayout(false);
             this.panelBotones.ResumeLayout(false);
             this.tabDatos.ResumeLayout(false);
+            this.pnlPadre.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnReservar;
+        public System.Windows.Forms.Button btnReservar;
     }
 }

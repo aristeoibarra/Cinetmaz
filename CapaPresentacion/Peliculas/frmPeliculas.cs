@@ -14,7 +14,7 @@ namespace CapaPresentacion.Peliculas
             InitializeComponent();
         }
 
-        private void frmPeliculas_Load(object sender, EventArgs e)
+        public void frmPeliculas_Load(object sender, EventArgs e)
         {
             Eventos();
             RefrescarLista();
@@ -57,27 +57,34 @@ namespace CapaPresentacion.Peliculas
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
+            try
             {
-                int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cvePelicula > 0)
+                if (dgvLista.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cvePelicula = OperacionesFormulario.ObtenertId(dgvLista);
+                    if (cvePelicula > 0)
                     {
-                        if (nPelicula.Eliminar(cvePelicula))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarLista();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error ");
+                            if (nPelicula.Eliminar(cvePelicula))
+                            {
+                                RefrescarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error ");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "PELICULA ACTIVO");
             }
         }
         #endregion
