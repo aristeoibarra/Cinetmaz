@@ -80,6 +80,7 @@
           <Property Name="nombre_usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="user_usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password_usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="tipo_usuario" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="fechacreacion_usuario" Type="datetime" Nullable="false" />
           <Property Name="cveestatus_usuario" Type="int" Nullable="false" />
         </EntityType>
@@ -313,8 +314,47 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fnMostrarPeliculasBySala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveSala" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="clave" Type="int" Nullable="false" />
+                <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnMostrarReservaByCveCinetmaz" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveCinetmaz" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Clave" Type="int" Nullable="false" />
+                <Property Name="Cliente" Type="varchar" MaxLength="152" Nullable="false" />
+                <Property Name="Asiento" Type="int" Nullable="false" />
+                <Property Name="Película" Type="varchar" MaxLength="100" Nullable="false" />
+                <Property Name="Sala" Type="varchar" MaxLength="30" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="fnMostrarReservasByPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cvePelicula" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Clave" Type="int" Nullable="false" />
+                <Property Name="Cliente" Type="varchar" MaxLength="152" Nullable="false" />
+                <Property Name="Asiento" Type="int" Nullable="false" />
+                <Property Name="Película" Type="varchar" MaxLength="100" Nullable="false" />
+                <Property Name="Sala" Type="varchar" MaxLength="30" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fnMostrarReservasBySala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveSala" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -350,6 +390,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
                 <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="Fecha de Creación" Type="datetime" Nullable="false" />
+                <Property Name="tipo_usuario" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
               </RowType>
             </CollectionType>
@@ -433,6 +474,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="userUsuario" Type="varchar" Mode="In" />
           <Parameter Name="passwordUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="TipoUsuario" Type="varchar" Mode="In" />
         </Function>
         <Function Name="spCambiarEstadoCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveCliente" Type="int" Mode="In" />
@@ -453,6 +495,9 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
         </Function>
         <Function Name="spEliminarPelicula" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cvePelicula" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spEliminarReservaCinetmaz" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cveCinetmaz" Type="int" Mode="In" />
         </Function>
         <Function Name="spEliminarSala" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cveSala" Type="int" Mode="In" />
@@ -497,6 +542,7 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Parameter Name="nombreUsuario" Type="varchar" Mode="In" />
           <Parameter Name="userUsuario" Type="varchar" Mode="In" />
           <Parameter Name="passwordUsuario" Type="varchar" Mode="In" />
+          <Parameter Name="tipoUsuario" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="CinetmazModelStoreContainer">
           <EntitySet Name="ca_asiento" EntityType="Self.ca_asiento" Schema="dbo" store:Type="Tables" />
@@ -631,9 +677,9 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="cveusuariomod_cliente" Type="Int32" />
           <Property Name="fechamod_cliente" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ca_estatus" Relationship="Self.FK_ca_cliente_ca_estado" FromRole="ca_cliente" ToRole="ca_estatus" />
-          <NavigationProperty Name="ca_usuario" Relationship="Self.FK_ca_cliente_ca_usuarioAdd" FromRole="ca_cliente" ToRole="ca_usuario" />
-          <NavigationProperty Name="ca_usuario1" Relationship="Self.FK_ca_cliente_ca_usuarioMod" FromRole="ca_cliente" ToRole="ca_usuario" />
           <NavigationProperty Name="ma_cinetmaz" Relationship="Self.FK_ma_cinetmaz_ca_cliente" FromRole="ca_cliente" ToRole="ma_cinetmaz" />
+          <NavigationProperty Name="ca_usuario" Relationship="CinetmazModel.FK_ca_cliente_ca_usuarioAdd" FromRole="ca_cliente" ToRole="ca_usuario" />
+          <NavigationProperty Name="ca_usuario1" Relationship="CinetmazModel.FK_ca_cliente_ca_usuarioMod" FromRole="ca_cliente" ToRole="ca_usuario" />
         </EntityType>
         <EntityType Name="ca_estatus">
           <Key>
@@ -642,8 +688,8 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Name="cve_estatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ca_cliente_ca_estado" FromRole="ca_estatus" ToRole="ca_cliente" />
-          <NavigationProperty Name="ca_usuario" Relationship="Self.FK_ca_usuario_ca_estado" FromRole="ca_estatus" ToRole="ca_usuario" />
           <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ca_asiento_ca_estatus" FromRole="ca_estatus" ToRole="ca_asiento" />
+          <NavigationProperty Name="ca_usuario" Relationship="CinetmazModel.FK_ca_usuario_ca_estado" FromRole="ca_estatus" ToRole="ca_usuario" />
         </EntityType>
         <EntityType Name="ca_genero">
           <Key>
@@ -678,20 +724,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <NavigationProperty Name="ca_clasificacion" Relationship="Self.FK_ca_sala_ca_clasificacion" FromRole="ca_sala" ToRole="ca_clasificacion" />
           <NavigationProperty Name="ca_pelicula" Relationship="Self.FK_ca_pelicula_ca_sala" FromRole="ca_sala" ToRole="ca_pelicula" />
           <NavigationProperty Name="ca_asiento" Relationship="CinetmazModel.FK_ca_asiento_ca_sala" FromRole="ca_sala" ToRole="ca_asiento" />
-        </EntityType>
-        <EntityType Name="ca_usuario">
-          <Key>
-            <PropertyRef Name="cve_usuario" />
-          </Key>
-          <Property Name="cve_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="user_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fechacreacion_usuario" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="cveestatus_usuario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ca_cliente" Relationship="Self.FK_ca_cliente_ca_usuarioAdd" FromRole="ca_usuario" ToRole="ca_cliente" />
-          <NavigationProperty Name="ca_cliente1" Relationship="Self.FK_ca_cliente_ca_usuarioMod" FromRole="ca_usuario" ToRole="ca_cliente" />
-          <NavigationProperty Name="ca_estatus" Relationship="Self.FK_ca_usuario_ca_estado" FromRole="ca_usuario" ToRole="ca_estatus" />
         </EntityType>
         <EntityType Name="ma_cinetmaz">
           <Key>
@@ -729,30 +761,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ca_cliente_ca_usuarioAdd">
-          <End Role="ca_usuario" Type="Self.ca_usuario" Multiplicity="1" />
-          <End Role="ca_cliente" Type="Self.ca_cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_usuario">
-              <PropertyRef Name="cve_usuario" />
-            </Principal>
-            <Dependent Role="ca_cliente">
-              <PropertyRef Name="cveusuarioalta_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ca_cliente_ca_usuarioMod">
-          <End Role="ca_usuario" Type="Self.ca_usuario" Multiplicity="0..1" />
-          <End Role="ca_cliente" Type="Self.ca_cliente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_usuario">
-              <PropertyRef Name="cve_usuario" />
-            </Principal>
-            <Dependent Role="ca_cliente">
-              <PropertyRef Name="cveusuariomod_cliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ma_cinetmaz_ca_cliente">
           <End Role="ca_cliente" Type="Self.ca_cliente" Multiplicity="1" />
           <End Role="ma_cinetmaz" Type="Self.ma_cinetmaz" Multiplicity="*" />
@@ -762,18 +770,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             </Principal>
             <Dependent Role="ma_cinetmaz">
               <PropertyRef Name="cvecliente_cinetmaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ca_usuario_ca_estado">
-          <End Role="ca_estatus" Type="Self.ca_estatus" Multiplicity="1" />
-          <End Role="ca_usuario" Type="Self.ca_usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ca_estatus">
-              <PropertyRef Name="cve_estatus" />
-            </Principal>
-            <Dependent Role="ca_usuario">
-              <PropertyRef Name="cveestatus_usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -820,7 +816,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <EntitySet Name="ca_genero" EntityType="Self.ca_genero" />
           <EntitySet Name="ca_pelicula" EntityType="Self.ca_pelicula" />
           <EntitySet Name="ca_sala" EntityType="Self.ca_sala" />
-          <EntitySet Name="ca_usuario" EntityType="Self.ca_usuario" />
           <EntitySet Name="ma_cinetmaz" EntityType="Self.ma_cinetmaz" />
           <AssociationSet Name="FK_ca_sala_ca_clasificacion" Association="Self.FK_ca_sala_ca_clasificacion">
             <End Role="ca_clasificacion" EntitySet="ca_clasificacion" />
@@ -830,21 +825,9 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <End Role="ca_estatus" EntitySet="ca_estatus" />
             <End Role="ca_cliente" EntitySet="ca_cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK_ca_cliente_ca_usuarioAdd" Association="Self.FK_ca_cliente_ca_usuarioAdd">
-            <End Role="ca_usuario" EntitySet="ca_usuario" />
-            <End Role="ca_cliente" EntitySet="ca_cliente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_cliente_ca_usuarioMod" Association="Self.FK_ca_cliente_ca_usuarioMod">
-            <End Role="ca_usuario" EntitySet="ca_usuario" />
-            <End Role="ca_cliente" EntitySet="ca_cliente" />
-          </AssociationSet>
           <AssociationSet Name="FK_ma_cinetmaz_ca_cliente" Association="Self.FK_ma_cinetmaz_ca_cliente">
             <End Role="ca_cliente" EntitySet="ca_cliente" />
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ca_usuario_ca_estado" Association="Self.FK_ca_usuario_ca_estado">
-            <End Role="ca_estatus" EntitySet="ca_estatus" />
-            <End Role="ca_usuario" EntitySet="ca_usuario" />
           </AssociationSet>
           <AssociationSet Name="FK_ca_pelicula_ca_genero" Association="Self.FK_ca_pelicula_ca_genero">
             <End Role="ca_genero" EntitySet="ca_genero" />
@@ -891,11 +874,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <Parameter Name="capacidad" Mode="In" Type="Int32" />
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spAgregarUsuario">
-            <Parameter Name="nombreUsuario" Mode="In" Type="String" />
-            <Parameter Name="userUsuario" Mode="In" Type="String" />
-            <Parameter Name="passwordUsuario" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="spCambiarEstadoCliente">
             <Parameter Name="cveCliente" Mode="In" Type="Int32" />
             <Parameter Name="cveEstatus" Mode="In" Type="Int32" />
@@ -918,9 +896,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           </FunctionImport>
           <FunctionImport Name="spEliminarSala">
           <Parameter Name="cveSala" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="spEliminarUsuario">
-          <Parameter Name="cveUsuario" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spModificarClasificacion">
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
@@ -954,19 +929,10 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <Parameter Name="capacidad" Mode="In" Type="Int32" />
             <Parameter Name="cveClasificacion" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="spModificarUsuario">
-            <Parameter Name="cveUsuario" Mode="In" Type="Int32" />
-            <Parameter Name="nombreUsuario" Mode="In" Type="String" />
-            <Parameter Name="userUsuario" Mode="In" Type="String" />
-            <Parameter Name="passwordUsuario" Mode="In" Type="String" />
-          </FunctionImport>
           <EntitySet Name="vwMostrarTodosClasificacion" EntityType="CinetmazModel.vwMostrarTodosClasificacion" />
           <EntitySet Name="vwMostrarTodosCliente" EntityType="CinetmazModel.vwMostrarTodosCliente" />
           <EntitySet Name="vwMostrarTodosSala" EntityType="CinetmazModel.vwMostrarTodosSala" />
           <FunctionImport Name="fnMostrarTodosClienteByEstatus" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosClienteByEstatus_Result)">
-          <Parameter Name="cveEstatus" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="fnMostrarTodosUsuarioByEstatus" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosUsuarioByEstatus_Result)">
           <Parameter Name="cveEstatus" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spAgregarGenero">
@@ -1003,7 +969,51 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
             <End Role="ma_cinetmaz" EntitySet="ma_cinetmaz" />
           </AssociationSet>
           <FunctionImport Name="fnMostrarReservasByPelicula" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarReservasByPelicula_Result)">
-            <Parameter Name="cvePelicula" Mode="In" Type="Int32" />
+          <Parameter Name="cvePelicula" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fnMostrarReservasBySala" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarReservasBySala_Result)">
+          <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fnMostrarPeliculasBySala" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarPeliculasBySala_Result)">
+          <Parameter Name="cveSala" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarReservaCinetmaz">
+          <Parameter Name="cveCinetmaz" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fnMostrarTodosUsuarioByEstatus" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarTodosUsuarioByEstatus_Result)">
+          <Parameter Name="cveEstatus" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spAgregarUsuario">
+            <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="userUsuario" Mode="In" Type="String" />
+            <Parameter Name="passwordUsuario" Mode="In" Type="String" />
+            <Parameter Name="TipoUsuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spEliminarUsuario">
+          <Parameter Name="cveUsuario" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spModificarUsuario">
+            <Parameter Name="cveUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="nombreUsuario" Mode="In" Type="String" />
+            <Parameter Name="userUsuario" Mode="In" Type="String" />
+            <Parameter Name="passwordUsuario" Mode="In" Type="String" />
+            <Parameter Name="tipoUsuario" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ca_usuario" EntityType="CinetmazModel.ca_usuario" />
+          <AssociationSet Name="FK_ca_cliente_ca_usuarioAdd" Association="CinetmazModel.FK_ca_cliente_ca_usuarioAdd">
+            <End Role="ca_usuario" EntitySet="ca_usuario" />
+            <End Role="ca_cliente" EntitySet="ca_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ca_cliente_ca_usuarioMod" Association="CinetmazModel.FK_ca_cliente_ca_usuarioMod">
+            <End Role="ca_usuario" EntitySet="ca_usuario" />
+            <End Role="ca_cliente" EntitySet="ca_cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ca_usuario_ca_estado" Association="CinetmazModel.FK_ca_usuario_ca_estado">
+            <End Role="ca_estatus" EntitySet="ca_estatus" />
+            <End Role="ca_usuario" EntitySet="ca_usuario" />
+          </AssociationSet>
+          <FunctionImport Name="fnMostrarReservaByCveCinetmaz" IsComposable="true" ReturnType="Collection(CinetmazModel.fnMostrarReservaByCveCinetmaz_Result)">
+            <Parameter Name="cveCinetmaz" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="vwMostrarTodosClasificacion">
@@ -1051,13 +1061,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Type="String" Name="ApPaterno" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="ApMaterno" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Edad" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="fnMostrarTodosUsuarioByEstatus_Result">
-          <Property Type="Int32" Name="Clave" Nullable="false" />
-          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="Fecha_de_Creación" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
         </ComplexType>
         <EntityType Name="vwMostrarTodosGenero">
           <Key>
@@ -1150,6 +1153,83 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <Property Type="String" Name="Película" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Sala" Nullable="false" MaxLength="30" />
         </ComplexType>
+        <ComplexType Name="fnMostrarReservasBySala_Result">
+          <Property Type="Int32" Name="Clave" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
+          <Property Type="Int32" Name="Asiento" Nullable="false" />
+          <Property Type="String" Name="Película" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="fnMostrarPeliculasBySala_Result">
+          <Property Type="Int32" Name="clave" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="fnMostrarTodosUsuarioByEstatus_Result">
+          <Property Type="Int32" Name="Clave" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha_de_Creación" Nullable="false" Precision="23" />
+          <Property Type="String" Name="tipo_usuario" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Estado" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="ca_usuario">
+          <Key>
+            <PropertyRef Name="cve_usuario" />
+          </Key>
+          <Property Name="cve_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="user_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tipo_usuario" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fechacreacion_usuario" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="cveestatus_usuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ca_cliente" Relationship="CinetmazModel.FK_ca_cliente_ca_usuarioAdd" FromRole="ca_usuario" ToRole="ca_cliente" />
+          <NavigationProperty Name="ca_cliente1" Relationship="CinetmazModel.FK_ca_cliente_ca_usuarioMod" FromRole="ca_usuario" ToRole="ca_cliente" />
+          <NavigationProperty Name="ca_estatus" Relationship="CinetmazModel.FK_ca_usuario_ca_estado" FromRole="ca_usuario" ToRole="ca_estatus" />
+        </EntityType>
+        <Association Name="FK_ca_cliente_ca_usuarioAdd">
+          <End Type="CinetmazModel.ca_usuario" Role="ca_usuario" Multiplicity="1" />
+          <End Type="CinetmazModel.ca_cliente" Role="ca_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_usuario">
+              <PropertyRef Name="cve_usuario" />
+            </Principal>
+            <Dependent Role="ca_cliente">
+              <PropertyRef Name="cveusuarioalta_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ca_cliente_ca_usuarioMod">
+          <End Type="CinetmazModel.ca_usuario" Role="ca_usuario" Multiplicity="0..1" />
+          <End Type="CinetmazModel.ca_cliente" Role="ca_cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_usuario">
+              <PropertyRef Name="cve_usuario" />
+            </Principal>
+            <Dependent Role="ca_cliente">
+              <PropertyRef Name="cveusuariomod_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ca_usuario_ca_estado">
+          <End Type="CinetmazModel.ca_estatus" Role="ca_estatus" Multiplicity="1" />
+          <End Type="CinetmazModel.ca_usuario" Role="ca_usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ca_estatus">
+              <PropertyRef Name="cve_estatus" />
+            </Principal>
+            <Dependent Role="ca_usuario">
+              <PropertyRef Name="cveestatus_usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="fnMostrarReservaByCveCinetmaz_Result">
+          <Property Type="Int32" Name="Clave" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="152" />
+          <Property Type="Int32" Name="Asiento" Nullable="false" />
+          <Property Type="String" Name="Película" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Sala" Nullable="false" MaxLength="30" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1220,18 +1300,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ca_usuario">
-            <EntityTypeMapping TypeName="CinetmazModel.ca_usuario">
-              <MappingFragment StoreEntitySet="ca_usuario">
-                <ScalarProperty Name="cve_usuario" ColumnName="cve_usuario" />
-                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
-                <ScalarProperty Name="user_usuario" ColumnName="user_usuario" />
-                <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
-                <ScalarProperty Name="fechacreacion_usuario" ColumnName="fechacreacion_usuario" />
-                <ScalarProperty Name="cveestatus_usuario" ColumnName="cveestatus_usuario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ma_cinetmaz">
             <EntityTypeMapping TypeName="CinetmazModel.ma_cinetmaz">
               <MappingFragment StoreEntitySet="ma_cinetmaz">
@@ -1248,7 +1316,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <FunctionImportMapping FunctionImportName="spAgregarCliente" FunctionName="CinetmazModel.Store.spAgregarCliente" />
           <FunctionImportMapping FunctionImportName="spAgregarPelicula" FunctionName="CinetmazModel.Store.spAgregarPelicula" />
           <FunctionImportMapping FunctionImportName="spAgregarSala" FunctionName="CinetmazModel.Store.spAgregarSala" />
-          <FunctionImportMapping FunctionImportName="spAgregarUsuario" FunctionName="CinetmazModel.Store.spAgregarUsuario" />
           <FunctionImportMapping FunctionImportName="spCambiarEstadoCliente" FunctionName="CinetmazModel.Store.spCambiarEstadoCliente" />
           <FunctionImportMapping FunctionImportName="SpCambiarEstadoUsuario" FunctionName="CinetmazModel.Store.SpCambiarEstadoUsuario" />
           <FunctionImportMapping FunctionImportName="spEliminarClasificacion" FunctionName="CinetmazModel.Store.spEliminarClasificacion" />
@@ -1256,13 +1323,11 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <FunctionImportMapping FunctionImportName="spEliminarGenero" FunctionName="CinetmazModel.Store.spEliminarGenero" />
           <FunctionImportMapping FunctionImportName="spEliminarPelicula" FunctionName="CinetmazModel.Store.spEliminarPelicula" />
           <FunctionImportMapping FunctionImportName="spEliminarSala" FunctionName="CinetmazModel.Store.spEliminarSala" />
-          <FunctionImportMapping FunctionImportName="spEliminarUsuario" FunctionName="CinetmazModel.Store.spEliminarUsuario" />
           <FunctionImportMapping FunctionImportName="spModificarClasificacion" FunctionName="CinetmazModel.Store.spModificarClasificacion" />
           <FunctionImportMapping FunctionImportName="spModificarCliente" FunctionName="CinetmazModel.Store.spModificarCliente" />
           <FunctionImportMapping FunctionImportName="spModificarGenero" FunctionName="CinetmazModel.Store.spModificarGenero" />
           <FunctionImportMapping FunctionImportName="spModificarPelicula" FunctionName="CinetmazModel.Store.spModificarPelicula" />
           <FunctionImportMapping FunctionImportName="spModificarSala" FunctionName="CinetmazModel.Store.spModificarSala" />
-          <FunctionImportMapping FunctionImportName="spModificarUsuario" FunctionName="CinetmazModel.Store.spModificarUsuario" />
           <EntitySetMapping Name="vwMostrarTodosClasificacion">
             <EntityTypeMapping TypeName="CinetmazModel.vwMostrarTodosClasificacion">
               <MappingFragment StoreEntitySet="vwMostrarTodosClasificacion">
@@ -1303,17 +1368,6 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
                 <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
                 <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
                 <ScalarProperty Name="Edad" ColumnName="Edad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fnMostrarTodosUsuarioByEstatus" FunctionName="CinetmazModel.Store.fnMostrarTodosUsuarioByEstatus">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarTodosUsuarioByEstatus_Result">
-                <ScalarProperty Name="Clave" ColumnName="Clave" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Fecha_de_Creación" ColumnName="Fecha de Creación" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1372,6 +1426,65 @@ advertencia 6002: La tabla o vista 'Cinetmaz.dbo.vwMostrarTodosSala' no tiene de
           <FunctionImportMapping FunctionImportName="fnMostrarReservasByPelicula" FunctionName="CinetmazModel.Store.fnMostrarReservasByPelicula">
             <ResultMapping>
               <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarReservasByPelicula_Result">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Asiento" ColumnName="Asiento" />
+                <ScalarProperty Name="Película" ColumnName="Película" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fnMostrarReservasBySala" FunctionName="CinetmazModel.Store.fnMostrarReservasBySala">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarReservasBySala_Result">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Asiento" ColumnName="Asiento" />
+                <ScalarProperty Name="Película" ColumnName="Película" />
+                <ScalarProperty Name="Sala" ColumnName="Sala" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fnMostrarPeliculasBySala" FunctionName="CinetmazModel.Store.fnMostrarPeliculasBySala">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarPeliculasBySala_Result">
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spEliminarReservaCinetmaz" FunctionName="CinetmazModel.Store.spEliminarReservaCinetmaz" />
+          <FunctionImportMapping FunctionImportName="fnMostrarTodosUsuarioByEstatus" FunctionName="CinetmazModel.Store.fnMostrarTodosUsuarioByEstatus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarTodosUsuarioByEstatus_Result">
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Fecha_de_Creación" ColumnName="Fecha de Creación" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spAgregarUsuario" FunctionName="CinetmazModel.Store.spAgregarUsuario" />
+          <FunctionImportMapping FunctionImportName="spEliminarUsuario" FunctionName="CinetmazModel.Store.spEliminarUsuario" />
+          <FunctionImportMapping FunctionImportName="spModificarUsuario" FunctionName="CinetmazModel.Store.spModificarUsuario" />
+          <EntitySetMapping Name="ca_usuario">
+            <EntityTypeMapping TypeName="CinetmazModel.ca_usuario">
+              <MappingFragment StoreEntitySet="ca_usuario">
+                <ScalarProperty Name="cveestatus_usuario" ColumnName="cveestatus_usuario" />
+                <ScalarProperty Name="fechacreacion_usuario" ColumnName="fechacreacion_usuario" />
+                <ScalarProperty Name="tipo_usuario" ColumnName="tipo_usuario" />
+                <ScalarProperty Name="password_usuario" ColumnName="password_usuario" />
+                <ScalarProperty Name="user_usuario" ColumnName="user_usuario" />
+                <ScalarProperty Name="nombre_usuario" ColumnName="nombre_usuario" />
+                <ScalarProperty Name="cve_usuario" ColumnName="cve_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="fnMostrarReservaByCveCinetmaz" FunctionName="CinetmazModel.Store.fnMostrarReservaByCveCinetmaz">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CinetmazModel.fnMostrarReservaByCveCinetmaz_Result">
                 <ScalarProperty Name="Clave" ColumnName="Clave" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Asiento" ColumnName="Asiento" />

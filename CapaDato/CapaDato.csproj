@@ -74,7 +74,16 @@
     <Compile Include="Model\ca_usuario.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\fnMostrarPeliculasBySala_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnMostrarReservaByCveCinetmaz_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\fnMostrarReservasByPelicula_Result.cs">
+      <DependentUpon>ModelCinetmaz.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\fnMostrarReservasBySala_Result.cs">
       <DependentUpon>ModelCinetmaz.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\fnMostrarTodosClienteByEstatus_Result.cs">

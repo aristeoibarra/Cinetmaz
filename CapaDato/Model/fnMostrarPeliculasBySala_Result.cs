@@ -11,13 +11,9 @@ namespace CapaDato.Model
 {
     using System;
     
-    public partial class fnMostrarTodosUsuarioByEstatus_Result
+    public partial class fnMostrarPeliculasBySala_Result
     {
-        public int Clave { get; set; }
-        public string Usuario { get; set; }
-        public string Nombre { get; set; }
-        public System.DateTime Fecha_de_Creación { get; set; }
-        public string tipo_usuario { get; set; }
-        public string Estado { get; set; }
+        public int clave { get; set; }
+        public string nombre { get; set; }
     }
 }

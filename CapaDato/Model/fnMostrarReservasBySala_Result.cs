@@ -11,13 +11,12 @@ namespace CapaDato.Model
 {
     using System;
     
-    public partial class fnMostrarTodosUsuarioByEstatus_Result
+    public partial class fnMostrarReservasBySala_Result
     {
         public int Clave { get; set; }
-        public string Usuario { get; set; }
-        public string Nombre { get; set; }
-        public System.DateTime Fecha_de_Creación { get; set; }
-        public string tipo_usuario { get; set; }
-        public string Estado { get; set; }
+        public string Cliente { get; set; }
+        public int Asiento { get; set; }
+        public string Película { get; set; }
+        public string Sala { get; set; }
     }
 }

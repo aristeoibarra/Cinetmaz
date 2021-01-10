@@ -11,14 +11,10 @@
         <EntityTypeShape EntityType="CinetmazModel.ca_genero" Width="1.5" PointX="7.75" PointY="13.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ca_pelicula" Width="1.5" PointX="4.5" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ca_sala" Width="1.5" PointX="2.375" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CinetmazModel.ca_usuario" Width="1.5" PointX="13.875" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="CinetmazModel.ma_cinetmaz" Width="1.5" PointX="7.375" PointY="9.375" IsExpanded="true" />
         <AssociationConnector Association="CinetmazModel.FK_ca_sala_ca_clasificacion" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ca_cliente_ca_estado" ManuallyRouted="false" />
-        <AssociationConnector Association="CinetmazModel.FK_ca_cliente_ca_usuarioAdd" ManuallyRouted="false" />
-        <AssociationConnector Association="CinetmazModel.FK_ca_cliente_ca_usuarioMod" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="CinetmazModel.FK_ca_usuario_ca_estado" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ca_pelicula_ca_genero" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ca_pelicula_ca_sala" ManuallyRouted="false" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_pelicula" ManuallyRouted="false" />
@@ -31,6 +27,10 @@
         <AssociationConnector Association="CinetmazModel.FK_ca_asiento_ca_estatus" />
         <AssociationConnector Association="CinetmazModel.FK_ca_asiento_ca_sala" />
         <AssociationConnector Association="CinetmazModel.FK_ma_cinetmaz_ca_asiento" />
+        <EntityTypeShape EntityType="CinetmazModel.ca_usuario" Width="1.5" PointX="10.875" PointY="4.875" />
+        <AssociationConnector Association="CinetmazModel.FK_ca_cliente_ca_usuarioAdd" />
+        <AssociationConnector Association="CinetmazModel.FK_ca_cliente_ca_usuarioMod" />
+        <AssociationConnector Association="CinetmazModel.FK_ca_usuario_ca_estado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,6 +25,7 @@ namespace CapaDato.Model
         public string nombre_usuario { get; set; }
         public string user_usuario { get; set; }
         public string password_usuario { get; set; }
+        public string tipo_usuario { get; set; }
         public System.DateTime fechacreacion_usuario { get; set; }
         public int cveestatus_usuario { get; set; }
     
