@@ -7,9 +7,18 @@ namespace CapaNegocio.Negocio
     {
         public int ObtenerCveAsiento(int cveSala, int numeroAsiento)
         {
-            using (CinetmazEntities modeldb = new CinetmazEntities())
+            try
             {
-                return (int)modeldb.fnObtenerCveAsiento(cveSala, numeroAsiento).ToList().First();
+
+                using (CinetmazEntities modeldb = new CinetmazEntities())
+                {
+                    return (int)modeldb.fnObtenerCveAsiento(cveSala, numeroAsiento).ToList().First();
+                }
+            }
+            catch (System.Exception)
+            {
+
+                return 0;
             }
         }
     }

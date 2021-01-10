@@ -82,5 +82,18 @@ namespace CapaNegocio.Negocio
                 return query.ToList();
             }
         }
+
+        public List<fnMostrarPeliculasBySala_Result> MostrarBySala(int cveSala)
+        {
+            using (var modeldb = new CinetmazEntities())
+            {
+                var query = from p in modeldb.fnMostrarPeliculasBySala(cveSala)
+                            select p;
+
+                return query.ToList();
+            }
+        }
+
+    
     }
 }

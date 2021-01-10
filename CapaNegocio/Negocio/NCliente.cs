@@ -15,7 +15,7 @@ namespace CapaNegocio.Negocio
                                          dat.ApepaternoCliente,
                                          dat.ApematernoCliente,
                                          dat.EdadCliente,
-                                         1);
+                                         dat.CveusuarioaltaCliente);
                 return true;
             }
         }
@@ -29,7 +29,7 @@ namespace CapaNegocio.Negocio
                                            dat.ApepaternoCliente,
                                            dat.ApematernoCliente,
                                            dat.EdadCliente,
-                                           1);
+                                           dat.CveusuariomodCliente);
                 return true;
             }
         }
@@ -57,7 +57,7 @@ namespace CapaNegocio.Negocio
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
                 // 1) Activo 2) Inactivo 3) Eliminado
-                return modeldb.fnMostrarTodosClienteByEstatus(cveEstado).ToList();
+                return modeldb.fnMostrarTodosClienteByEstatus(cveEstado).OrderByDescending(x=>x.Clave).ToList();
             }
         }
 

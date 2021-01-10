@@ -13,7 +13,8 @@ namespace CapaNegocio.Negocio
             {
                 modeldb.spAgregarUsuario(dat.NombreUsuario
                                         , dat.UserUsuario
-                                        , dat.PasswordUsuario);
+                                        , dat.PasswordUsuario
+                                        , dat.TipoUsuario);
                 return true;
             }
         }
@@ -25,7 +26,8 @@ namespace CapaNegocio.Negocio
                 modeldb.spModificarUsuario(dat.CveUsuario
                                           , dat.NombreUsuario
                                           , dat.UserUsuario
-                                          , dat.PasswordUsuario);
+                                          , dat.PasswordUsuario
+                                          , dat.TipoUsuario);
                 return true;
             }
         }
@@ -34,8 +36,15 @@ namespace CapaNegocio.Negocio
         {
             using (CinetmazEntities modeldb = new CinetmazEntities())
             {
-                modeldb.spEliminarUsuario(cveUsuario);
-                return true;
+                if (cveUsuario != 1)
+                {
+                    modeldb.spEliminarUsuario(cveUsuario);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -68,6 +77,25 @@ namespace CapaNegocio.Negocio
                                 NombreUsuario = u.Nombre,
                                 UserUsuario = u.Usuario
                             };
+                return query.ToList();
+            }
+        }
+
+       
+        public List<Usuario> ExiteUsuario(string user , string pass)
+        {
+            using (CinetmazEntities modeldb = new CinetmazEntities())
+            {
+                var query = from u in modeldb.ca_usuario
+                            where u.user_usuario == user && u.password_usuario == pass && u.cveestatus_usuario == 1
+                            select new Usuario
+                            {
+                                CveUsuario = u.cve_usuario,
+                                NombreUsuario = u.nombre_usuario,
+                                PasswordUsuario = u.password_usuario,
+                                TipoUsuario = u.tipo_usuario                               
+                            };
+               
                 return query.ToList();
             }
         }
