@@ -29,6 +29,7 @@ namespace CapaPresentacion.Salas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSala));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.cmbClasificacion = new System.Windows.Forms.ComboBox();
             this.nudCapacidad = new System.Windows.Forms.NumericUpDown();
@@ -77,7 +78,7 @@ namespace CapaPresentacion.Salas
             0});
             this.nudCapacidad.Name = "nudCapacidad";
             this.nudCapacidad.ReadOnly = true;
-            this.nudCapacidad.Size = new System.Drawing.Size(48, 27);
+            this.nudCapacidad.Size = new System.Drawing.Size(48, 26);
             this.nudCapacidad.TabIndex = 2;
             this.nudCapacidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.nudCapacidad.Value = new decimal(new int[] {
@@ -92,7 +93,7 @@ namespace CapaPresentacion.Salas
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 20);
+            this.label2.Size = new System.Drawing.Size(115, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Clasificación:";
             // 
@@ -102,7 +103,7 @@ namespace CapaPresentacion.Salas
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 20);
+            this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Capacidad:";
             // 
@@ -112,7 +113,7 @@ namespace CapaPresentacion.Salas
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 20);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 20);
+            this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Nombre:";
             // 
@@ -121,14 +122,14 @@ namespace CapaPresentacion.Salas
             this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtNombre.Location = new System.Drawing.Point(159, 17);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(226, 27);
+            this.txtNombre.Size = new System.Drawing.Size(226, 26);
             this.txtNombre.TabIndex = 1;
             // 
             // frmSala
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 217);
+            this.ClientSize = new System.Drawing.Size(416, 218);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.cmbClasificacion);
             this.Controls.Add(this.nudCapacidad);
@@ -137,13 +138,13 @@ namespace CapaPresentacion.Salas
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNombre);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(432, 257);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(432, 257);
             this.Name = "frmSala";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Sala";
             this.Load += new System.EventHandler(this.frmSala_Load);

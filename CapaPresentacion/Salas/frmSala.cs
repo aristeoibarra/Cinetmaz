@@ -28,6 +28,7 @@ namespace CapaPresentacion.Salas
             if (idSala > 0)
             {
                 CargaDatos();
+                nudCapacidad.Enabled = false;
             }
         }
 

@@ -25,6 +25,16 @@ namespace CapaPresentacion.Usuarios
 
             if (idUsuario > 0)
             {
+                if (idUsuario == 1)
+                {
+                    cmbTipo.Enabled = false;
+                    cmbTipo.Text = "Admin";
+                }
+                else
+                {
+                    cmbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
+                }          
+                   
                 CargaDatos();
             }
         }
@@ -58,7 +68,8 @@ namespace CapaPresentacion.Usuarios
             usuario.CveUsuario = idUsuario;
             usuario.NombreUsuario = txtNombre.Text.Trim();
             usuario.UserUsuario = txtUsuario.Text.Trim();
-            usuario.PasswordUsuario = txtPass.Text.Trim();
+            usuario.PasswordUsuario = OperacionesFormulario.GetSHA1(txtPass.Text.Trim());
+            usuario.TipoUsuario = cmbTipo.Text.Trim();
         }
 
         private void Agregar()

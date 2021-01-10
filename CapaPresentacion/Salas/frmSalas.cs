@@ -1,6 +1,7 @@
 ﻿using CapaNegocio.Negocio;
 using CapaPresentacion.Utilidades;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Salas
@@ -8,7 +9,7 @@ namespace CapaPresentacion.Salas
     public partial class frmSalas : frmPadre
     {
         readonly Nsala nSala = new Nsala();
-
+        Npelicula npelicula = new Npelicula();
         public frmSalas()
         {
             InitializeComponent();
@@ -39,11 +40,11 @@ namespace CapaPresentacion.Salas
         {
             if (dgvLista.Rows.Count != 0)
             {
-                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveClasificacion > 0)
+                int cveSala = OperacionesFormulario.ObtenertId(dgvLista);
+                if (cveSala > 0)
                 {
                     frmSala frmS = new frmSala();
-                    frmS.idSala = cveClasificacion;
+                    frmS.idSala = cveSala;
 
                     frmS.ShowDialog();
                     RefrescarLista();
@@ -57,27 +58,35 @@ namespace CapaPresentacion.Salas
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvLista.Rows.Count != 0)
+            try
             {
-                int cveClasificacion = OperacionesFormulario.ObtenertId(dgvLista);
-                if (cveClasificacion > 0)
+
+                if (dgvLista.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveSala = OperacionesFormulario.ObtenertId(dgvLista);
+                    if (cveSala > 0)
                     {
-                        if (nSala.Eliminar(cveClasificacion))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarLista();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error ");
+                            if (nSala.Eliminar(cveSala))
+                            {
+                                RefrescarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error ");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "SALA ACTIVA");
             }
         }
         #endregion
@@ -101,6 +110,36 @@ namespace CapaPresentacion.Salas
             {
                 MessageBox.Show("Error de sistema " + ex.Message);
             }
+        }
+
+        private void BtnReservas_Click(object sender, EventArgs e)
+        {
+           
+                if (dgvLista.Rows.Count != 0)
+                {
+                    int cveSala = OperacionesFormulario.ObtenertId(dgvLista);
+                    if (cveSala > 0)
+                    {
+                        if (npelicula.MostrarBySala(cveSala).Count() > 0)
+                        {
+                            frmReservas frmR = new frmReservas();
+                            frmR.idSala = cveSala;
+                            frmR.ShowDialog();
+                            RefrescarLista();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sala sin peliculas");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
+                }
+            
+          
+           
         }
     }
 }

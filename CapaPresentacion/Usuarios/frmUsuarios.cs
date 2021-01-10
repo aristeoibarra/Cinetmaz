@@ -85,27 +85,34 @@ namespace CapaPresentacion.Usuarios
 
         private void BtnEliminar(object sender, EventArgs e)
         {
-            if (dgvListaActivos.Rows.Count != 0)
+            try
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaActivos);
-                if (cveUsuario > 0)
+                if (dgvListaActivos.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaActivos);
+                    if (cveUsuario > 0)
                     {
-                        if (nUsuario.Eliminar(cveUsuario))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarListas();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error");
+                            if (nUsuario.Eliminar(cveUsuario))
+                            {
+                                RefrescarListas();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Este usuario no se puede eliminar");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "USUARIO ACTIVO");
             }
         }
         #endregion
@@ -136,27 +143,34 @@ namespace CapaPresentacion.Usuarios
 
         private void BtnEliminarInactivo(object sender, EventArgs e)
         {
-            if (dgvListaInactivos.Rows.Count != 0)
+            try
             {
-                int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaInactivos);
-                if (cveUsuario > 0)
+                if (dgvListaInactivos.Rows.Count != 0)
                 {
-                    if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    int cveUsuario = OperacionesFormulario.ObtenertId(dgvListaInactivos);
+                    if (cveUsuario > 0)
                     {
-                        if (nUsuario.Eliminar(cveUsuario))
+                        if (MessageBox.Show("Estas seguro de eliminar el registro seleccionado", "Confirm delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            RefrescarListas();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ocurrio un error");
+                            if (nUsuario.Eliminar(cveUsuario))
+                            {
+                                RefrescarListas();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrio un error");
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Debe existir una fila seleccionada");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Debe existir una fila seleccionada");
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ERROR AL ELIMINAR", "USUARIO ACTIVO");
             }
         }
         #endregion
